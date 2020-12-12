@@ -45,4 +45,14 @@ Was für Schritte wollen wir machen? So ähnlich wie beim assignment vielleicht?
  ### Examples
  
  Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
+ 
+ 
+ ### was muss bis Freitag gemacht werden:
+ + requirements.txt, falls iwr schon irgendwelche libraries benutzen
+ + möglichst schon code für download/preprocessing
+ + Zeitplan
+ + Projektaufbau
+ + Betreuer zugriff auf repo geben
+ 
+ 
 
