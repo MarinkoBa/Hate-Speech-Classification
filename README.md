@@ -29,6 +29,8 @@ We have started with the downloading and processing of our data.
 
 ### Experiments
 
+vielleicht datenaufteilung?
+
 ## Data Analysis
 
 ### Data Source
@@ -48,7 +50,7 @@ Was für Schritte wollen wir machen? So ähnlich wie beim assignment vielleicht?
  - 1.972 of racism content 
  - 11.559 with none of them are 
  
- Das müssen wir wahrscheinlich aktulisieren, da es ja nicht alle teewts mehr gibt
+ Das müssen wir wahrscheinlich aktulisieren, da es ja nicht alle tweets mehr gibt
  
  ### Examples
  
@@ -56,7 +58,7 @@ Was für Schritte wollen wir machen? So ähnlich wie beim assignment vielleicht?
  
  
  ### was muss bis Freitag gemacht werden:
- + requirements.txt, falls iwr schon irgendwelche libraries benutzen
+ + requirements.txt, falls wir schon irgendwelche libraries benutzen
  + möglichst schon code für download/preprocessing
  + Zeitplan
  + Projektaufbau
