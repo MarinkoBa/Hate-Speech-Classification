@@ -1,6 +1,6 @@
 # Hate-Speech-Classification
 
-#### Teammembers and Mail addresses:
+### Teammembers and Mail addresses:
 - Team Member: Balikic Marinko,
 kf252@stud.uni-heidelberg.de
 - Team Member: Bopp Sarah,
@@ -10,12 +10,20 @@ fk269@stud.uni-heidelberg.de
 - Team Member: Tratz-Weinmann Daniela,
 Tratz-Weinmann@stud.uni-heidelberg.de
 
+### Existing code fragments:
+So far, we do not use any existing code.
+
 ## Project State
 
 ### Planning State:
 We have started with the downloading and processing of our data.
 
 ### Future Planning
++ Preprocessing
++ Implementing methods of classification
++ Train methods
++ Test/ evaluate
++ Interpretation/plotting/analysing of test results
 
 ### High-level Architecture Description
 
@@ -25,7 +33,7 @@ We have started with the downloading and processing of our data.
 
 ### Data Source
 
-As already mentioned in our proposal we are using an exsiting documnet collection, that can be found here:  
+As already mentioned in our proposal we are using an exsiting document collection, that can be found here:  
 <https://github.com/zeerakw/hatespeech>   
 This data set contains the IDs for Tweets and annotation for each tweet, whether they contain hate speech or not.
 
