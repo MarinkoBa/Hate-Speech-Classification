@@ -43,16 +43,16 @@ The data set (training/test set) and the data we want to investigate are retriev
 
 ### Preprocessing:
 
-(0) Selection: the data we want to investigate have to be english speech tweets from the United States, which were released in a period of time (e.g. from may to august
-    2020). Moreover the tweets should be from a representive amount of people.
+(0) Selection: the data we want to investigate have to be english speech tweets from the United States, which were released in a period of time (e.g. from may to august 2020). Moreover the tweets should be from a representive amount of people. <br>
 
-(1) non standard lexical tokens have to filtered out (e.g. emoticons, hashtags..)
-(2) remove duplicate tweets and retweets
-(3) remove standard stopwords
-(4) splitting into tokens
-(5) convert all tokens to lower case
-(6) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm
-Frage? Stemming scheint nicht notwendig zu sein!?
+(1) non standard lexical tokens have to filtered out (e.g. numbers, emoticons, hashtags..) <br>
+(2) remove duplicate tweets and retweets <br>
+(3) remove standard stopwords <br>
+(4) splitting into tokens <br>
+(5) convert all tokens to lower case <br>
+(6) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm <br>
+<br>
+Frage? Stemming scheint nicht notwendig zu sein!? <br>
 
 ### Basic Statistics:
 
