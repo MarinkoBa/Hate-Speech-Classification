@@ -39,9 +39,20 @@ As already mentioned in our proposal we are using an exsiting document collectio
 <https://github.com/zeerakw/hatespeech>   
 This data set contains the IDs for Tweets and annotation for each tweet, whether they contain hate speech or not.
 
+The data set (training/test set) and the data we want to investigate are retrieved from the Twitter API using the Tweepy library.
+
 ### Preprocessing:
 
-Was für Schritte wollen wir machen? So ähnlich wie beim assignment vielleicht?
+(0) Selection: the data we want to investigate have to be english speech tweets from the United States, which were released in a period of time (e.g. from may to august
+    2020). Moreover the tweets should be from a representive amount of people.
+
+(1) non standard lexical tokens have to filtered out (e.g. emoticons, hashtags..)
+(2) remove duplicate tweets and retweets
+(3) remove standard stopwords
+(4) splitting into tokens
+(5) convert all tokens to lower case
+(6) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm
+Frage? Stemming scheint nicht notwendig zu sein!?
 
 ### Basic Statistics:
 
