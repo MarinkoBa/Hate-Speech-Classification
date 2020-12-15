@@ -61,7 +61,8 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  - 1.972 of racism content 
  - 11.559 with none of them are 
  
- Das müssen wir wahrscheinlich aktulisieren, da es ja nicht alle tweets mehr gibt
+ ![Tweets availability](/src/data/tweets_availability_per_label.png)
+ 
  
  ### Examples
  
