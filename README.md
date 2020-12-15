@@ -57,23 +57,27 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
 ### Basic Statistics:
 
  The data set contains 16.914 annotated IDs, with the following distribution:  
- - 3.383 of sexist content 
  - 1.972 of racism content 
+ - 3.383 of sexist content 
  - 11.559 with none of them are 
  
- Das müssen wir wahrscheinlich aktulisieren, da es ja nicht alle tweets mehr gibt
+ ![Tweets availability](/src/data/tweets_availability_per_label.png)
+ 
  
  ### Examples
  
- Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
+ Racism example: "These girls are the equivalent of the irritating Asian girls a couple years ago. Well done, 7. #MKR" <br>
+ Sexism example: "Trying to find something pretty about these blonde idiots.#MKR" <br>
+ None example: "If something is so hard to do on the BBQ then why why why do it?? #MKR #hungrycampers" <br> <br>
  
+ Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
  
  ### was muss bis Freitag gemacht werden:
  + requirements.txt, falls wir schon irgendwelche libraries benutzen
  + möglichst schon code für download/preprocessing
  + Zeitplan
  + Projektaufbau
- + Betreuer zugriff auf repo geben
+ + Betreuer zugriff auf repo geben | erledigt
  
  
 
