@@ -66,15 +66,18 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  
  ### Examples
  
- Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
+ Racism example: "These girls are the equivalent of the irritating Asian girls a couple years ago. Well done, 7. #MKR"
+ Sexism example: "Trying to find something pretty about these blonde idiots.#MKR"
+ None example: "If something is so hard to do on the BBQ then why why why do it?? #MKR #hungrycampers"
  
+ Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
  
  ### was muss bis Freitag gemacht werden:
  + requirements.txt, falls wir schon irgendwelche libraries benutzen
  + möglichst schon code für download/preprocessing
  + Zeitplan
  + Projektaufbau
- + Betreuer zugriff auf repo geben
+ + Betreuer zugriff auf repo geben | erledigt
  
  
 
