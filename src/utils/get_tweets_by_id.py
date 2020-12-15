@@ -31,7 +31,7 @@ def export_data(df, file_path):
     Parameters
     ----------
     df:             DataFrame
-                    The DataFrame object including tweet id, tweet label and tweet text.
+                    The DataFrame object including tweet id, label, text and location if available.
     file_path:      String
                     The path to the output csv file.
     """
