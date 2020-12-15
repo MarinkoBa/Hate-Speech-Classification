@@ -66,9 +66,9 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  
  ### Examples
  
- Racism example: "These girls are the equivalent of the irritating Asian girls a couple years ago. Well done, 7. #MKR"
- Sexism example: "Trying to find something pretty about these blonde idiots.#MKR"
- None example: "If something is so hard to do on the BBQ then why why why do it?? #MKR #hungrycampers"
+ Racism example: "These girls are the equivalent of the irritating Asian girls a couple years ago. Well done, 7. #MKR" <br>
+ Sexism example: "Trying to find something pretty about these blonde idiots.#MKR" <br>
+ None example: "If something is so hard to do on the BBQ then why why why do it?? #MKR #hungrycampers" <br> <br>
  
  Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
  
