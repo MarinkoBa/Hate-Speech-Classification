@@ -1,4 +1,5 @@
 import tweepy
+import os
 import pandas as pd
 
 
@@ -25,7 +26,7 @@ def load_data(file_path):
 
 def export_data(df, file_path):
     """
-    Export a pandas dataframe including tweet text as a csv file.
+    Export/append a pandas dataframe as/to a csv file.
 
     Parameters
     ----------
@@ -37,42 +38,36 @@ def export_data(df, file_path):
     df.to_csv(file_path,
               sep=',',
               header=None,
-              index=False)
+              index=False,
+              mode='a')
 
 
 def get_tweets_by_id(config, file_path):
     """
-    Get the text from all available tweets with IDs in annotated dataset and
-    save it in the dataframe.
+    Get the text and location from all available tweets with IDs in annotated dataset and
+    export them to the file tweets.csv.
 
     Parameters
     ----------
-    config:         JSON-object
+    config:         AutoConfig-object
                     The object contains necessary authorization details to get
                     access to the twitter API.
     file_path:      String
                     The path to the annotated csv data set.
 
-    Returns
-    -------
-    df:             Pandas dataframe
-                    The dataframe containing the data from the csv file and the
-                    texts of the tweets if available.
     """
     # load authorization details from config-file and send request to api
     auth = tweepy.OAuthHandler(config('CONSUMER_KEY'), config('CONSUMER_SECRET'))
     auth.set_access_token(config('OAUTH_TOKEN'), config('OAUTH_TOKEN_SECRET'))
     api = tweepy.API(auth)
 
-    # load annotated data set with read_data()
-    df = load_data(file_path)
+    for i in range(34):  # export data in 500-steps: 16907 / 500 = ~34
 
-    df['text'] = df.tweet_id.apply(lambda x: get_tweet_text(x, api))
-
-    ### TODO: can get information about geolocation (if available),
-    #   have a look at examples when authorization works
-
-    return df
+        # load annotated data set with read_data()
+        df = load_data(file_path)[i*500:(i+1)*500]
+        df['text'] = df.tweet_id.apply(lambda x: get_tweet_text(x, api))
+        df['location'] = df.tweet_id.apply(lambda x: get_tweet_location(x, api))
+        export_data(df, os.path.join('data', 'tweets.csv'))
 
 
 def get_tweet_text(tweet_id, api):
@@ -80,3 +75,11 @@ def get_tweet_text(tweet_id, api):
         return api.get_status(tweet_id).text  # return the text from the tweet with ID if tweet available
     except:
         return None                           # return None
+
+
+def get_tweet_location(tweet_id, api):
+    try:
+        lat_long = api.get_status(tweet_id).geo['coordinates']
+        return str(lat_long[0]) + "|" + str(lat_long[1])  # return the location from the tweet with ID if tweet and tweet location available
+    except:
+        return None                                       # return None
