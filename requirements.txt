@@ -1,2 +1,4 @@
 tweepy>3.7
 pre-commit
+pandas~=1.1.5
+python-decouple
