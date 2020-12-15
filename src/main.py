@@ -1,7 +1,7 @@
 import json
 import os
 
-from utils.get_tweets_by_id import get_tweets_by_id
+from src.utils.get_tweets_by_id import get_tweets_by_id
 
 
 
