@@ -59,13 +59,13 @@ def get_tweets_by_id(config, file_path):
     # load authorization details from config-file and send request to api
     auth = tweepy.OAuthHandler(config('CONSUMER_KEY'), config('CONSUMER_SECRET'))
     auth.set_access_token(config('OAUTH_TOKEN'), config('OAUTH_TOKEN_SECRET'))
-    api = tweepy.API(auth)
+    api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-    for i in range(34):  # export data in 500-steps: 16907 / 500 = ~34
+    for i in range(170):  # export data in 500-steps: 16907 / 100 = ~170
         # load annotated data set with read_data()
-        df = load_data(file_path)[i*500:(i+1)*500]
-        df['text'] = df.tweet_id.apply(lambda x: get_tweet_text(x, api))
-        df['location'] = df.tweet_id.apply(lambda x: get_tweet_location(x, api))
+        df = load_data(file_path)[i * 100:(i + 1) * 100]
+        df['text'] = df.tweet_id.apply(lambda tweet_id: get_tweet_text(tweet_id, api))
+        df['location'] = df.tweet_id.apply(lambda tweet_id: get_tweet_location(tweet_id, api))
         export_data(df, os.path.join('data', 'tweets.csv'))
 
 
@@ -81,4 +81,4 @@ def get_tweet_location(tweet_id, api):
         lat_long = api.get_status(tweet_id).geo['coordinates']
         return str(lat_long[0]) + "|" + str(lat_long[1])  # return the location from the tweet with ID if tweet and tweet location available
     except:
-        return None                                       
+        return None
