@@ -78,6 +78,7 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  - 3.383 of sexist content 
  - 11.559 with none of them are 
  
+
  ![Tweets availability](/src/data/tweets_availability_per_label.png)
  
  
