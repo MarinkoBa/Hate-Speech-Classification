@@ -27,6 +27,23 @@ We have started with the downloading and processing of our data.
 
 ### High-level Architecture Description
 
+Suggestion:
+The basic structure of our project is planned as following: 
+We plan to have one main file that is responsible for controlling any actions, all function can only be called from there.
+Then we plan to have several sub packages divided by functionalities.
+The first package is the package src.utils, which is meant to be responsible for the following functionalities:
++ functions for downloading and structuring the data from Twitter (including type of Tweet, no hate speech, racism and/or sexism and location of Tweet if available) 
++ functions for processing the data ( for details of the planned steps of our processing pipeline refer to this section)
+The second package is the package src.data, which is meant to contain both Ids of the Tweets that build the basis of our training data and the processed data in form of a csv file 
+
+The third package is the package src.classifiers, which is meant to be responsible for the following functionalities:
++ function for classification using logistic regression
++ other method: vielleicht tree?
++ noch eine Methode?
+
+Tests for all functionalities will be provided in the separate package tests.
+
+
 ### Experiments
 
 vielleicht datenaufteilung?
