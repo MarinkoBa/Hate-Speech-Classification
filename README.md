@@ -74,10 +74,14 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
 ### Basic Statistics:
 
  The data set contains 16.914 annotated IDs, with the following distribution:  
- - 1.972 of racism content 
- - 3.383 of sexist content 
+ - 1.970 of racism content 
+ - 3.378 of sexist content 
  - 11.559 with none of them are 
  
+ Location availability:
+ - 1/1.970 of racism content 
+ - 38/3.378 of sexist content 
+ - 122/11.559 with none of them are 
 
  ![Tweets availability](/src/data/tweets_availability_per_label.png)
  
