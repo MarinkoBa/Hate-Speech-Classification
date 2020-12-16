@@ -19,11 +19,61 @@ So far, we do not use any existing code.
 We have started with the downloading and processing of our data.
 
 ### Future Planning
-+ Preprocessing
-+ Implementing methods of classification
-+ Train methods
-+ Test/ evaluate
-+ Interpretation/plotting/analysing of test results
+
+Hier noch timeline einfügen und sinnvolle Fristen
+
+#### Collect labeled data sets
+- find existing labeled data sets
+- check if data is useful
+- how can different data sets combined
+- program modul to read data sets (csv -files)
+- split data into training / test set
+
+#### Twitter API
+- find Python library to work with Tiwtter API
+- create credentials on Twitter developer portal to use the API
+- become familiar to retrieve tweets by using library
+- program python modul to receive data from the API
+
+#### Preprocessing
+- program Python module to handle Preprocessing of tweets
+- non standard lexical tokens have to filtered out (e.g. emoticons, hastags etc.)
+  - tweets often includes urls like "http://t.co/cOU2WQ5L4q" and links with @name to other users, which should be remeoved, to make the data simpler
+- remove duplicate tweets and retweets
+- remove standard stopwords (english)
+- splitting into tokens
+- convert all tokens to lower case
+- convert data with TF-IDF to make it ready to use for ML-algorithms
+
+#### Train Classifier
+- train different classifier based on the train set (75% of the data set)
+  - classifier:  
+       - Support-Vector-Machine (SVM)
+       - Decision Tree Classifier / Random- Forest Classifier 
+       - Logisitc Regression 
+       - Long Short Term Memory 
+                 
+#### Test Classifier
+- evaluate the different classifiers with the test set
+- run m-fold-cross validation to determine the classifier with the smallest error
+  - in addition to cross validation we want to use the F1-Score
+  
+#### Selection of meaninful tweets
+- select tweets from the twitter API which are:
+  - english speech
+  - located in United States (USA)
+  - which were released in a specific time periode (e.g. time of US election)
+  - tweets from a representable amount of people
+    - people from different states of the USA
+    - find threshold for which amount is representable
+
+#### Analyze Data (Tweets)
+- execute preprocessing on selected twitter data
+- use evaluated classifier to predict label of incoming tweets
+
+#### Representation of data
+- plot data in an appropiate way
+
 
 ### High-level Architecture Description
 
