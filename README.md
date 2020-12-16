@@ -73,7 +73,7 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
 
 ### Basic Statistics:
 
- The data set contains 16.914 annotated IDs, with the following distribution:  
+ The data set contains 16.907 annotated IDs, with the following distribution:  
  - 1.970 of racism content 
  - 3.378 of sexist content 
  - 11.559 with none of them are 
