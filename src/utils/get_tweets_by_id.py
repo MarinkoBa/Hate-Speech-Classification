@@ -61,7 +61,7 @@ def get_tweets_by_id(config, file_path):
     auth.set_access_token(config('OAUTH_TOKEN'), config('OAUTH_TOKEN_SECRET'))
     api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-    for i in range(170):  # export data in 500-steps: 16907 / 100 = ~170
+    for i in range(170):  # export data in 100-steps: 16907 / 100 = ~170
         # load annotated data set with read_data()
         df = load_data(file_path)[i * 100:(i + 1) * 100]
         df['text'] = df.tweet_id.apply(lambda tweet_id: get_tweet_text(tweet_id, api))
