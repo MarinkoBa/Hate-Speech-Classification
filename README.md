@@ -82,7 +82,8 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  - 1/1.970 of racism content 
  - 38/3.378 of sexist content 
  - 122/11.559 with none of them are 
-
+ 
+ ## Tweets availability
  ![Tweets availability](/src/data/tweets_availability_per_label.png)
  
  
