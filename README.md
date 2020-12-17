@@ -42,6 +42,8 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 
 ### Future Planning
 
+#### Timeline:
+
 ![Timeline](/src/data/timeline.png)
 
 #### Collect labeled data sets (12/27/2020) 
@@ -98,8 +100,11 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 
 ### High-level Architecture Description
 
+#### Pipeline
+
 ![Pipeline](/src/data/pipeline.PNG)
 
+#### Architecture
 The basic structure of our project is planned as following: 
 We plan to have one main file that is responsible for controlling any actions, all function can only be called from there.
 Then we plan to have several sub packages divided by functionalities.
