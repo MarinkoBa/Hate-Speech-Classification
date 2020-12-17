@@ -137,9 +137,9 @@ The data set (training/test set) and the data we want to investigate are retriev
 (3) remove standard stopwords <br>
 (4) splitting into tokens <br>
 (5) convert all tokens to lower case <br>
-(6) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm <br>
-<br>
-Frage? Stemming scheint nicht notwendig zu sein!? <br>
+(6) perform stemming    
+(7) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm <br>
+
 
 ### Basic Statistics:
 
