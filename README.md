@@ -18,24 +18,40 @@ So far, we do not use any existing code.
 ### Planning State:
 We have started with the downloading and processing of our data.
 
+#### Done: 
+
+##### Twitter API
+- find Python library to work with Twitter API
+- create credentials on Twitter developer portal to use the API
+- become familiar to retrieve tweets by using library
+- program python modul to receive data from the API
+
+#### In Progress:
+
+##### Collect labeled data sets
+- find existing labeled data sets 
+- check if data is useful
+- how can different data sets combined
+- program modul to read data sets (csv -files)
+- split data into training / test set
+
+We have so far checked the data set from our proposal, however since we have noticed (see diagram in Data Analysis Section) 
+that a lot of tweets are missing we have decided to look for additional data sets.
+For now we will be using the labels hateful and not-hateful (binary classification) and we plan to divide it into sub-categories if we find enough data.
+
+
 ### Future Planning
 
-Hier noch timeline einfügen und sinnvolle Fristen
 
-#### Collect labeled data sets
+#### Collect labeled data sets (12/27/2020) 
 - find existing labeled data sets
 - check if data is useful
 - how can different data sets combined
 - program modul to read data sets (csv -files)
 - split data into training / test set
 
-#### Twitter API
-- find Python library to work with Tiwtter API
-- create credentials on Twitter developer portal to use the API
-- become familiar to retrieve tweets by using library
-- program python modul to receive data from the API
 
-#### Preprocessing
+#### Preprocessing (01/04/2021) 
 - program Python module to handle Preprocessing of tweets
 - non standard lexical tokens have to filtered out (e.g. emoticons, hastags etc.)
   - tweets often includes urls like "http://t.co/cOU2WQ5L4q" and links with @name to other users, which should be remeoved, to make the data simpler
@@ -45,7 +61,7 @@ Hier noch timeline einfügen und sinnvolle Fristen
 - convert all tokens to lower case
 - convert data with TF-IDF to make it ready to use for ML-algorithms
 
-#### Train Classifier
+#### Train Classifier (01/18/2021) 
 - train different classifier based on the train set (75% of the data set)
   - classifier:  
        - Support-Vector-Machine (SVM)
@@ -53,12 +69,12 @@ Hier noch timeline einfügen und sinnvolle Fristen
        - Logisitc Regression 
        - Long Short Term Memory 
                  
-#### Test Classifier
+#### Test Classifier (01/25/2021) 
 - evaluate the different classifiers with the test set
 - run m-fold-cross validation to determine the classifier with the smallest error
   - in addition to cross validation we want to use the F1-Score
   
-#### Selection of meaninful tweets
+#### Selection of meaninful tweets (02/01/2021) 
 - select tweets from the twitter API which are:
   - english speech
   - located in United States (USA)
@@ -67,12 +83,16 @@ Hier noch timeline einfügen und sinnvolle Fristen
     - people from different states of the USA
     - find threshold for which amount is representable
 
-#### Analyze Data (Tweets)
+#### Analyze Data (Tweets) (02/08/2021) 
 - execute preprocessing on selected twitter data
 - use evaluated classifier to predict label of incoming tweets
 
-#### Representation of data
+#### Representation of data (02/15/2021) 
 - plot data in an appropiate way
+
+#### Presenation (02/20/2021) 
+
+#### Project Report (03/10/2021) 
 
 
 ### High-level Architecture Description
