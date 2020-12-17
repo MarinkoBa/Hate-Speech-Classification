@@ -11,7 +11,7 @@ fk269@stud.uni-heidelberg.de
 Tratz-Weinmann@stud.uni-heidelberg.de
 
 ### Existing code fragments:
-So far, we do not use any existing code.
+So far, we do not use any existing code, but we are using the example project from the tutorial as basis for our project structure.
 
 ## Project State
 
@@ -67,7 +67,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
        - Support-Vector-Machine (SVM)
        - Decision Tree Classifier / Random- Forest Classifier 
        - Logisitc Regression 
-       - Long Short Term Memory 
+       - (Optional: Long Short Term Memory)
                  
 #### Test Classifier (01/25/2021) 
 - evaluate the different classifiers with the test set
@@ -90,33 +90,33 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 #### Representation of data (02/15/2021) 
 - plot data in an appropiate way
 
-#### Presenation (02/20/2021) 
+#### Presentation (02/20/2021) 
 
 #### Project Report (03/10/2021) 
 
 
 ### High-level Architecture Description
 
-Suggestion:
 The basic structure of our project is planned as following: 
 We plan to have one main file that is responsible for controlling any actions, all function can only be called from there.
 Then we plan to have several sub packages divided by functionalities.
 The first package is the package src.utils, which is meant to be responsible for the following functionalities:
 + functions for downloading and structuring the data from Twitter (including type of Tweet, no hate speech, racism and/or sexism and location of Tweet if available) 
 + functions for processing the data ( for details of the planned steps of our processing pipeline refer to [this section](###-preprocessing:))
+
 The second package is the package src.data, which is meant to contain both Ids of the Tweets that build the basis of our training data and the processed data in form of a csv file 
 
 The third package is the package src.classifiers, which is meant to be responsible for the following functionalities:
-+ function for classification using logistic regression
-+ other method: vielleicht tree?
-+ noch eine Methode?
++ Support-Vector-Machine (SVM)  
++ Decision Tree Classifier / Random- Forest Classifier 
++ Logisitc Regression 
 
 Tests for all functionalities will be provided in the separate package tests.
 
 
-### Experiments
+### Experiments (so far)
 
-vielleicht datenaufteilung?
+See Sub Section Tweet Availability in Section Data Analysis
 
 ## Data Analysis
 
@@ -163,14 +163,8 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  Sexism example: "Trying to find something pretty about these blonde idiots.#MKR" <br>
  None example: "If something is so hard to do on the BBQ then why why why do it?? #MKR #hungrycampers" <br> <br>
  
- Mindestens ein example sample für unser data, also vielleicht ein paar Tweets (pro Kategorie einer)?
+
  
- ### was muss bis Freitag gemacht werden:
- + requirements.txt, falls wir schon irgendwelche libraries benutzen
- + möglichst schon code für download/preprocessing
- + Zeitplan
- + Projektaufbau
- + Betreuer zugriff auf repo geben | erledigt
- 
+
  
 
