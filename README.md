@@ -154,6 +154,10 @@ Frage? Stemming scheint nicht notwendig zu sein!? <br>
  - 122/11.559 with none of them are 
  
  #### Tweets availability
+ - 11/1.970 of racism content 
+ - 2754/3.378 of sexist content 
+ - 7367/11.559 with none of them are 
+ 
  ![Tweets availability](/src/data/tweets_availability_per_label.png)
  
  
