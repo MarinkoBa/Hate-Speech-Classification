@@ -110,11 +110,11 @@ We plan to have one main file that is responsible for controlling any actions, a
 Then we plan to have several sub packages divided by functionalities.
 The first package is the package src.utils, which is meant to be responsible for the following functionalities:
 + functions for downloading and structuring the data from Twitter (including type of Tweet, no hate speech, racism and/or sexism and location of Tweet if available) 
-+ functions for processing the data ( for details of the planned steps of our processing pipeline refer to [this section](###-preprocessing:))
++ functions for processing the data (for details of the planned steps of our processing pipeline refer to the section preprocessing)
 
 The second package is the package src.data, which is meant to contain both Ids of the Tweets that build the basis of our training data and the processed data in form of a csv file 
 
-The third package is the package src.classifiers, which is meant to be responsible for the following functionalities:
+The third package is the package src.classifiers (will be added later, when implementing the classifiers), which is meant to be responsible for the following functionalities:
 + Support-Vector-Machine (SVM)  
 + Decision Tree Classifier / Random- Forest Classifier 
 + Logisitc Regression 
