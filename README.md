@@ -54,7 +54,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 #### Preprocessing (01/04/2021) 
 - program Python module to handle Preprocessing of tweets
 - non standard lexical tokens have to filtered out (e.g. emoticons, hastags etc.)
-  - tweets often includes urls like "http://t.co/cOU2WQ5L4q" and links with @name to other users, which should be remeoved, to make the data simpler
+  - tweets often includes urls like "http://t.co/cOU2WQ5L4q" and links with @name to other users, which should be removed, to make the data simpler
 - remove duplicate tweets and retweets
 - remove standard stopwords (english)
 - splitting into tokens
