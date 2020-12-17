@@ -136,6 +136,18 @@ This data set contains the IDs for Tweets and annotation for each tweet, whether
 
 The data set (training/test set) and the data we want to investigate are retrieved from the Twitter API using the Tweepy library.
 
+
+In additon we've found two other labeled data sets:
+
+https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data
+which includes labeled data for hate speech, offensive language and neither.
+
+https://github.com/jaeyk/intersectional-bias-in-ml
+which includes abusive language and hate speech.
+
+Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set.
+
+
 ### Preprocessing:
 
 (0) Selection: the data we want to investigate have to be english speech tweets from the United States, which were released in a period of time (e.g. from may to august 2020). Moreover the tweets should be from a representive amount of people. <br>
