@@ -21,7 +21,7 @@ We have started with the downloading and processing of our data.
 #### Done: 
 
 ##### Twitter API
-- find Python library to work with Twitter API
+- find Python library to work with Twitter API &rightarrow; [Tweepy](https://www.tweepy.org/ "Tweepy home")
 - create credentials on Twitter developer portal to use the API
 - become familiar to retrieve tweets by using library
 - program python modul to receive data from the API
@@ -37,7 +37,7 @@ We have started with the downloading and processing of our data.
 
 We have so far checked the data set from our proposal, however since we have noticed (see diagram in Data Analysis Section) 
 that a lot of tweets are missing we have decided to look for additional data sets and so far have found two more that could potentially be useful (see Data Analysis Section for further details on these).
-For now we will be using the labels hateful and not-hateful (binary classification) and we plan to divide it into sub-categories if we find enough data.
+For now we will be using the labels hateful and not-hateful (binary classification) and we plan to divide it into sub-categories if we find enough data. Thus, we will decide which labels could be summarized together, for more details see Data Analysis.
 
 
 ### Future Planning
@@ -69,12 +69,12 @@ For now we will be using the labels hateful and not-hateful (binary classificati
   - classifier:  
        - Support-Vector-Machine (SVM)
        - Decision Tree Classifier / Random- Forest Classifier 
-       - Logisitc Regression 
+       - Logistic Regression 
        - (Optional: Long Short Term Memory)
                  
 #### Test Classifier (01/25/2021) 
 - evaluate the different classifiers with the test set
-- run m-fold-cross validation to determine the classifier with the smallest error
+- run m-fold cross-validation to determine the classifier with the smallest error
   - in addition to cross validation we want to use the F1-Score
   
 #### Selection of meaninful tweets (02/01/2021) 
@@ -112,25 +112,25 @@ The first package is the package src.utils, which is meant to be responsible for
 + functions for downloading and structuring the data from Twitter (including type of Tweet, no hate speech, racism and/or sexism and location of Tweet if available) 
 + functions for processing the data (for details of the planned steps of our processing pipeline refer to the section preprocessing)
 
-The second package is the package src.data, which is meant to contain both Ids of the Tweets that build the basis of our training data and the processed data in form of a csv file 
+The second package is the package src.data, which is meant to contain both IDs of the Tweets that build the basis of our training data and the processed data in form of a csv file. Furthermore, it should contain the data sets with directly the texts of the Tweets instead of the IDs as csv files. 
 
 The third package is the package src.classifiers (will be added later, when implementing the classifiers), which is meant to be responsible for the following functionalities:
 + Support-Vector-Machine (SVM)  
 + Decision Tree Classifier / Random- Forest Classifier 
-+ Logisitc Regression 
++ Logistic Regression 
 
 Tests for all functionalities will be provided in the separate package tests.
 
 
 ### Experiments (so far)
 
-See Sub Section Tweet Availability in Section Data Analysis
+See Sub Section Tweet Availability in Section Data Analysis.
 
 ## Data Analysis
 
 ### Data Source
 
-As already mentioned in our proposal we are using an exsiting document collection, that can be found here:  
+As already mentioned in our proposal we are using an existing document collection, that can be found here:  
 <https://github.com/zeerakw/hatespeech>   
 This data set contains the IDs for Tweets and annotation for each tweet, whether they contain hate speech or not.
 
@@ -144,17 +144,17 @@ which includes labeled data for hate speech, offensive language and neither.
 
 ![Preview of second data set](/src/data/hatespeech_text_head.png)
 
-The possible labels are 'abusive', 'hateful', 'normal' and 'spam'.
+The different labels used in detail are 'abusive', 'hateful', 'normal' and 'spam'.
 
 
-And the last data set we found is https://github.com/jaeyk/intersectional-bias-in-ml
+The other data set we found is https://github.com/jaeyk/intersectional-bias-in-ml
 which includes abusive language and hate speech.
 
 ![Preview of third data set](/src/data/labeled_data_head.png)
 
 The class labels are those chosen by the majority of users who annotated the Tweets. 0 means 'hate speech', 1 means 'offensive language' and 2 means 'neither'.
 
-Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set. We have to decide which labels we are going to choose for our classifier and if we can summarize some under a more general class label.
+Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set. As already mentioned above, we have to decide which labels we are going to choose for our classifier, i.e. which labels can be summarized under 'hateful' or 'hate speech'.
 
 
 ### Preprocessing:
