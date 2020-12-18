@@ -216,11 +216,13 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  Sexism example: "Trying to find something pretty about these blonde idiots.#MKR" <br> <br> 
  
  Data set https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data:
+ 
  Normal example: "Pit Bulls Photographed As Lovely Fairy Tale Creatures" <br>
  Offensive language example: "As a woman you shouldn't complain about cleaning up your house. &amp; as a man you should always take the trash out..." <br>
  Hate speech example: ""@white_thunduh alsarabsss" hes a beaner smh you can tell hes a mexican" <br> <br>
 
  Data set https://github.com/jaeyk/intersectional-bias-in-ml:
+ 
  Normal example: "Topped the group in TGP Disc Jam Season 2! Onto the Semi-Finals!" <br>
  Abusive example: "RT @Papapishu: Man it would fucking rule if we had a party that was against perpetual warfare." <br>
  Spam example: "4X DIY Birds Stencil Cutting Carbon Scrapbooking Card Diary Stamping Template" <br>
