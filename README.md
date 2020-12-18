@@ -182,9 +182,7 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  Location availability:
  - 122/11.559 of normal content
  - 1/1.970 of racism content 
- - 38/3.378 of sexist content <br> 
- <br>
- <br>
+ - 38/3.378 of sexist content 
  
   ![Tweets availability](/src/data/tweets_availability_per_label_zeerak.png)
  
@@ -195,8 +193,6 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 4.163 of normal content 
  - 19.190 of offensive language content 
  - 1.430 of hate speech content 
- <br>
- <br>
  
   ![Tweets availability](/src/data/tweets_per_label_tdavidson.png)
    
@@ -207,7 +203,6 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 27.150 of abusive content 
  - 14.030 of spam content  
  - 4.965 of hateful content
-<br>
   
  ![Tweets availability](/src/data/tweets_per_label_jaeyk.png)
    
