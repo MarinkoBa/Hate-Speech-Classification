@@ -142,10 +142,19 @@ In additon we've found two other labeled data sets:
 https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data
 which includes labeled data for hate speech, offensive language and neither.
 
-https://github.com/jaeyk/intersectional-bias-in-ml
+![Preview of second data set](/src/data/hatespeech_text_head.png)
+
+The possible labels are 'abusive', 'hateful', 'normal' and 'spam'.
+
+
+And the last data set we found is https://github.com/jaeyk/intersectional-bias-in-ml
 which includes abusive language and hate speech.
 
-Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set.
+![Preview of third data set](/src/data/labeled_data_head.png)
+
+The class labels are those chosen by the majority of users who annotated the Tweets. 0 means 'hate speech', 1 means 'offensive language' and 2 means 'neither'.
+
+Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set. We have to decide which labels we are going to choose for our classifier and if we can summarize some under a more general class label.
 
 
 ### Preprocessing:
