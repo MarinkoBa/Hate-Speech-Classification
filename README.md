@@ -174,15 +174,15 @@ Advantage of these two data sets is that they're including the tweets as raw tex
 
  Data set <https://github.com/zeerakw/hatespeech>:
  
- The data set contains 16.907 annotated IDs, with the following distribution:  
- - 11.559 of normal content (7367 available)
- - 1.970 of racism content (11 available)
- - 3.378 of sexist content (2754 available)
+ The data set contains 16.907 annotated IDs, with the following availability distribution:  
+ - 7.367/11.559 of normal content 
+ - 11/1.970 of racism content 
+ - 2.754/3.378 of sexist content 
  
  Location availability:
+ - 122/11.559 of normal content
  - 1/1.970 of racism content 
- - 38/3.378 of sexist content 
- - 122/11.559 with none of them are <br> 
+ - 38/3.378 of sexist content <br> 
  <br>
  <br>
  
