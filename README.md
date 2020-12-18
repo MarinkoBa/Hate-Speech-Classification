@@ -183,6 +183,8 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 1/1.970 of racism content 
  - 38/3.378 of sexist content 
  - 122/11.559 with none of them are <br> 
+ <br>
+ <br>
  
  
  Data set https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data:
@@ -190,7 +192,9 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  The data set contains 24.783 annotated tweets, with the following distribution:  
  - 4.163 of normal content 
  - 19.190 of offensive language content 
- - 1.430 of hate speech content  <br>
+ - 1.430 of hate speech content 
+ <br>
+ <br>
  
    
  Data set https://github.com/jaeyk/intersectional-bias-in-ml:
@@ -199,7 +203,8 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 53.851 of normal content 
  - 27.150 of abusive content 
  - 14.030 of spam content  
- - 4.965 of hateful content  <br>
+ - 4.965 of hateful content
+<br>
   
   
  #### Tweets availability
