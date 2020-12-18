@@ -36,7 +36,7 @@ We have started with the downloading and processing of our data.
 - split data into training / test set
 
 We have so far checked the data set from our proposal, however since we have noticed (see diagram in Data Analysis Section) 
-that a lot of tweets are missing we have decided to look for additional data sets.
+that a lot of tweets are missing we have decided to look for additional data sets and so far have found two more that could potentially be useful (see Data Analysis Section for further details on these).
 For now we will be using the labels hateful and not-hateful (binary classification) and we plan to divide it into sub-categories if we find enough data.
 
 
