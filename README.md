@@ -175,9 +175,9 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  Data set <https://github.com/zeerakw/hatespeech>:
  
  The data set contains 16.907 annotated IDs, with the following distribution:  
- - 11.559 of normal content 
- - 1.970 of racism content 
- - 3.378 of sexist content 
+ - 11.559 of normal content (7367 available)
+ - 1.970 of racism content (11 available)
+ - 3.378 of sexist content (2754 available)
  
  Location availability:
  - 1/1.970 of racism content 
@@ -185,6 +185,8 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 122/11.559 with none of them are <br> 
  <br>
  <br>
+ 
+  ![Tweets availability](/src/data/tweets_availability_per_label_zeerak.png)
  
  
  Data set https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data:
@@ -196,6 +198,7 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  <br>
  <br>
  
+  ![Tweets availability](/src/data/tweets_per_label_tdavidson.png)
    
  Data set https://github.com/jaeyk/intersectional-bias-in-ml:
   
@@ -206,14 +209,8 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - 4.965 of hateful content
 <br>
   
-  
- #### Tweets availability
- - 11/1.970 of racism content 
- - 2754/3.378 of sexist content 
- - 7367/11.559 with none of them are 
- 
- ![Tweets availability](/src/data/tweets_availability_per_label.png)
- 
+ ![Tweets availability](/src/data/tweets_per_label_jaeyk.png)
+   
  
  ### Examples
  
