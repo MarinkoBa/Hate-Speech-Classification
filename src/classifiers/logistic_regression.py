@@ -64,7 +64,7 @@ def define_features_tfidf(df, columns, training_data,testing_data):
 
     Returns
     -------
-    vectorizer:     	sklearn TfidfVectorizer
+    tfidf_vectorizer:     	sklearn TfidfVectorizer
                     	TfidfVectorizer fit and transformed for training data
     training_features: sparse matrix
     			Document-term matrix for training data
@@ -81,7 +81,7 @@ def define_features_tfidf(df, columns, training_data,testing_data):
     
     
     
-    return vectorizer, training_features, testing_features
+    return tfidf_vectorizer, training_features, testing_features
     
     
 def setup_log_reg_classifier(df, training_data, testing_data, features, method="count"):
@@ -118,7 +118,7 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
     if method=="count":
         vec, x_training, x_testing = define_features_vectorizer(df, features, training_data, testing_data)
     elif method=="tfidf":
-        vec, x_training, x_testing = define_features_vectorizer(df, features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_tfidf(df, features, training_data, testing_data)
     else:
         print("Method has to be either count or tfidf")
         return 1
@@ -128,7 +128,7 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
     log_reg_classifier=LogisticRegression(max_iter=1000)
     model=log_reg_classifier.fit(x_training,y_training)
     
-    return model,vec
+    return model,vec, x_testing
     
     
 def save_classifier(model,vec):
