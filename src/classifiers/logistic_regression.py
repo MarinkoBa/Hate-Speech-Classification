@@ -2,6 +2,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split # move this to data?
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+import pickle
+import os
 
 
 def define_features_vectorizer(df, columns, training_data,testing_data):
@@ -62,8 +64,8 @@ def define_features_tfidf(df, columns, training_data,testing_data):
 
     Returns
     -------
-    vectorizer:     	sklearn CountVectorizer
-                    	CountVectorizer fit and transformed for training data
+    vectorizer:     	sklearn TfidfVectorizer
+                    	TfidfVectorizer fit and transformed for training data
     training_features: sparse matrix
     			Document-term matrix for training data
     testing_features:  sparse matrix
@@ -102,12 +104,10 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
 
     Returns
     -------
-    vectorizer:     	sklearn CountVectorizer
-                    	CountVectorizer fit and transformed for training data
-    training_features: sparse matrix
-    			Document-term matrix for training data
-    testing_features:  sparse matrix
-    			Document-term matrix for testing data
+    model:		sklearn LogisticRegression Model
+    			Trained LogistciRegression Model
+    vec:        	sklearn CountVectorizer or TfidfVectorizer
+                    	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
     
 
@@ -128,7 +128,54 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
     log_reg_classifier=LogisticRegression(max_iter=1000)
     model=log_reg_classifier.fit(x_training,y_training)
     
-    return model
+    return model,vec
+    
+    
+def save_classifier(model,vec):
+    """
+    Saves classifier to subfolder models in current working directory, folder models needs to exist already
+
+    Parameters
+    ----------
+    model:		sklearn LogisticRegression Model
+    			Trained LogistciRegression Model 
+    vec:        	sklearn CountVectorizer or TfidfVectorizer
+                    	CountVectorizer or TfidfVectorizer fit and transformed for training data
+    """
+    
+    model_path="./models/model.pkl"
+    vec_path="./models/vec.pkl"
+    
+    pickle.dump(model,open(model_path,"wb"))
+    pickle.dump(vec,open(vec_path,"wb"))   
+   
+    
+    
+def load_classifier(model_path,vec_path):
+    """
+    Saves classifier to subfolder models in current working directory, folder models needs to exist already
+    
+    Parameters
+    ----------
+    model_path:	String
+                       The path where the classifier is stored
+    vec_path:	        String
+                       The path where the vectorizer is stored
+
+    Returns
+    ----------
+    model:		sklearn LogisticRegression Model
+    			Trained LogistciRegression Model 
+    vec:        	sklearn CountVectorizer or TfidfVectorizer
+                    	CountVectorizer or TfidfVectorizer fit and transformed for training data
+    """
+    
+    
+    
+    model=pickle.load(open(model_path,"rb"))
+    vec=pickle.load(open(vec_path,"rb")) 
+     
+    return model, vec 
     
     
 
