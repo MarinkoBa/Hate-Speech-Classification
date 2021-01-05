@@ -8,7 +8,7 @@ import os
 
 def define_features_vectorizer(df, columns, training_data,testing_data):
     """
-    Define the features fro classification using CountVectorizer.
+    Define the features for classification using CountVectorizer.
 
     Parameters
     ----------
@@ -32,7 +32,7 @@ def define_features_vectorizer(df, columns, training_data,testing_data):
     			Document-term matrix for testing data
     """
     #intialise Countvectorizer and fit transform to data
-    vectorizer=CountVectorizer() #welche Parameter?
+    vectorizer=CountVectorizer()  # TODO investigate meaningful SVC params
     vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
@@ -48,7 +48,7 @@ def define_features_vectorizer(df, columns, training_data,testing_data):
     
 def define_features_tfidf(df, columns, training_data,testing_data):
     """
-    Define the features fro classification using TFIDF.
+    Define the features for classification using TFIDF.
 
     Parameters
     ----------
@@ -72,7 +72,7 @@ def define_features_tfidf(df, columns, training_data,testing_data):
     			Document-term matrix for testing data
     """
     #intialise Tfidfvectorizer and fit transform to data
-    tfidf_vectorizer=TfidfVectorizer() #welche Parameter?
+    tfidf_vectorizer=TfidfVectorizer()  # TODO investigate meaningful SVC params
     tfidf_vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
@@ -125,7 +125,7 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
     
     #train classifier
     
-    log_reg_classifier=LogisticRegression(max_iter=1000)
+    log_reg_classifier=LogisticRegression(max_iter=1000,class_weight="balanced")
     model=log_reg_classifier.fit(x_training,y_training)
     
     return model,vec, x_testing
