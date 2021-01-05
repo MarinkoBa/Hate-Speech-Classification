@@ -32,7 +32,7 @@ def define_features_vectorizer(df, columns, training_data,testing_data):
     			Document-term matrix for testing data
     """
     #intialise Countvectorizer and fit transform to data
-    vectorizer=CountVectorizer()  # TODO investigate meaningful SVC params
+    vectorizer=CountVectorizer()  # TODO investigate meaningful params
     vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
@@ -72,7 +72,7 @@ def define_features_tfidf(df, columns, training_data,testing_data):
     			Document-term matrix for testing data
     """
     #intialise Tfidfvectorizer and fit transform to data
-    tfidf_vectorizer=TfidfVectorizer()  # TODO investigate meaningful SVC params
+    tfidf_vectorizer=TfidfVectorizer()  # TODO investigate meaningful params
     tfidf_vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
