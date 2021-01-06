@@ -69,7 +69,10 @@ For now we will be using the labels hateful and not-hateful (binary classificati
   - classifier:  
        - Support-Vector-Machine (SVM)
        - Decision Tree Classifier / Random- Forest Classifier 
-       - Logistic Regression 
+       - Logistic Regression (mainly responsible: Daniela Tratz-Weinmann)    
+           - using sklearn   
+           - own implemenation without using sklearn for classifier   
+       
        - (Optional: Long Short Term Memory)
                  
 #### Test Classifier (01/25/2021) 
