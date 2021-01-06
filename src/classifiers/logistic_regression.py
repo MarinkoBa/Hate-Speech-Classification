@@ -6,14 +6,12 @@ import pickle
 import os
 
 
-def define_features_vectorizer(df, columns, training_data,testing_data):
+def define_features_vectorizer(columns, training_data,testing_data):
     """
     Define the features for classification using CountVectorizer.
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
     column:         	String or list of strings if using multiple columns
                     	Names of columns of df that are used for trainig the classifier
     training_data:  	Pandas dataframe  
@@ -46,14 +44,12 @@ def define_features_vectorizer(df, columns, training_data,testing_data):
     
     
     
-def define_features_tfidf(df, columns, training_data,testing_data):
+def define_features_tfidf(columns, training_data,testing_data):
     """
     Define the features for classification using TFIDF.
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
     column:         	String or list of strings if using multiple columns
                     	Names of columns of df that are used for trainig the classifier
     training_data:  	Pandas dataframe  
@@ -84,7 +80,7 @@ def define_features_tfidf(df, columns, training_data,testing_data):
     return tfidf_vectorizer, training_features, testing_features
     
     
-def setup_log_reg_classifier(df, training_data, testing_data, features, method="count"):
+def setup_log_reg_classifier(training_data, testing_data, features, method="count"):
     """
     Define the features fro classification using TFIDF.
 
@@ -116,9 +112,9 @@ def setup_log_reg_classifier(df, training_data, testing_data, features, method="
     y_training=training_data["hate_speech"].values
     
     if method=="count":
-        vec, x_training, x_testing = define_features_vectorizer(df, features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
     elif method=="tfidf":
-        vec, x_training, x_testing = define_features_tfidf(df, features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data)
     else:
         print("Method has to be either count or tfidf")
         return 1
