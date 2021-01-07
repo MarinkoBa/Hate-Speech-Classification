@@ -57,11 +57,7 @@ def setup_log_reg_classifier(training_data, testing_data, features, method="coun
     
     
 
-    model=pickle.load(open(model_path,"rb"))
-    vec=pickle.load(open(vec_path,"rb")) 
-     
-    return model, vec 
-    
+ 
     
 
     	
