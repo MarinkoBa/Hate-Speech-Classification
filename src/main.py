@@ -5,6 +5,8 @@ from src.utils.get_data import get_tweets_by_id
 from src.utils.get_data import load_data
 from src.utils.get_data import get_datasets
 from src.utils.get_data import concatenate_datasets
+from src.utils.get_data import split_data
+from scr.utils.preprocessing import preprocessing
 
 
 
@@ -24,3 +26,11 @@ if __name__ == "__main__":
                                            df2,
                                            df3)
     
+    # just an idea here: add new column with preprocessed text
+    df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing)
+    
+    # split in test and training set
+    training_data, testing_data, training_y, testing_y = split_data(df_concatenated,
+                                                                    'preprocessed',
+                                                                    'hate_speech',
+                                                                    0.25)

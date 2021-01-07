@@ -1,6 +1,7 @@
 import tweepy
 import os
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 
 def load_data(file_path):
@@ -187,4 +188,48 @@ def concatenate_datasets(file_path_tweets, df2, df3):
     df_concatenated['hate_speech'] = df_concatenated['label'].apply(sort_to_hatespeech)
     
     return df_concatenated
+
+
+
+def split_data(df,
+               features,
+               target_y,
+               test_percentage = 0.25):
+    """
+    Split data set into training and test set.
+
+    Parameters
+    ----------
+    df:  	            Pandas dataframe  
+                    	The dataframe containing all data.
+    features:           String or list of strings
+                        Names of columns of df that are used for training the classifier.
+    target_y: 		    String
+            			Name of column of df that contains the target variable.
+    test_percentage:    Numeric
+                        Percentage of test set size.
+                    
+    Returns
+    -------
+    X_train:		    Pandas dataframe
+                        The dataframe containing the training data for the classifier.
+    X_test:             Pandas dataframe
+                        The dataframe containing the training data for the classifier.
+    y_train:            Pandas dataframe
+                  	    The dataframe containing the training labels.
+    y_test:             Pandas dataframe
+                  	    The dataframe containing the test labels.
+    """
+    
+    X_train, X_test, y_train, y_test = train_test_split(df[features],
+                                                        df[target_y],
+                                                        test_size = test_percentage,
+                                                        random_state = 0)
+
+    # if features is single column results in pandas.Series without column names
+    if not isinstance(features, list):
+        X_train = X_train.to_frame(features)
+        X_test = X_test.to_frame(features)
+
+    return X_train, X_test, y_train, y_test
 
