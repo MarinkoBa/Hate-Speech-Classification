@@ -46,7 +46,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 
 ![Timeline](/src/data/timeline.png)
 
-#### Collect labeled data sets (12/27/2020) 
+#### Collect labeled data sets (12/27/2020) (mainly responsible: Marinko Balikic, Sarah Bopp)
 - find existing labeled data sets
 - check if data is useful
 - how can different data sets combined
@@ -54,7 +54,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - split data into training / test set
 
 
-#### Preprocessing (01/04/2021) 
+#### Preprocessing (01/04/2021)
 - program Python module to handle Preprocessing of tweets
 - non standard lexical tokens have to filtered out (e.g. emoticons, hastags etc.)
   - tweets often includes urls like "http://t.co/cOU2WQ5L4q" and links with @name to other users, which should be removed, to make the data simpler
@@ -68,7 +68,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - train different classifier based on the train set (75% of the data set)
   - classifier:  
        - Support-Vector-Machine (SVM)
-       - Decision Tree Classifier / Random- Forest Classifier 
+       - Decision Tree Classifier / Random- Forest Classifier (mainly responsible: Sarah Bopp)
        - Logistic Regression (mainly responsible: Daniela Tratz-Weinmann)    
            - using sklearn   
            - own implemenation without using sklearn for classifier   
