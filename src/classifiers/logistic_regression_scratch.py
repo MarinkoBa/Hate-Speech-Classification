@@ -200,7 +200,7 @@ class LogisticRegression_scratch:
             h = self.__logistic_func(z)
             gradient = self.__gradient(X, h, y)
             self.theta = self.__update_weights(self.theta, self.lr,gradient)
-            print(i)
+            
             
     def predict_prob(self, X):
         """
@@ -233,7 +233,7 @@ class LogisticRegression_scratch:
      
 
     
-def setup_log_reg_classifier(training_data, testing_data, features, method="count"):
+def setup_log_reg_classifier(training_data, testing_data, y_training, features, method="count"):
     """
     Define the features fro classification using TFIDF.
 
@@ -245,6 +245,8 @@ def setup_log_reg_classifier(training_data, testing_data, features, method="coun
                     	The dataframe containing the training data for the classifier
     testing_data:   	Pandas dataframe  
                     	The dataframe containing the testing data for the classifier
+    y_training:   	Pandas dataframe  
+                    	The dataframe containing the y training data for the classifier
     features:         	String or list of strings if using multiple features
                     	Names of columns of df that are used for trainig the classifier
     method: 		String
@@ -262,7 +264,7 @@ def setup_log_reg_classifier(training_data, testing_data, features, method="coun
 
     #generate x and y training data
     
-    y_training=training_data["hate_speech"].values
+   
     
     if method=="count":
         vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
@@ -274,7 +276,7 @@ def setup_log_reg_classifier(training_data, testing_data, features, method="coun
     
     #train classifier
     
-    model = LogisticRegression_scratch(lr=0.1, iterations=100,use_intercept=True)
+    model = LogisticRegression_scratch(lr=0.1, iterations=200000,use_intercept=True)
     model.fit(x_training,y_training)
     
     return model.predict(x_testing),vec, x_testing
