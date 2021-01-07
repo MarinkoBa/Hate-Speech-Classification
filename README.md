@@ -26,8 +26,6 @@ We have started with the downloading and processing of our data.
 - become familiar to retrieve tweets by using library
 - program python modul to receive data from the API
 
-#### In Progress:
-
 ##### Collect labeled data sets
 - find existing labeled data sets 
 - check if data is useful
@@ -63,6 +61,8 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - splitting into tokens
 - convert all tokens to lower case
 - convert data with TF-IDF to make it ready to use for ML-algorithms
+
+#### In Progress:
 
 #### Train Classifier (01/18/2021) 
 - train different classifier based on the train set (75% of the data set)
