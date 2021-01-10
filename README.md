@@ -67,7 +67,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 #### Train Classifier (01/18/2021) 
 - train different classifier based on the train set (75% of the data set)
   - classifier:  
-       - Support-Vector-Machine (SVM)
+       - Support-Vector-Machine (SVM) (mainly responsible: Marinko Balikic) 
        - Decision Tree Classifier / Random- Forest Classifier (mainly responsible: Sarah Bopp)
        - Logistic Regression (mainly responsible: Daniela Tratz-Weinmann)    
            - using sklearn   
