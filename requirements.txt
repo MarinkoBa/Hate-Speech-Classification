@@ -3,3 +3,6 @@ pre-commit
 pandas~=1.1.5
 scikit-learn~=0.24.0
 python-decouple
+nltk~=3.5
+regex~=2020.11.13
+spacy~=2.3.5
