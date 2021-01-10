@@ -62,6 +62,8 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - convert all tokens to lower case
 - convert data with TF-IDF to make it ready to use for ML-algorithms
 
+(mainly responsible Fabio Gebhard)
+
 #### In Progress:
 
 #### Train Classifier (01/18/2021) 
