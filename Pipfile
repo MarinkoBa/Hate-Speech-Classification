@@ -12,6 +12,7 @@ coverage = "*"
 pre-commit = "*"
 tweepy = "*"
 pandas = "*"
+en-core-web-sm = {file = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.5/en_core_web_sm-2.3.5.tar.gz"}
 
 [scripts]
 test = "coverage run -m unittest discover -s ./tests -p *_test.py"

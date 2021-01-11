@@ -4,6 +4,8 @@ import re
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 
+# use pipenv to download en_core_web_sm
+# pipenv install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.5/en_core_web_sm-2.3.5.tar.gz
 nlp = spacy.load("en_core_web_sm", disable=['tagger', 'parser', 'ner'])
 stopwords = nlp.Defaults.stop_words
 stemmer = PorterStemmer()
@@ -38,7 +40,7 @@ def preprocessing(text):
     text = re.sub(r"[@#][a-zA-Z0-9_]+", "", text)
 
     # remove non alphabetical characters
-    text = re.sub(r"[^a-zA-Z\s]", "", text)
+    text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
 
     # convert all letters to lower case
     text = text.lower()
@@ -88,7 +90,7 @@ def preprocessing_restricted(text):
     text = re.sub(r"http://t.co/[a-zA-Z0-9]+", "", text)
 
     # remove non alphabetical characters
-    text = re.sub(r"[^a-zA-Z\s]", "", text)
+    text = re.sub(r"[^a-zA-Z0-9\s]", "", text)
 
     # convert all letters to lower case
     text = text.lower()
@@ -109,3 +111,4 @@ def preprocessing_restricted(text):
     preprocessed_text = ' '.join([str(element) for element in tokens])
 
     return preprocessed_text
+
