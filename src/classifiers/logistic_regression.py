@@ -1,5 +1,4 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split # move this to data?
 from sklearn.linear_model import LogisticRegression
 from .define_features import define_features_vectorizer
 from .define_features import define_features_tfidf

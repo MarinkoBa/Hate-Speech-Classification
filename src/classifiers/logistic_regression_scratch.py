@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split # move this to data?
 from scipy import sparse
 from scipy.sparse import hstack
 from .define_features import define_features_vectorizer
