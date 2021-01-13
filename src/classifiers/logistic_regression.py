@@ -11,7 +11,7 @@ import os
     
 def setup_log_reg_classifier(training_data, testing_data, y_training,features, method="count"):
     """
-    Define the features fro classification using TFIDF.
+    Setup logistic regression model using sklearn implementation
 
     Parameters
     ----------
@@ -56,6 +56,27 @@ def setup_log_reg_classifier(training_data, testing_data, y_training,features, m
     model=log_reg_classifier.fit(x_training,y_training)
     
     return model,vec, x_testing
+    
+def predict(model, X_testing):
+    """
+    Predict the labels of X_testing using the trained logistic regression model.
+    Parameters
+    ----------
+    model:             sklearn.tree.DecisionTreeClassifier Model
+                       Trained DecisionTreeClassifier Model
+    X_testing:   	Pandas dataframe
+                       The dataframe containing the testing data in vectorized form.
+    
+    Returns
+    -------
+    predictions:       Binary array
+    			The predictions array, containing 0 for no hate speech,
+                       1 for hate speech
+    """
+
+    predictions = model.predict(X_testing)
+
+    return predictions
     
     
 

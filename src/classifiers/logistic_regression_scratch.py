@@ -8,7 +8,6 @@ from .define_features import define_features_tfidf
 from sklearn.linear_model import LogisticRegression
 
 
-#TODO clean docstring and remove prints
 
 class LogisticRegression_scratch:
     """
@@ -186,7 +185,7 @@ class LogisticRegression_scratch:
         # intercept added if use_intercept true
         if self.use_intercept:
             X = self.__add_intercept(X)
-            print("here")
+            
             
         
         #initialising of theta
@@ -225,7 +224,24 @@ class LogisticRegression_scratch:
         return probabilities
     
     def predict(self, X, threshold=0.5):
-        return self.predict_prob(X) >= threshold
+        """
+        predict probabilties using logistic function for given threshold
+
+        Parameters
+        ----------
+        X:      	    sparse matrix
+    			    feature vector              
+        Returns
+        -------
+       
+        prediction         binary array
+                    	    returns true or false depending if result 
+                    	    of logistic function is higher or lower than given threshold
+        """    
+    
+        prediction=self.predict_prob(X) >= threshold
+        
+        return prediction
             
            
        
@@ -235,7 +251,7 @@ class LogisticRegression_scratch:
     
 def setup_log_reg_classifier(training_data, testing_data, y_training, features, method="count"):
     """
-    Define the features fro classification using TFIDF.
+    Setup logistic regression model using own implementation
 
     Parameters
     ----------
@@ -276,16 +292,36 @@ def setup_log_reg_classifier(training_data, testing_data, y_training, features, 
     
     #train classifier
     
-    model = LogisticRegression_scratch(lr=0.1, iterations=200000,use_intercept=True)
+    model = LogisticRegression_scratch(lr=0.1, iterations=200,use_intercept=True)
     model.fit(x_training,y_training)
     
-    return model.predict(x_testing),vec, x_testing
+    return model,vec, x_testing
     			
 
                        
     
     
+def predict(model, X_testing):
+    """
+    Predict the labels of X_testing using the trained logistic regression model.
+    Parameters
+    ----------
+    model:             sklearn.tree.DecisionTreeClassifier Model
+                       Trained DecisionTreeClassifier Model
+    X_testing:   	Pandas dataframe
+                       The dataframe containing the testing data in vectorized form.
     
+    Returns
+    -------
+    predictions:       Binary array
+    			The predictions array, containing 0 for no hate speech,
+                       1 for hate speech
+    """
+
+    predictions = model.predict(X_testing)
+
+    return predictions
+        
     
     
     
