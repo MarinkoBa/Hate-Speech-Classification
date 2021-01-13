@@ -9,8 +9,8 @@ import pandas as pd
 
 def test_map(y_pred,y_test):
     """
-    Get accurracy, precision and recall and save png of true positve,
-    false positve and false neagtive for given prediction and test data 
+    Get accurracy, precision and recall and save png of true positive,
+    false positive, true negative and false negative for given prediction and test data 
 
     Parameters
     ----------
