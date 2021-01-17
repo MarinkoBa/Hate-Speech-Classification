@@ -70,6 +70,8 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - train different classifier based on the train set (75% of the data set)
   - classifier:  
        - Support-Vector-Machine (SVM) (mainly responsible: Marinko Balikic) 
+           - using sklearn   
+           - own implemenation without using sklearn for classifier  
        - Decision Tree Classifier / Random- Forest Classifier (mainly responsible: Sarah Bopp)
        - Logistic Regression (mainly responsible: Daniela Tratz-Weinmann)    
            - using sklearn   
