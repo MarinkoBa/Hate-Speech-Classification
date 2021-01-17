@@ -1,7 +1,9 @@
-import svm
+import sklearn.svm as svm
+from .define_features import define_features_tfidf
+from .define_features import define_features_vectorizer
 
 
-def fit_svm_classifier(training_data):
+def fit(training_data, testing_data, y_training, features, method="count"):
     """
     Train the svm classifier using TFIDF features.
 
@@ -18,20 +20,19 @@ def fit_svm_classifier(training_data):
     vec:        	        sklearn CountVectorizer or TfidfVectorizer
                     	    CountVectorizer or TfidfVectorizer fit and transformed for training data
 
-    training_data:  	    Pandas dataframe
-                    	    The dataframe containing the training data for the SVM classifier
+    x_testing:  	        Pandas dataframe
+                    	    The dataframe containing the test data for the SVM classifier
     """
 
-    y_training = training_data["hate_speech"].values
+    if method=="count":
+        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
+    elif method=="tfidf":
+        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data)
+    else:
+        print("Method has to be either count or tfidf")
+        return 1
 
-    # TODO use the same method as in logistic regression in order to get features tfidf
-    #  -> extract method from logistic regression to the new class e.g. "feature_builder"?
-
-    vec = ...
-    x_training = ...
-    x_testing = ...
-
-    SVM = svm.SVC()  # TODO investigate meaningful SVC params
+    SVM = svm.SVC(kernel='linear', C=1, gamma=1)
     model = SVM.fit(x_training, y_training)
 
     return model, vec, x_testing
