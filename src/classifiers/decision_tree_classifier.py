@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from sklearn.tree import DecisionTreeClassifier
-from define_features import define_features_vectorizer
-from define_features import define_features_tfidf
+from .define_features import define_features_vectorizer
+from .define_features import define_features_tfidf
  
 def setup_decision_tree_classifier(training_data,
                                    training_target,
@@ -57,7 +57,7 @@ def setup_decision_tree_classifier(training_data,
     # beforehand to give your tree a better chance of finding features that are 
     # discriminative.
     decision_tree = DecisionTreeClassifier(random_state=0)
-    model = decision_tree.fit(X_training, y_training)
+    model = decision_tree.fit(X_training, y_training.values.ravel())
     
     return model, vec, X_testing    
 

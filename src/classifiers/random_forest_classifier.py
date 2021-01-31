@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from sklearn.ensemble import RandomForestClassifier
-from classifiers.define_features import define_features_vectorizer
-from classifiers.define_features import define_features_tfidf
+from .define_features import define_features_vectorizer
+from .define_features import define_features_tfidf
  
 def setup_random_forest_classifier(training_data,
                                    training_target,
@@ -55,7 +55,7 @@ def setup_random_forest_classifier(training_data,
     
 
     random_forest = RandomForestClassifier(random_state=0)
-    model = random_forest.fit(X_training, y_training)
+    model = random_forest.fit(X_training, y_training.values.ravel())
     
     return model, vec, X_testing    
 

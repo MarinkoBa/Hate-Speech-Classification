@@ -8,7 +8,7 @@ import os
 
 
     
-def setup_log_reg_classifier(training_data, testing_data, y_training,features, method="count"):
+def setup_log_reg_classifier(training_data, y_training, testing_data, features="preprocessed", method="count"):
     """
     Setup logistic regression model using sklearn implementation
 
@@ -18,10 +18,10 @@ def setup_log_reg_classifier(training_data, testing_data, y_training,features, m
                     	The dataframe containing both training_data and testing_data
     training_data:  	Pandas dataframe  
                     	The dataframe containing the training data for the classifier
+    y_training:   	    Pandas dataframe
+                    	The dataframe containing the y training data for the classifier
     testing_data:   	Pandas dataframe  
                     	The dataframe containing the testing data for the classifier
-    y_training:   	Pandas dataframe  
-                    	The dataframe containing the y training data for the classifier
     features:         	String or list of strings if using multiple features
                     	Names of columns of df that are used for trainig the classifier
     method: 		String
@@ -52,7 +52,7 @@ def setup_log_reg_classifier(training_data, testing_data, y_training,features, m
     #train classifier
     
     log_reg_classifier=LogisticRegression(max_iter=1000,class_weight="balanced")
-    model=log_reg_classifier.fit(x_training,y_training)
+    model=log_reg_classifier.fit(x_training,y_training.values.ravel())
     
     return model,vec, x_testing
     

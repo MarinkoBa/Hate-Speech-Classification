@@ -3,25 +3,32 @@ from .define_features import define_features_tfidf
 from .define_features import define_features_vectorizer
 
 
-def fit(training_data, testing_data, y_training, features, method="count"):
+def setup_svm_classifier(training_data, y_training, testing_data, features="preprocessed", method="count"):
     """
-    Train the svm classifier using TFIDF features.
+    Setup svm model using sklearn implementation
 
     Parameters
     ----------
-    training_data:  	    Pandas dataframe
-                    	    The dataframe containing the training data for the SVM classifier
+    df:             	Pandas dataframe
+                    	The dataframe containing both training_data and testing_data
+    training_data:  	Pandas dataframe
+                    	The dataframe containing the training data for the classifier
+    y_training:   	    Pandas dataframe
+                    	The dataframe containing the y training data for the classifier
+    testing_data:   	Pandas dataframe
+                    	The dataframe containing the testing data for the classifier
+    features:         	String or list of strings if using multiple features
+                    	Names of columns of df that are used for trainig the classifier
+    method: 		String
+    			Can be either "count" or "tfidf" for specifying method of feature weighting
+
 
     Returns
     -------
-    model:		            sklearn SVM Model
-    			            Trained SVM Model
-
-    vec:        	        sklearn CountVectorizer or TfidfVectorizer
-                    	    CountVectorizer or TfidfVectorizer fit and transformed for training data
-
-    x_testing:  	        Pandas dataframe
-                    	    The dataframe containing the test data for the SVM classifier
+    model:		sklearn LogisticRegression Model
+    			Trained LogistciRegression Model
+    vec:        	sklearn CountVectorizer or TfidfVectorizer
+                    	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
 
     if method=="count":
@@ -33,7 +40,7 @@ def fit(training_data, testing_data, y_training, features, method="count"):
         return 1
 
     SVM = svm.SVC(kernel='linear', C=1, gamma=1)
-    model = SVM.fit(x_training, y_training)
+    model = SVM.fit(x_training, y_training.values.ravel())
 
     return model, vec, x_testing
 
