@@ -16,6 +16,8 @@ def cross_validate(x, y, n_splits=10):
               The dataframe containing all x values -> preprocessed, shape (n, 1).
     y:		  Pandas dataframe
               The dataframe containing all y values -> hate_speech, shape (n, 1).
+    n_splits:		 Integer
+              Number of folds
 
     """
 
