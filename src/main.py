@@ -14,7 +14,7 @@ from src.utils import cross_validator
 if __name__ == "__main__":
     # load dataset from https://github.com/zeerakw/hatespeech
     #df = get_tweets_by_id(config,
-    #                      os.path.join('data', 'NAACL_SRW_2016.csv'))
+                         # os.path.join('data', 'NAACL_SRW_2016.csv'))
 
     # load datasets from
     #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     cross_validator.cross_validate(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
 
     # split in test and training set
-    training_data, testing_data, training_y, testing_y = split_data(df_concatenated,
-                                                                    'preprocessed',
-                                                                    'hate_speech',
-                                                                    0.25)
+    #training_data, testing_data, training_y, testing_y = split_data(df_concatenated,
+    #                                                                'preprocessed',
+    #                                                                'hate_speech',
+    #                                                                0.25)
