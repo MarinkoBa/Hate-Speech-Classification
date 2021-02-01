@@ -7,3 +7,6 @@ nltk~=3.5
 regex~=2020.11.13
 spacy~=2.2.0
 
+
+numpy~=1.19.5
+scipy~=1.6.0

@@ -19,6 +19,6 @@ jobs:
       - name: Install development dependencies
         run: pipenv install --dev
       - name: Copy .env file
-        run: cp .example.env .env
+        run: cp ..env .env
       - name: Run tests
         run: pipenv run test

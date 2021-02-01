@@ -31,8 +31,11 @@ def define_features_vectorizer(columns, training_data,testing_data):
     
     #build matrixes for training_features and testing_features
     training_features=vectorizer.transform(training_data[columns].values)
-    testing_features=vectorizer.transform(testing_data[columns].values)
-    
+
+    if testing_data is not None:
+        testing_features=vectorizer.transform(testing_data[columns].values)
+    else:
+        testing_features = None
     
     
     return vectorizer, training_features, testing_features
@@ -69,7 +72,11 @@ def define_features_tfidf(columns, training_data,testing_data):
     
     #build matrixes for training_features and testing_features
     training_features=tfidf_vectorizer.transform(training_data[columns].values)
-    testing_features=tfidf_vectorizer.transform(testing_data[columns].values)
+
+    if testing_data is not None:
+        testing_features = tfidf_vectorizer.transform(testing_data[columns].values)
+    else:
+        testing_features = None
     
     
     

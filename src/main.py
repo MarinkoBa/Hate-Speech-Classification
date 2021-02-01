@@ -14,7 +14,7 @@ from src.utils import cross_validator
 if __name__ == "__main__":
     # load dataset from https://github.com/zeerakw/hatespeech
     #df = get_tweets_by_id(config,
-                         # os.path.join('data', 'NAACL_SRW_2016.csv'))
+                          #os.path.join('data', 'NAACL_SRW_2016.csv'))
 
     # load datasets from
     #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
