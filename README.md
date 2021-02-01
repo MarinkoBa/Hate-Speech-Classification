@@ -78,6 +78,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
            - own implemenation without using sklearn for classifier   
        
        - (Optional: Long Short Term Memory)
+       - Ensemble Classifier (mainly responsible: Fabio Gebhard)
                  
 #### Test Classifier (01/25/2021) 
 - evaluate the different classifiers with the test set
