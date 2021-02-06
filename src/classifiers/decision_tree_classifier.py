@@ -7,7 +7,8 @@ def setup_decision_tree_classifier(training_data,
                                    training_target,
                                    testing_data,
                                    features = "preprocessed",
-                                   method = "count"):
+                                   method = "count",
+                                   ngrams=(1,1)):
     """
     Set up the decision tree classifier with training data in form of tf-idf or as term counts.
 
@@ -21,9 +22,11 @@ def setup_decision_tree_classifier(training_data,
                     	The dataframe containing the testing data for the classifier.
     features:           String or list of strings
                         Names of columns of df that are used for training the classifier.
-    method: 		    String
-            			Can be either "count" or "tfidf" for specifying method of 
+    method: 		 String
+                        Can be either "count" or "tfidf" for specifying method of 
                         feature weighting.
+    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
+                       range for ngrams used for vectorization
                     
     Returns
     -------
@@ -44,11 +47,11 @@ def setup_decision_tree_classifier(training_data,
     if method == "count":
         vec, X_training, X_testing = define_features_vectorizer(features,
                                                                 training_data,
-                                                                testing_data)
+                                                                testing_data,ngramrange=ngrams)
     elif method == "tfidf":
         vec, X_training, X_testing = define_features_tfidf(features,
                                                            training_data,
-                                                           testing_data)
+                                                           testing_data,ngramrange=ngrams)
     else:
         print("Method has to be either count or tfidf")
         return 1

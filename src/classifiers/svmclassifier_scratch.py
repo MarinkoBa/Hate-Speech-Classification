@@ -129,7 +129,7 @@ class SVMClassifier_scratch:
         return y_pred
 
 
-def setup_svm_classifier(training_data, testing_data, y_training, features, method="count"):
+def setup_svm_classifier(training_data, testing_data, y_training, features, method="count", ngrams=(1,1)):
     """
     Setup logistic regression model using own implementation
 
@@ -152,6 +152,8 @@ def setup_svm_classifier(training_data, testing_data, y_training, features, meth
 
     method: 		    String
     			        Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
+                       range for ngrams used for vectorization
 
 
     Returns
@@ -168,9 +170,9 @@ def setup_svm_classifier(training_data, testing_data, y_training, features, meth
     # generate x and y training data
 
     if method == "count":
-        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data,ngramrange=ngrams)
     elif method == "tfidf":
-        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data,ngramrange=ngrams)
     else:
         print("Method has to be either count or tfidf")
         return 1

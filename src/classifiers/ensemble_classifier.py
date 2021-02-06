@@ -15,12 +15,12 @@ class EnsembleClassifier:
         self.forest_model = RandomForestClassifier(random_state=0)
         self.logistic_model = log_reg_classifier = LogisticRegression(max_iter=1000, class_weight="balanced")
 
-    def train(self, training_data, training_labels, test_labels, features="preprocessed", method="count"):
+    def train(self, training_data, training_labels, test_labels, features="preprocessed", method="count", ngrams=(1,1)):
 
         if method == "count":
-            vec, X_training, X_testing = define_features_vectorizer(features, training_data, test_labels)
+            vec, X_training, X_testing = define_features_vectorizer(features, training_data, test_labels,ngramrange=ngrams)
         elif method == "tfidf":
-            vec, X_training, X_testing = define_features_tfidf(features, training_data, test_labels)
+            vec, X_training, X_testing = define_features_tfidf(features, training_data, test_labels,ngramrange=ngrams)
         else:
             print("Method has to be either count or tfidf")
             return 1

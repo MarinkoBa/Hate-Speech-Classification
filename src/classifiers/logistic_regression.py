@@ -8,7 +8,12 @@ import os
 
 
     
-def setup_log_reg_classifier(training_data, y_training, testing_data, features="preprocessed", method="count"):
+def setup_log_reg_classifier(training_data, 
+			      y_training, 
+			      testing_data, 
+			      features="preprocessed", 
+			      method="count", 
+			      ngrams=(1,1)):
     """
     Setup logistic regression model using sklearn implementation
 
@@ -26,6 +31,8 @@ def setup_log_reg_classifier(training_data, y_training, testing_data, features="
                     	Names of columns of df that are used for trainig the classifier
     method: 		String
     			Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
+                       range for ngrams used for vectorization
                     
 
     Returns
@@ -42,9 +49,9 @@ def setup_log_reg_classifier(training_data, y_training, testing_data, features="
     #y_training=training_data["hate_speech"].values
     
     if method=="count":
-        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data,ngramrange=ngrams)
     elif method=="tfidf":
-        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data,ngramrange=ngrams)
     else:
         print("Method has to be either count or tfidf")
         return 1
@@ -61,8 +68,8 @@ def predict(model, X_testing):
     Predict the labels of X_testing using the trained logistic regression model.
     Parameters
     ----------
-    model:             sklearn.tree.DecisionTreeClassifier Model
-                       Trained DecisionTreeClassifier Model
+    model:             sklearn.Logistic Regression Model
+                       Trained Logistic Regression Model
     X_testing:   	Pandas dataframe
                        The dataframe containing the testing data in vectorized form.
     

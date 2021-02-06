@@ -3,7 +3,7 @@ from .define_features import define_features_tfidf
 from .define_features import define_features_vectorizer
 
 
-def setup_svm_classifier(training_data, y_training, testing_data, features="preprocessed", method="count"):
+def setup_svm_classifier(training_data, y_training, testing_data, features="preprocessed", method="count",ngrams(1,1)):
     """
     Setup svm model using sklearn implementation
 
@@ -21,6 +21,8 @@ def setup_svm_classifier(training_data, y_training, testing_data, features="prep
                     	Names of columns of df that are used for trainig the classifier
     method: 		String
     			Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
+                       range for ngrams used for vectorization
 
 
     Returns
@@ -32,9 +34,9 @@ def setup_svm_classifier(training_data, y_training, testing_data, features="prep
     """
 
     if method=="count":
-        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data,ngramrange=ngrams)
     elif method=="tfidf":
-        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data)
+        vec, x_training, x_testing = define_features_tfidf(features, training_data, testing_data,ngramrange=ngrams)
     else:
         print("Method has to be either count or tfidf")
         return 1
