@@ -248,7 +248,7 @@ class LogisticRegression_scratch:
      
 
     
-def setup_log_reg_classifier(training_data, testing_data, y_training, features, method="count", ngrams=(1,1)):
+def setup_log_reg_classifier(training_data,y_training, testing_data, features, method="count", ngrams=(1,1),iterations=100000):
     """
     Setup logistic regression model using own implementation
 
@@ -268,11 +268,13 @@ def setup_log_reg_classifier(training_data, testing_data, y_training, features, 
     			Can be either "count" or "tfidf" for specifying method of feature weighting
     ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
                        range for ngrams used for vectorization
+    iterations:        integer
+                       number of iterations used for fitting
                     
 
     Returns
     -------
-    model:		sklearn LogisticRegression Model
+    model:		LogisticRegression Model
     			Trained LogistciRegression Model
     vec:        	sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data
@@ -293,7 +295,7 @@ def setup_log_reg_classifier(training_data, testing_data, y_training, features, 
     
     #train classifier
     
-    model = LogisticRegression_scratch(lr=0.1, iterations=200,use_intercept=True)
+    model = LogisticRegression_scratch(lr=0.1, iterations=iterations,use_intercept=True)
     model.fit(x_training,y_training)
     
     return model,vec, x_testing
@@ -307,8 +309,8 @@ def predict(model, X_testing):
     Predict the labels of X_testing using the trained logistic regression model.
     Parameters
     ----------
-    model:             sklearn.tree.DecisionTreeClassifier Model
-                       Trained DecisionTreeClassifier Model
+    model:             Logistic Regression Model
+                       instance of Logistic Regression class Model
     X_testing:   	Pandas dataframe
                        The dataframe containing the testing data in vectorized form.
     
