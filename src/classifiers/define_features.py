@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 
-def define_features_vectorizer(columns, training_data,testing_data,ngramrange=(1,1)):
+def define_features_vectorizer(columns, training_data,testing_data = None ,ngramrange=(1,1)):
     """
     Define the features for classification using CountVectorizer.
 
@@ -45,7 +45,7 @@ def define_features_vectorizer(columns, training_data,testing_data,ngramrange=(1
     
     
     
-def define_features_tfidf(columns, training_data, testing_data,ngramrange=(1, 1)):
+def define_features_tfidf(columns, training_data, testing_data = None ,ngramrange=(1, 1)):
     """
     Define the features for classification using TFIDF.
 

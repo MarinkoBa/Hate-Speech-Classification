@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-### FIXME: paths
-from scr.utils.get_data import load_data
-from scr.utils.get_data import get_datasets
-from scr.utils.get_data import concatenate_datasets
+from src.utils.get_data import load_data
+from src.utils.get_data import get_datasets
+from src.utils.get_data import concatenate_datasets
 
 import os
 import pandas as pd
