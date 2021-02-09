@@ -261,25 +261,29 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  
  ### Results (10-fold cross validation) imbalanced dataset
  
- - Avg error SVM: 0.09453565815493821 <br>
- - Avg error Decision Tree: 0.1181172676257833 <br>
- - Avg error Random Forrest: 0.09090056972737712 <br>
- - Avg error Logistic Regression: 0.12059876425937602 <br>
+  - Avg error SVM: 0.07519686970175847 <br>
+  - Avg error Decision Tree: 0.09850973689058529 <br>
+  - Avg error Random Forrest: 0.07165568518406577 <br>
+  - Avg error Logistic Regression: 0.1004010615912931 <br>
+  - Avg error Ensemble: 0.07165568518406577 <br>
  ----------------------
- - Avg accuracy SVM: 0.9054643418450619 <br>
- - Avg accuracy Decision Tree: 0.8818827323742168 <br>
- - Avg accuracy Random Forrest: 0.9090994302726229 <br>
- - Avg accuracy Logistic Regression: 0.8794012357406242 <br>
+  - Avg accuracy SVM: 0.9248031302982416 <br>
+  - Avg accuracy Decision Tree: 0.9014902631094147 <br>
+  - Avg accuracy Random Forrest: 0.9283443148159343 <br>
+  - Avg accuracy Logistic Regression: 0.8995989384087067 <br>
+  - Avg accuracy Ensemble: 0.9283443148159343 <br>
  ----------------------
- - Avg precision SVM: 0.6740751849609974 <br>
- - Avg precision Decision Tree: 0.5312626599252147 <br>
- - Avg precision Random Forrest: 0.7530453794371803 <br>
- - Avg precision Logistic Regression: 0.5156505209009437 <br>
+  - Avg precision SVM: 0.7466580822869207 <br>
+  - Avg precision Decision Tree: 0.6047230314867805 <br>
+  - Avg precision Random Forrest: 0.8083788280464453 <br>
+  - Avg precision Logistic Regression: 0.5719471859967772 <br>
+  - Avg precision Ensemble: 0.8083788280464453 <br>
  ----------------------
- - Avg recall SVM: 0.5394454121680005 <br>
- - Avg recall Decision Tree: 0.5141146579468734 <br>
- - Avg recall Random Forrest: 0.49020624752525616 <br>
- - Avg recall Logistic Regression: 0.663956175761075 <br>
+  - Avg recall SVM: 0.588171909682303 <br>
+  - Avg recall Decision Tree: 0.5748100965857547 <br>
+  - Avg recall Random Forrest: 0.5468931216260461 <br>
+  - Avg recall Logistic Regression: 0.7316840880521852 <br>
+  - Avg recall Ensemble: 0.5468931216260461 <br>
  
 
  ### Results (10-fold cross validation) balanced dataset
