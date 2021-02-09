@@ -261,10 +261,10 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  
  ### Results (10-fold cross validation) imbalanced dataset
  
- Avg error SVM: 0.09453565815493821 <br>
- Avg error Decision Tree: 0.1181172676257833 <br>
- Avg error Random Forrest: 0.09090056972737712 <br>
- Avg error Logistic Regression: 0.12059876425937602 <br>
+ - Avg error SVM: 0.09453565815493821 <br>
+ - Avg error Decision Tree: 0.1181172676257833 <br>
+ - Avg error Random Forrest: 0.09090056972737712 <br>
+ - Avg error Logistic Regression: 0.12059876425937602 <br>
  ----------------------
  Avg accuracy SVM: 0.9054643418450619 <br>
  Avg accuracy Decision Tree: 0.8818827323742168 <br>
