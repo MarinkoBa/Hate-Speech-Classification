@@ -1,11 +1,40 @@
 # -*- coding: utf-8 -*-
 import tweepy
 import pandas as pd
-
+import os
+import time
 import json
+import sys
+import pathlib 
 
+path = pathlib.Path(__file__).parent.parent.absolute()
+if path not in sys.path:
+        sys.path.append(path)
+        
+#from get_data import export_data
 
-def setup_connection(config):
+CONSUMER_KEY = "K2UP7Ap1PGapYwHuH8UrBoTio"
+CONSUMER_SECRET = "oDfZZQJjh975bhtJ6tkJAEG0cx5rZfuWfmCqpHO9bp6y9kW9Ym"
+OAUTH_TOKEN = "1338047615536144385-yWoOsS4Z4TzKsGF10aSykMDZCidJmh"
+OAUTH_TOKEN_SECRET = "vHmpWIX7rXwathO3t5xY8n1UGt0zbSA3SmdgQ5PDuZMug"
+
+def setup_connection():
+    # authenticate
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+    
+    """
+    # creating a stream
+    myStreamListener = MyStreamListener()
+    myStream = tweepy.Stream(auth = auth, listener=myStreamListener)
+    """
+    api = tweepy.API(auth,
+                     wait_on_rate_limit = True,
+                     wait_on_rate_limit_notify = True)
+    
+    return api
+
+def setup_connection2(config):
     """
     Set up the authorization process to connect to the Twitter API.
     
@@ -59,15 +88,16 @@ def get_location_tweets(api, df_all, geocode, city_name):
     """
 
     replies = []
-
+    # search-query from API for tweets in english at specified location
     for tweet in tweepy.Cursor(api.search,
                                q="-is:retweet",
-                               count=300,
-                               geocode = geocode, # e.g. New York: "40.71427,-74.00597,10km",
+                               count=2000,
+                               geocode = geocode, # e.g. New York: "40.71427,-74.00597,50km",
                                lang = "en",
-                               tweet_mode = "extended").items(300):
+                               tweet_mode = "extended").items(2000):
         replies.append(tweet)
     
+    # convert status objects to dictionaries
     tweets_python = []
     for tweet in replies:
         #convert to string
@@ -77,7 +107,8 @@ def get_location_tweets(api, df_all, geocode, city_name):
         parsed = json.loads(json_obj)
 
         tweets_python.append(parsed)
-     
+    
+    # load all in pandas dataframe
     df = pd.DataFrame(tweets_python)
     df = df.drop(['id_str', 'entities',
                   'truncated',
@@ -101,7 +132,104 @@ def get_location_tweets(api, df_all, geocode, city_name):
     # add column with city_name
     df = df.assign(city_name = city_name) # e.g. here: New York
     
-    df_all = pd.concat([df_all, df], ignore_index = True)
+    # drop all tweets which are only retweets, so whose retweeted_status is not empty
+    df = df[df.retweeted_status.notna()]
+    status_file = os.path.join(str(path), "utils", "query_status.txt")
     
-    ### drop all which are only retweets? so if retweeted_status is not empty?
+    with open(status_file, 'a+') as file:
+        file.write(f"{city_name}: {df.shape[0]} tweets without retweets \n")
+    #print(f"{city_name}: {df.shape[0]} tweets without retweets")
+    
+    # concatenate with overall dataframe (so with all other already queried locations)
+    df_all = pd.concat([df_all, df], ignore_index = True)
+
     return df_all
+
+
+def get_all_locations(api):
+    df_all = pd.DataFrame()
+    
+    # list of biggest city per state in the US
+    location_list = [["33.543682,-86.779633,50km", "Birmingham, Alabama"],
+                     ["61.217381,-149.863129,50km", "Anchorage, Alaska"],
+                     ["33.448376,-112.074036,50km", "Phoenix, Arizona"],
+                     ["34.746483,-92.289597,50km", "Little Rock, Arkansas"],
+                     ["34.052235,-118.243683,50km", "Los Angeles, California"],
+                     ["39.742043,-104.991531,50km", "Denver, Colorado"],
+                     ["41.186390,-73.195557,50km", "Bridgeport, Connecticut"],
+                     ["39.739071,-75.539787,50km", "Wilmington, Delaware"],
+                     ["30.332184,-81.655647,50km", "Jacksonville, Florida"],
+                     ["33.753746,-84.386330,50km", "Atlanta, Georgia"],
+                     ["21.315603,-157.858093,50km", "Honolulu, Hawaii"],
+                     ["43.618881,-116.215019,50km", "Boise, Idaho"],
+                     ["41.881832,-87.623177,50km", "Chicago, Illinois"],
+                     ["39.791000,-86.148003,50km", "Indianapolis, Indiana"],
+                     ["41.619549,-93.598022,50km", "Des Moines, Iowa"],
+                     ["37.697948,-97.314835,50km", "Wichita, Kansas"],
+                     ["38.328732,-85.764771,50km", "Louisville, Kentucky"],
+                     ["29.951065,-90.071533,50km", "New Orleans, Louisiana"],
+                     ["43.67825,-70.31755,50km", "Portland, Maine"],
+                     ["39.299236,-76.609383,50km", "Baltimore, Maryland"],
+                     ["42.361145,-71.057083,50km", "Boston, Massachusetts"],
+                     ["42.331429,-83.045753,50km", "Detroit, Michigan"],
+                     ["44.986656,-93.258133,50km", "Minneapolis, Minnesota"],
+                     ["32.298756,-90.184807,50km", "Jackson, Mississippi"],
+                     ["39.099724,-94.578331,50km", "Kansas City, Missouri"],
+                     ["45.787636,-108.489304,50km", "Billings, Montana"],
+                     ["41.257160,-95.995102,50km", "Omaha, Nebraska"],
+                     ["36.114647,-115.172813,50km", "Las Vegas, Nevada"],
+                     ["43.008663,-71.454391,50km", "Manchester, New Hamshire"],
+                     ["40.735657,-74.172363,50km", "Newark, New Jersey"],
+                     ["35.106766,-106.629181,50km", "Albuquerque, New Mexico"],
+                     ["40.71427,-74.00597,50km", "New York City, New York"],
+                     ["35.227085,-80.843124,50km", "Charlotte, North Carolina"],
+                     ["46.877186,-96.789803,50km", "Fargo, North Dakota"],
+                     ["39.983334,-82.983330,50km", "Columbus, Ohio"],
+                     ["35.481918,-97.508469,50km", "Oklahoma City, Oklahoma"],
+                     ["45.523064,-122.676483,50km", "Portland, Oregon"],
+                     ["39.952583,-75.165222,50km", "Philadelphia, Pennsylvania"],
+                     ["41.825226,-71.418884,50km", "Providence, Rhode Island"],
+                     ["32.784618,-79.940918,50km", "Charleston, South Carolina"],
+                     ["43.536388,-96.731667,50km", "Sioux Falls, South Dakota"],
+                     ["36.174465,-86.767960,50km", "Nashville, Tennessee"],
+                     ["29.749907,-95.358421,50km", "Houston, Texas"],
+                     ["40.7607800,-111.8910500,50km", "Salt Lake City, Utah"],
+                     ["44.475883,-73.212074,50km", "Burlington, Vermont"],
+                     ["36.863140,-76.015778,50km", "Virginia Beach, Virginia"],
+                     ["47.608013,-122.335167,50km", "Seattle, Washington"],
+                     ["38.349819,-81.632622,50km", "Charleston, West Virginia"],
+                     ["43.038902,-87.906471,50km", "Milwaukee, Wisconsin"],
+                     ["41.161079,-104.805450,50km", "Cheyenne, Wyoming"]]
+                     # source: https://www.latlong.net/place/, 09.02.21, 10:45
+    
+    # iterate through location list and concatenate with overall df_all
+    for location in location_list:
+        try:
+            df_all = get_location_tweets(api = api,
+                                         df_all = df_all,
+                                         geocode = location[0], 
+                                         city_name = location[1])
+        except Exception as e:
+            print(f"{e} for location[1]")
+            
+        # sleep for 5 minutes
+        time.sleep(300)
+    
+    # export to csv file
+    export_data(df_all, os.path.join(str(path), "data", "usa_tweets.csv"))
+    return df_all
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
