@@ -99,6 +99,7 @@ def cross_validate(x, y, n_splits=10):
         print('Accuracy: ' + str(acc_log_reg))
         print('Precision: ' + str(prec_log_reg))
         print('Recall: ' + str(rec_log_reg))
+        print('')
 
         print('Ensemble Classifier: ')
         ensemble = EnsembleClassifier()

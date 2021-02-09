@@ -3,7 +3,7 @@ from .define_features import define_features_tfidf
 from .define_features import define_features_vectorizer
 
 
-def setup_svm_classifier(training_data, y_training, testing_data, features="preprocessed", method="count",ngrams(1,1)):
+def setup_svm_classifier(training_data, y_training, testing_data, features="preprocessed", method="count",ngrams=(1,1)):
     """
     Setup svm model using sklearn implementation
 

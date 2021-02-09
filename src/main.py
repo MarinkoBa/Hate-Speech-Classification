@@ -8,6 +8,7 @@ from src.utils.get_data import concatenate_datasets
 from src.utils.get_data import split_data
 from src.utils.preprocessing import preprocessing
 from src.utils import cross_validator
+from src.utils import dataset_balancer
 
 
 
@@ -30,8 +31,11 @@ if __name__ == "__main__":
     # just an idea here: add new column with preprocessed text
     df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing)
 
+
+    x_balanced, y_balanced = dataset_balancer.balance_data(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
+
     # cross validation
-    cross_validator.cross_validate(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
+    cross_validator.cross_validate(x_balanced, y_balanced)
 
     # split in test and training set
     #training_data, testing_data, training_y, testing_y = split_data(df_concatenated,
