@@ -261,52 +261,52 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  
  ### Results (10-fold cross validation) imbalanced dataset
  
- Avg error SVM: 0.09453565815493821
- Avg error Decision Tree: 0.1181172676257833
- Avg error Random Forrest: 0.09090056972737712
- Avg error Logistic Regression: 0.12059876425937602
+ Avg error SVM: 0.09453565815493821 <br>
+ Avg error Decision Tree: 0.1181172676257833 <br>
+ Avg error Random Forrest: 0.09090056972737712 <br>
+ Avg error Logistic Regression: 0.12059876425937602 <br>
  ----------------------
- Avg accuracy SVM: 0.9054643418450619
- Avg accuracy Decision Tree: 0.8818827323742168
- Avg accuracy Random Forrest: 0.9090994302726229
- Avg accuracy Logistic Regression: 0.8794012357406242
+ Avg accuracy SVM: 0.9054643418450619 <br>
+ Avg accuracy Decision Tree: 0.8818827323742168 <br>
+ Avg accuracy Random Forrest: 0.9090994302726229 <br>
+ Avg accuracy Logistic Regression: 0.8794012357406242 <br>
  ----------------------
- Avg precision SVM: 0.6740751849609974
- Avg precision Decision Tree: 0.5312626599252147
- Avg precision Random Forrest: 0.7530453794371803
- Avg precision Logistic Regression: 0.5156505209009437
+ Avg precision SVM: 0.6740751849609974 <br>
+ Avg precision Decision Tree: 0.5312626599252147 <br>
+ Avg precision Random Forrest: 0.7530453794371803 <br>
+ Avg precision Logistic Regression: 0.5156505209009437 <br>
  ----------------------
- Avg recall SVM: 0.5394454121680005
- Avg recall Decision Tree: 0.5141146579468734
- Avg recall Random Forrest: 0.49020624752525616
- Avg recall Logistic Regression: 0.663956175761075
+ Avg recall SVM: 0.5394454121680005 <br>
+ Avg recall Decision Tree: 0.5141146579468734 <br>
+ Avg recall Random Forrest: 0.49020624752525616 <br>
+ Avg recall Logistic Regression: 0.663956175761075 <br>
  
 
  ### Results (10-fold cross validation) balanced dataset
  
-Avg error SVM: 0.1940567066521265
-Avg error Decision Tree: 0.21859323882224646
-Avg error Random Forrest: 0.18200654307524536
-Avg error Logistic Regression: 0.171319520174482
-Avg error Ensemble: 0.18200654307524536
+Avg error SVM: 0.1940567066521265 <br>
+Avg error Decision Tree: 0.21859323882224646 <br>
+Avg error Random Forrest: 0.18200654307524536 <br>
+Avg error Logistic Regression: 0.171319520174482 <br>
+Avg error Ensemble: 0.18200654307524536 <br> 
 ----------------------
-Avg accuracy SVM: 0.8059432933478735
-Avg accuracy Decision Tree: 0.7814067611777535
-Avg accuracy Random Forrest: 0.8179934569247547
-Avg accuracy Logistic Regression: 0.828680479825518
-Avg accuracy Ensemble: 0.8179934569247547
+Avg accuracy SVM: 0.8059432933478735 <br>
+Avg accuracy Decision Tree: 0.7814067611777535 <br>
+Avg accuracy Random Forrest: 0.8179934569247547 <br>
+Avg accuracy Logistic Regression: 0.828680479825518 <br>
+Avg accuracy Ensemble: 0.8179934569247547 <br>
 ----------------------
-Avg precision SVM: 0.8116767725214927
-Avg precision Decision Tree: 0.7811049109409147
-Avg precision Random Forrest: 0.8212260290537614
-Avg precision Logistic Regression: 0.8582117881409733
-Avg precision Ensemble: 0.8212260290537614
+Avg precision SVM: 0.8116767725214927 <br>
+Avg precision Decision Tree: 0.7811049109409147 <br>
+Avg precision Random Forrest: 0.8212260290537614 <br>
+Avg precision Logistic Regression: 0.8582117881409733 <br>
+Avg precision Ensemble: 0.8212260290537614 <br>
 ----------------------
-Avg recall SVM: 0.796718863865422
-Avg recall Decision Tree: 0.7818837274030175
-Avg recall Random Forrest: 0.8130145051097839
-Avg recall Logistic Regression: 0.7874117388925284
-Avg recall Ensemble: 0.8130145051097839
+Avg recall SVM: 0.796718863865422 <br>
+Avg recall Decision Tree: 0.7818837274030175 <br> 
+Avg recall Random Forrest: 0.8130145051097839 <br>
+Avg recall Logistic Regression: 0.7874117388925284 <br>
+Avg recall Ensemble: 0.8130145051097839 <br>
  
  
  
