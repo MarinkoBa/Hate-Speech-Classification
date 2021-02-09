@@ -4,37 +4,13 @@ import pandas as pd
 import os
 import time
 import json
-import sys
-import pathlib 
+import path
 
-path = pathlib.Path(__file__).parent.parent.absolute()
-if path not in sys.path:
-        sys.path.append(path)
         
-#from get_data import export_data
+from get_data import export_data
 
-CONSUMER_KEY = "K2UP7Ap1PGapYwHuH8UrBoTio"
-CONSUMER_SECRET = "oDfZZQJjh975bhtJ6tkJAEG0cx5rZfuWfmCqpHO9bp6y9kW9Ym"
-OAUTH_TOKEN = "1338047615536144385-yWoOsS4Z4TzKsGF10aSykMDZCidJmh"
-OAUTH_TOKEN_SECRET = "vHmpWIX7rXwathO3t5xY8n1UGt0zbSA3SmdgQ5PDuZMug"
 
-def setup_connection():
-    # authenticate
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
-    
-    """
-    # creating a stream
-    myStreamListener = MyStreamListener()
-    myStream = tweepy.Stream(auth = auth, listener=myStreamListener)
-    """
-    api = tweepy.API(auth,
-                     wait_on_rate_limit = True,
-                     wait_on_rate_limit_notify = True)
-    
-    return api
-
-def setup_connection2(config):
+def setup_connection(config):
     """
     Set up the authorization process to connect to the Twitter API.
     
@@ -75,7 +51,7 @@ def get_location_tweets(api, df_all, geocode, city_name):
                     with another location as parameter.
     geocode         String
                     The location given in "latitude,longitude,radius",
-                    with radius units as "km" (here
+                    with radius units as "km" (here)
     city_name       String
                     The name of the city to add as a new column for further
                     analysis and evaluation.
@@ -134,11 +110,10 @@ def get_location_tweets(api, df_all, geocode, city_name):
     
     # drop all tweets which are only retweets, so whose retweeted_status is not empty
     df = df[df.retweeted_status.notna()]
-    status_file = os.path.join(str(path), "utils", "query_status.txt")
+    status_file = os.path.join("src", "utils", "query_status.txt")
     
     with open(status_file, 'a+') as file:
         file.write(f"{city_name}: {df.shape[0]} tweets without retweets \n")
-    #print(f"{city_name}: {df.shape[0]} tweets without retweets")
     
     # concatenate with overall dataframe (so with all other already queried locations)
     df_all = pd.concat([df_all, df], ignore_index = True)
@@ -216,7 +191,7 @@ def get_all_locations(api):
         time.sleep(300)
     
     # export to csv file
-    export_data(df_all, os.path.join(str(path), "data", "usa_tweets.csv"))
+    export_data(df_all, os.path.join("src", "data", "usa_tweets.csv"))
     return df_all
 
 
