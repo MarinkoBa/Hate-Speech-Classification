@@ -48,6 +48,11 @@ def cross_validate(x, y, n_splits=10):
     tot_rec_log_reg = []
     tot_rec_ens = []
 
+    # shuffle the whole set
+    y = y.sample(frac=1)
+    y_shuffled_ind = y.index
+    x = x.loc[y_shuffled_ind]
+
     kf = KFold(n_splits)
     for i, (train, test) in enumerate(kf.split(x)):
         x_train = x.iloc[train]
