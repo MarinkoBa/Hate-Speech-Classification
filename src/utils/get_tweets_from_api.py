@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import tweepy
 import pandas as pd
+import numpy as np
 import os
 import time
 import json
-import path
 
         
 from get_data import export_data
@@ -51,7 +51,7 @@ def get_location_tweets(api, df_all, geocode, city_name):
                     with another location as parameter.
     geocode         String
                     The location given in "latitude,longitude,radius",
-                    with radius units as "km" (here)
+                    with radius units as "km" (here
     city_name       String
                     The name of the city to add as a new column for further
                     analysis and evaluation.
@@ -103,17 +103,41 @@ def get_location_tweets(api, df_all, geocode, city_name):
                  'quoted_status_id_str',
                  'geo', 'coordinates',
                  'contributors', 'extended_entities',
-                 'display_text_range'], axis = 1)
+                 'display_text_range',
+                 'withheld_in_countries',
+                 'quoted_status',
+                 'withheld_scope'], axis = 1, 
+                errors='ignore') # so only columns are dropped if they exist
     
     # add column with city_name
     df = df.assign(city_name = city_name) # e.g. here: New York
     
-    # drop all tweets which are only retweets, so whose retweeted_status is not empty
-    df = df[df.retweeted_status.notna()]
+
+    # don't drop retweets, in training data set they are included as well
+    # BUT: drop those with the same retweeted tweet, so that one tweet can occur at most 2 times:
+    
+    # fill all nan-values in retweeted_status with 0
+    df.retweeted_status = df.retweeted_status.fillna(0)
+    # new column for retweeted id if exists
+    df["retweeted_status_id"] = df.retweeted_status.apply(get_retweeted_status_id)
+    
+    # first keep all tweets which aren't retweets
+    df_na = df[df.retweeted_status_id.isna()]
+    
+    # now delete those who have the same retweeted_id, keep only one retweet
+    df_withoutna = df.dropna(subset = ["retweeted_status_id"])
+    df_withoutna = df_withoutna.drop_duplicates(subset=["retweeted_status_id"],
+                                                keep="first",
+                                                ignore_index=True)
+    
+    # now concatenate
+    df = pd.concat([df_na, df_withoutna], ignore_index = True)
+    
+    
     status_file = os.path.join("src", "utils", "query_status.txt")
     
     with open(status_file, 'a+') as file:
-        file.write(f"{city_name}: {df.shape[0]} tweets without retweets \n")
+        file.write(f"{city_name}: {df.shape[0]} tweets \n")
     
     # concatenate with overall dataframe (so with all other already queried locations)
     df_all = pd.concat([df_all, df], ignore_index = True)
@@ -185,7 +209,7 @@ def get_all_locations(api):
                                          geocode = location[0], 
                                          city_name = location[1])
         except Exception as e:
-            print(f"{e} for location[1]")
+            print(f"{e} for {location[1]}")
             
         # sleep for 5 minutes
         time.sleep(300)
@@ -195,6 +219,12 @@ def get_all_locations(api):
     return df_all
 
 
+
+def get_retweeted_status_id(retweeted_status):
+    if retweeted_status == 0:
+        return np.nan
+    else:
+        return str(retweeted_status["id"])
 
 
 
