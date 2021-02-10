@@ -8,19 +8,20 @@ from .define_features import define_features_tfidf
 import numpy as np
 
 
-# TODO: 1. Documentation of the Classifier, 2. Maybe change style of implementation, 3. Evaluate Classfier
 class EnsembleClassifier:
     """
     Ensemble classifier with training data in form of tf-idf or as term counts.
     Classifier predicts based on a SVM-, RandomForest- and LogisticRegression-Classifier due to a majority vote
     over the results of each of these classifiers.
     """
+
     def __init__(self):
         self.SVM = svm.SVC(kernel='linear', C=1, gamma=1)
         self.forest_model = RandomForestClassifier(random_state=0)
         self.logistic_model = log_reg_classifier = LogisticRegression(max_iter=1000, class_weight="balanced")
 
-    def train(self, training_data, training_target, testing_data, features="preprocessed", method="count", ngrams=(1, 1)):
+    def train(self, training_data, training_target, testing_data, features="preprocessed", method="count",
+              ngrams=(1, 1)):
         """
         Fits the ensemble classifier with training data in form of tf-idf or as term counts.
 
@@ -48,7 +49,8 @@ class EnsembleClassifier:
                             form.
         """
         if method == "count":
-            vec, X_training, X_testing = define_features_vectorizer(features, training_data, testing_data, ngramrange=ngrams)
+            vec, X_training, X_testing = define_features_vectorizer(features, training_data, testing_data,
+                                                                    ngramrange=ngrams)
         elif method == "tfidf":
             vec, X_training, X_testing = define_features_tfidf(features, training_data, testing_data, ngramrange=ngrams)
         else:
