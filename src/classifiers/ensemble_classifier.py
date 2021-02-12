@@ -107,9 +107,13 @@ class EnsembleClassifier:
         y_pred_forest = self.forest_model.predict(X_testing)
         y_pred_logistic = self.logistic_model.predict(X_testing)
 
+        # stack predictions of the three classifiers
         predicted_labels = np.vstack([y_pred_svm, y_pred_forest, y_pred_logistic])
+
+        # count how often each label appears
         majority_vote = np.apply_along_axis(np.bincount, axis=0, arr=predicted_labels,
                                             minlength=np.max(predicted_labels) + 1)
+        # decide for the label which has the highest count
         majority_vote = np.argmax(majority_vote, axis=0)
 
         return majority_vote
