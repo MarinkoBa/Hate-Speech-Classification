@@ -315,7 +315,62 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - Avg recall Logistic Regression: 0.7874117388925284 <br>
  - Avg recall Ensemble: 0.8130145051097839 <br>
  
+ ### Results preprocessing-methods:
  
+ normale preprocessing methode:
+
+Avg error SVM: 0.19626335156816574
+Avg error Decision Tree: 0.22287256806725697
+Avg error Random Forrest: 0.18555347640663378
+Avg error Logistic Regression: 0.1757183061601502
+Avg error Ensemble: 0.17604641376655236
+----------------------
+Avg accuracy SVM: 0.8037366484318342
+Avg accuracy Decision Tree: 0.777127431932743
+Avg accuracy Random Forrest: 0.8144465235933662
+Avg accuracy Logistic Regression: 0.8242816938398498
+Avg accuracy Ensemble: 0.8239535862334477
+----------------------
+Avg precision SVM: 0.8093553103221389
+Avg precision Decision Tree: 0.7783486639626233
+Avg precision Random Forrest: 0.8194140680878471
+Avg precision Logistic Regression: 0.8534382082078651
+Avg precision Ensemble: 0.8459772787293709
+----------------------
+Avg recall SVM: 0.7948433600137679
+Avg recall Decision Tree: 0.7752060240897344
+Avg recall Random Forrest: 0.8065528025545291
+Avg recall Logistic Regression: 0.7828394538876038
+Avg recall Ensemble: 0.7920669863105279
+
+
+restricted preprocessing:
+
+Avg error SVM: 0.16517281308849113
+Avg error Decision Tree: 0.17276790430741956
+Avg error Random Forrest: 0.15626720147549936
+Avg error Logistic Regression: 0.15047541878933846
+Avg error Ensemble: 0.14845359071008407
+----------------------
+Avg accuracy SVM: 0.8348271869115088
+Avg accuracy Decision Tree: 0.8272320956925805
+Avg accuracy Random Forrest: 0.8437327985245006
+Avg accuracy Logistic Regression: 0.8495245812106615
+Avg accuracy Ensemble: 0.851546409289916
+----------------------
+Avg precision SVM: 0.8453375116865516
+Avg precision Decision Tree: 0.8482504349312057
+Avg precision Random Forrest: 0.8676780161941668
+Avg precision Logistic Regression: 0.8812210994092959
+Avg precision Ensemble: 0.8811853070043323
+----------------------
+Avg recall SVM: 0.8191968729989216
+Avg recall Decision Tree: 0.7968548740212839
+Avg recall Random Forrest: 0.8110103111670066
+Avg recall Logistic Regression: 0.8076247964111127
+Avg recall Ensemble: 0.812296533100582
+
+-> Choose restricted preprocessing method
  
 
  
