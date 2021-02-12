@@ -15,10 +15,33 @@ class EnsembleClassifier:
     over the results of each of these classifiers.
     """
 
-    def __init__(self):
-        self.SVM = svm.SVC(kernel='linear', C=1, gamma=1)
-        self.forest_model = RandomForestClassifier(random_state=0)
-        self.logistic_model = log_reg_classifier = LogisticRegression(max_iter=1000, class_weight="balanced")
+    def __init__(self, svm_kernel='linear', svm_c=1, svm_gamma=1, forest_random_state=0, logistic_max_iter=1000,
+                 logistic_class_weight="balanced"):
+        """
+        Initialize Ensemble Classifier.
+        Parameters
+        ----------
+        svm_kernel:  	        Specifies the kernel type to be used in the algorithm.
+
+        svm_c:                  Regularization parameter. The strength of the regularization is inversely proportional to C.
+                                Must be strictly positive.
+
+        svm_gamma:   	        Kernel coefficient for 'rbf', 'poly' and 'sigmoid'
+
+        forest_random_state:    int, Controls both the randomness of the bootstrapping of the samples used when
+                                building trees (if bootstrap=True) and the sampling of the features to consider
+                                when looking for the best split at each node (if max_features < n_features).
+
+        logistic_max_iter: 	    int, Maximum number of iterations taken for the solvers to converge.
+
+        logistic_class_weight:  String, dict or ‘balanced’, default=None,
+                                Weights associated with classes in the form {class_label: weight}.
+                                If not given, all classes are supposed to have weight one.
+    """
+
+        self.SVM = svm.SVC(kernel=svm_kernel, C=svm_c, gamma=svm_gamma)
+        self.forest_model = RandomForestClassifier(random_state=forest_random_state)
+        self.logistic_model = LogisticRegression(max_iter=logistic_max_iter, class_weight=logistic_class_weight)
 
     def train(self, training_data, training_target, testing_data, features="preprocessed", method="count",
               ngrams=(1, 1)):
