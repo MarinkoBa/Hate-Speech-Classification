@@ -24,6 +24,8 @@ So far, we do not use any existing code, but we are using the example project fr
 - Tests (Typen etc.) (Daniela)
 - Optional: Sentiment Analysis with Bert
 - Dateipfade anpassen + Instructions ergänzen
+- Optionen testen: preprocessing 2x (für eine Methode entscheiden), unigram, bigram, method (tfidf oder count)
+                  
 
 ### Planning State:
 We have started with the downloading and processing of our data.
