@@ -82,7 +82,7 @@ class EnsembleClassifier:
             """
         y_pred_svm = self.SVM.predict(X_testing)
         y_pred_forest = self.forest_model.predict(X_testing)
-        y_pred_logistic = self.forest_model.predict(X_testing)
+        y_pred_logistic = self.logistic_model.predict(X_testing)
 
         predicted_labels = np.vstack([y_pred_svm, y_pred_forest, y_pred_logistic])
         majority_vote = np.apply_along_axis(np.bincount, axis=0, arr=predicted_labels,
