@@ -22,17 +22,17 @@ def setup_decision_tree_classifier(training_data,
                     	The dataframe containing the testing data for the classifier.
     features:           String or list of strings
                         Names of columns of df that are used for training the classifier.
-    method: 		 String
+    method: 		String
                         Can be either "count" or "tfidf" for specifying method of 
                         feature weighting.
-    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    ngrams:            	tuple (min_n, max_n), with min_n, max_n integer values
+                       	range for ngrams used for vectorization
                     
     Returns
     -------
-    model:		        sklearn.tree.DecisionTreeClassifier Model
-            			Trained DecisionTreeClassifier Model
-    vec:        	    sklearn CountVectorizer or TfidfVectorizer
+    model:		sklearn.tree.DecisionTreeClassifier Model
+            		Trained DecisionTreeClassifier Model
+    vec:        	sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed
                         for training data
     X_testing:          Pandas dataframe
@@ -56,9 +56,7 @@ def setup_decision_tree_classifier(training_data,
         print("Method has to be either count or tfidf")
         return 1
     
-    ### Consider performing dimensionality reduction (PCA, ICA, or Feature selection) 
-    # beforehand to give your tree a better chance of finding features that are 
-    # discriminative.
+
     decision_tree = DecisionTreeClassifier(random_state=0)
     model = decision_tree.fit(X_training, y_training.values.ravel())
     
@@ -71,17 +69,17 @@ def predict(model, X_testing):
     Predict the labels of X_testing using the trained Decision Tree Classifier.
     Parameters
     ----------
-    model:             	    sklearn.tree.DecisionTreeClassifier Model
-                			Trained DecisionTreeClassifier Model
-    X_testing:   	        Pandas dataframe
-                    	    The dataframe containing the testing data in vectorized
-                            form.
+    model:             	sklearn.tree.DecisionTreeClassifier Model
+                	Trained DecisionTreeClassifier Model
+    X_testing:   	Pandas dataframe
+                    	The dataframe containing the testing data in vectorized
+                        form.
     
     Returns
     -------
-    predictions:		    Binary array
-    			            The predictions array, containing 0 for no hate speech,
-                            1 for hate speech
+    predictions:	Binary array
+    			The predictions array, containing 0 for no hate speech,
+                        1 for hate speech
     """
 
     predictions = model.predict(X_testing)
