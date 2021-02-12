@@ -30,9 +30,9 @@ if __name__ == "__main__":
                                            df3)
 
     # add new column with preprocessed text
-    df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing)
+    #df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing)
     # other opportunity: use restricted_preprocessing Method.
-    # df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing_restricted())
+    df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing_restricted)
 
 
     x_balanced, y_balanced = dataset_balancer.balance_data(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
