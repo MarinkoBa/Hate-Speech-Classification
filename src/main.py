@@ -7,6 +7,7 @@ from src.utils.get_data import get_datasets
 from src.utils.get_data import concatenate_datasets
 from src.utils.get_data import split_data
 from src.utils.preprocessing import preprocessing
+from src.utils.preprocessing import preprocessing_restricted
 from src.utils import cross_validator
 from src.utils import dataset_balancer
 
@@ -28,8 +29,10 @@ if __name__ == "__main__":
                                            df2,
                                            df3)
 
-    # just an idea here: add new column with preprocessed text
+    # add new column with preprocessed text
     df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing)
+    # other opportunity: use restricted_preprocessing Method.
+    # df_concatenated['preprocessed'] = df_concatenated['text'].apply(preprocessing_restricted())
 
 
     x_balanced, y_balanced = dataset_balancer.balance_data(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
