@@ -23,6 +23,7 @@ So far, we do not use any existing code, but we are using the example project fr
 - auf Karte markieren? (nur wenn Ergebnisse interessant sind bzw. gut darstellbar) (Marinko)
 - Tests (Typen etc.) (Daniela)
 - Optional: Sentiment Analysis with Bert
+- Dateipfade anpassen + Instructions ergänzen
 
 ### Planning State:
 We have started with the downloading and processing of our data.
