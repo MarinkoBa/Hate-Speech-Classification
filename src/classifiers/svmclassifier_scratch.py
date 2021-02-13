@@ -77,7 +77,7 @@ class SVMClassifier_scratch:
 
     def fit(self, X, Y):
         """
-        fit model to data
+        Fits model to data.
 
         Parameters
         ----------
@@ -111,7 +111,7 @@ class SVMClassifier_scratch:
 
     def predict(self, X):
         """
-        predict labels for unseen X data
+        Predicts labels for unseen X data
 
         Parameters
         ----------
@@ -131,13 +131,10 @@ class SVMClassifier_scratch:
 
 def setup_svm_classifier(training_data, testing_data, y_training, features, method="count", ngrams=(1,1)):
     """
-    Setup logistic regression model using own implementation
+    Setup SVM classifier model using own implementation
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
-
     training_data:  	Pandas dataframe
                     	The dataframe containing the training data for the classifier
 
@@ -152,14 +149,14 @@ def setup_svm_classifier(training_data, testing_data, y_training, features, meth
 
     method: 		    String
     			        Can be either "count" or "tfidf" for specifying method of feature weighting
-    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    ngrams:             tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
 
 
     Returns
     -------
-    model:		        sklearn LogisticRegression Model
-    			        Trained LogistciRegression Model
+    model:		        SVM Classifier (scratch implementation)
+    			        Trained SVM Classifier from own implementation
 
     vec:        	    sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data

@@ -9,8 +9,6 @@ def setup_svm_classifier(training_data, y_training, testing_data, features="prep
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
     training_data:  	Pandas dataframe
                     	The dataframe containing the training data for the classifier
     y_training:   	    Pandas dataframe
@@ -19,17 +17,17 @@ def setup_svm_classifier(training_data, y_training, testing_data, features="prep
                     	The dataframe containing the testing data for the classifier
     features:         	String or list of strings if using multiple features
                     	Names of columns of df that are used for trainig the classifier
-    method: 		String
-    			Can be either "count" or "tfidf" for specifying method of feature weighting
-    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    method: 		    String
+            			Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:             tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
 
 
     Returns
     -------
-    model:		sklearn LogisticRegression Model
-    			Trained LogistciRegression Model
-    vec:        	sklearn CountVectorizer or TfidfVectorizer
+    model:		        sklearn SVM Classifier
+            			Trained SVM Classifier
+    vec:        	    sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
 

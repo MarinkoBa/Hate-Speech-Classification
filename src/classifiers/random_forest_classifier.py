@@ -25,8 +25,8 @@ def setup_random_forest_classifier(training_data,
     method: 		    String
             			Can be either "count" or "tfidf" for specifying method of 
                         feature weighting.
-    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    ngrams:             tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
                     
     Returns
     -------

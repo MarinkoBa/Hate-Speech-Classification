@@ -18,7 +18,7 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        lr:		    Float
+        lr:		           Float
                            learning rate for model
         
         iterations:        integer
@@ -39,7 +39,7 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X:                 sparse matrix
+        X:                  sparse matrix
                     	    Data used for Training
     
                     
@@ -47,7 +47,7 @@ class LogisticRegression_scratch:
         Returns
         -------
         data_intercept	    sparse matrix
-                           Data with added intercept
+                            Data with added intercept
         """
         
         intercept=sparse.csr_matrix(np.ones((X.shape[0],1)))
@@ -56,18 +56,18 @@ class LogisticRegression_scratch:
     
     def __logistic_func(self,z):
         """
-        Define logistic function necessary for logisticRegression
+        Define logistic function necessary for LogisticRegression
 
         Parameters
         ----------
         z:                 numeric
-                    	    Should be dot product of feature vector and weights
+                    	   Should be dot product of feature vector and weights
     
                     
 
         Returns
         -------
-        gz		    numpy array
+        gz		           numpy array
                            result of logistic function
         """
         z = np.clip( z, -500, 500 )
@@ -82,15 +82,15 @@ class LogisticRegression_scratch:
         Parameters
         ----------
         theta:             numpy array
-    			    weights
-        X		    sparse matrix
-    			    feature vector
+            			   weights
+        X		           sparse matrix
+            			   feature vector
     			    
         Returns
         -------
        
         z:                 numpy array
-                    	    Dot product of feature vector and weights
+                    	   Dot product of feature vector and weights
                     	
         """
         z = X.dot(theta)
@@ -104,16 +104,16 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X		    sparse matrix
-    			    feature vector
+        X		           sparse matrix
+            			   feature vector
         weights:           numpy array
-    			    weights, same as theta
+            			   weights, same as theta
     			    
         Returns
         -------
        
         ll:                numeric
-                    	    log likelihood
+                    	   log likelihood
                     	
         """
         z = x.dot(weights)
@@ -127,8 +127,8 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X:      	    sparse matrix
-    			    feature vector
+        X:      	       sparse matrix
+            			   feature vector
         h:                 numeric
                            result of logistic function
         y:                 sparse matrix
@@ -139,8 +139,8 @@ class LogisticRegression_scratch:
         -------
        
         g:                 sparse matrix
-                    	    gradient
-                    	
+                    	   gradient
+                    
         """
         g = X.T.dot(y - h)
         return g
@@ -152,17 +152,17 @@ class LogisticRegression_scratch:
         Parameters
         ----------
         weight:            numpy array
-    			    weights, same as theta
-        lr:		    Float
+            			   weights, same as theta
+        lr:		           Float
                            learning rate for model
         g:                 sparse matrix
-                    	    gradient for logistic regression                           
+                    	   gradient for logistic regression                           
     			    
         Returns
         -------
        
         updated_weight:    numpy array
-                    	    updated weight 
+                    	   updated weight 
                     	
         """
         updated_weight=weight + lr * gradient
@@ -175,8 +175,8 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X:      	    sparse matrix
-    			    feature vector
+        X:      	       sparse matrix
+            			   feature vector
         y:                 sparse matrix
                            training data                      
 
@@ -206,13 +206,13 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X:      	    sparse matrix
-    			    feature vector              
+        X:      	       sparse matrix
+            			   feature vector              
         Returns
         -------
        
         probabilites:      numpy array
-                    	    result of logistic function 
+                    	   result of logistic function 
         """    
     
         if self.use_intercept:
@@ -228,14 +228,14 @@ class LogisticRegression_scratch:
 
         Parameters
         ----------
-        X:      	    sparse matrix
-    			    feature vector              
+        X:      	       sparse matrix
+            			   feature vector              
         Returns
         -------
        
         prediction         binary array
-                    	    returns true or false depending if result 
-                    	    of logistic function is higher or lower than given threshold
+                    	   returns true or false depending if result 
+                    	   of logistic function is higher or lower than given threshold
         """    
     
         prediction=self.predict_prob(X) >= threshold
