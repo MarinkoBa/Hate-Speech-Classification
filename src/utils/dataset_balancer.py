@@ -3,21 +3,22 @@ import pandas as pd
 
 def balance_data(x, y):
     """
-    Balances data through under-sampling. Selects so many random normal tweets as there are hate speech tweets.
+    Balances data through under-sampling. Selects so many random normal tweets as 
+    there are hate speech tweets.
 
     Parameters
     ----------
-    x:        Pandas dataframe
-              The dataframe containing all x values -> preprocessed, shape (n, 1).
-    y:		  Pandas dataframe
-              The dataframe containing all y values -> hate_speech, shape (n, 1).
+    x:                      Pandas dataframe
+                            The dataframe containing all x values -> preprocessed, shape (n, 1).
+    y:		                Pandas dataframe
+                            The dataframe containing all y values -> hate_speech, shape (n, 1).
 
     Returns
     ----------
-    x:        Pandas dataframe
-              The dataframe containing balanced x values -> preprocessed, shape (n, 1).
-    y:		  Pandas dataframe
-              The dataframe containing balanced y values -> hate_speech, shape (n, 1).
+    x_balanced_shuffled:    Pandas dataframe
+                            The dataframe containing balanced x values -> preprocessed, shape (n, 1).
+    y_balanced_shuffled:	Pandas dataframe
+                            The dataframe containing balanced y values -> hate_speech, shape (n, 1).
 
     """
 
