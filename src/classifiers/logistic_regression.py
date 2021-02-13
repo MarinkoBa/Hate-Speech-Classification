@@ -9,18 +9,16 @@ import os
 
     
 def setup_log_reg_classifier(training_data, 
-			      y_training, 
-			      testing_data, 
-			      features="preprocessed", 
-			      method="count", 
-			      ngrams=(1,1)):
+            			      y_training, 
+            			      testing_data, 
+            			      features="preprocessed", 
+            			      method="count", 
+            			      ngrams=(1,1)):
     """
     Setup logistic regression model using sklearn implementation
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
     training_data:  	Pandas dataframe  
                     	The dataframe containing the training data for the classifier
     y_training:   	    Pandas dataframe
@@ -29,25 +27,22 @@ def setup_log_reg_classifier(training_data,
                     	The dataframe containing the testing data for the classifier
     features:         	String or list of strings if using multiple features
                     	Names of columns of df that are used for trainig the classifier
-    method: 		String
-    			Can be either "count" or "tfidf" for specifying method of feature weighting
-    ngrams:            tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    method: 		    String
+            			Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:             tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
                     
 
     Returns
     -------
-    model:		sklearn LogisticRegression Model
-    			Trained LogistciRegression Model
-    vec:        	sklearn CountVectorizer or TfidfVectorizer
+    model:		        sklearn LogisticRegression Model
+            			Trained LogistciRegression Model
+    vec:        	    sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
     
 
-    #generate x and y training data
-    
-    #y_training=training_data["hate_speech"].values
-    
+    # generate x and y training data
     if method=="count":
         vec, x_training, x_testing = define_features_vectorizer(features, training_data, testing_data,ngramrange=ngrams)
     elif method=="tfidf":
@@ -57,7 +52,6 @@ def setup_log_reg_classifier(training_data,
         return 1
     
     #train classifier
-    
     log_reg_classifier=LogisticRegression(max_iter=1000,class_weight="balanced")
     model=log_reg_classifier.fit(x_training,y_training.values.ravel())
     
@@ -70,13 +64,13 @@ def predict(model, X_testing):
     ----------
     model:             sklearn.Logistic Regression Model
                        Trained Logistic Regression Model
-    X_testing:   	Pandas dataframe
+    X_testing:   	   Pandas dataframe
                        The dataframe containing the testing data in vectorized form.
     
     Returns
     -------
     predictions:       Binary array
-    			The predictions array, containing 0 for no hate speech,
+                	   The predictions array, containing 0 for no hate speech,
                        1 for hate speech
     """
 

@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 
-def define_features_vectorizer(columns, training_data,testing_data = None ,ngramrange=(1,1)):
+def define_features_vectorizer(columns, training_data, testing_data = None, ngramrange=(1,1)):
     """
     Define the features for classification using CountVectorizer.
 
@@ -14,21 +14,21 @@ def define_features_vectorizer(columns, training_data,testing_data = None ,ngram
                     	The dataframe containing the training data for the classifier
     testing_data:   	Pandas dataframe  
                     	The dataframe containing the testing data for the classifier
-    ngramrange:        tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    ngramrange:         tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
                     
 
     Returns
     -------
     vectorizer:     	sklearn CountVectorizer
                     	CountVectorizer fit and transformed for training data
-    training_features: sparse matrix
-    			Document-term matrix for training data
-    testing_features:  sparse matrix
-    			Document-term matrix for testing data
+    training_features:  sparse matrix
+            			Document-term matrix for training data
+    testing_features:   sparse matrix
+            			Document-term matrix for testing data
     """
     #intialise Countvectorizer and fit transform to data
-    vectorizer=CountVectorizer(ngram_range=ngramrange)  # TODO investigate meaningful params
+    vectorizer = CountVectorizer(ngram_range = ngramrange)
     vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
@@ -45,7 +45,7 @@ def define_features_vectorizer(columns, training_data,testing_data = None ,ngram
     
     
     
-def define_features_tfidf(columns, training_data, testing_data = None ,ngramrange=(1, 1)):
+def define_features_tfidf(columns, training_data, testing_data = None, ngramrange=(1, 1)):
     """
     Define the features for classification using TFIDF.
 
@@ -57,21 +57,21 @@ def define_features_tfidf(columns, training_data, testing_data = None ,ngramrang
                     	The dataframe containing the training data for the classifier
     testing_data:   	Pandas dataframe  
                     	The dataframe containing the testing data for the classifier
-    ngramrange:        tuple (min_n, max_n), with min_n, max_n integer values
-                       range for ngrams used for vectorization
+    ngramrange:         tuple (min_n, max_n), with min_n, max_n integer values
+                        range for ngrams used for vectorization
                     
 
     Returns
     -------
-    tfidf_vectorizer:     	sklearn TfidfVectorizer
+    tfidf_vectorizer:   sklearn TfidfVectorizer
                     	TfidfVectorizer fit and transformed for training data
-    training_features: sparse matrix
-    			Document-term matrix for training data
-    testing_features:  sparse matrix
-    			Document-term matrix for testing data
+    training_features:  sparse matrix
+            			Document-term matrix for training data
+    testing_features:   sparse matrix
+            			Document-term matrix for testing data
     """
     #intialise Tfidfvectorizer and fit transform to data
-    tfidf_vectorizer=TfidfVectorizer(ngram_range=ngramrange)  # TODO investigate meaningful params
+    tfidf_vectorizer=TfidfVectorizer(ngram_range=ngramrange)
     tfidf_vectorizer.fit_transform(training_data[columns].values)
     
     #build matrixes for training_features and testing_features
