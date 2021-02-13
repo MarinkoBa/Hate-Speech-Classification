@@ -221,6 +221,20 @@ def get_all_locations(api):
 
 
 def get_retweeted_status_id(retweeted_status):
+    """
+    Get retweeted_status id which is in column retweeted_status 
+    
+    Parameters
+    ----------
+    retweeted_status            0 or dict
+                                Retweeted status if this tweet retweets it.
+
+    Returns
+    -------
+    retweeted_status_id         NaN or String
+                                The retweeted status id as a string or a Nan,
+                                if there is no retweet.
+    """
     if retweeted_status == 0:
         return np.nan
     else:

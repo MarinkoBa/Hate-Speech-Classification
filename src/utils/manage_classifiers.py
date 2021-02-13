@@ -1,15 +1,16 @@
 import pickle
 import os
 
-def save_classifier(model,vec):
+def save_classifier(model, vec):
     """
-    Saves classifier to subfolder models in current working directory, folder models needs to exist already
+    Saves classifier to subfolder models in current working directory, folder models 
+    needs to exist already
 
     Parameters
     ----------
-    model:		sklearn LogisticRegression Model
-    			Trained LogistciRegression Model 
-    vec:        	sklearn CountVectorizer or TfidfVectorizer
+    model:		        Model of implemented Classifiers
+            			Trained Model 
+    vec:        	    sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
     
@@ -23,20 +24,21 @@ def save_classifier(model,vec):
     
 def load_classifier(model_path,vec_path):
     """
-    Saves classifier to subfolder models in current working directory, folder models needs to exist already
+    Saves classifier to subfolder models in current working directory,
+    folder models needs to exist already.
     
     Parameters
     ----------
-    model_path:	String
-                       The path where the classifier is stored
+    model_path:	        String
+                        The path where the classifier is stored
     vec_path:	        String
-                       The path where the vectorizer is stored
+                        The path where the vectorizer is stored
 
     Returns
     ----------
-    model:		sklearn LogisticRegression Model
-    			Trained LogistciRegression Model 
-    vec:        	sklearn CountVectorizer or TfidfVectorizer
+    model:		        Model of implemented Classifiers
+            			Trained Model
+    vec:        	    sklearn CountVectorizer or TfidfVectorizer
                     	CountVectorizer or TfidfVectorizer fit and transformed for training data
     """
     

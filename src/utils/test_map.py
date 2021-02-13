@@ -4,9 +4,6 @@ import seaborn as sns
 from sklearn import metrics
 import pandas as pd
 
-#TODO add docstring
-
-
 def test_map(y_pred,y_test):
     """
     Get accurracy, precision and recall and save png of true positive,
@@ -14,11 +11,10 @@ def test_map(y_pred,y_test):
 
     Parameters
     ----------
-    prediction:        Binary array
-                    	array containing preddiction for test data for a model
-    y_test:		Pandas dataframe
-                  	The dataframe containing the test labels.
-                    
+    prediction:         Binary array
+                        array containing preddiction for test data for a model
+    y_test:		        Pandas dataframe
+                      	The dataframe containing the test labels.             
     """
     
     # get confusion matrix containig predicted and true labels

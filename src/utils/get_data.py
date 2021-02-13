@@ -72,7 +72,8 @@ def get_tweets_by_id(config, file_path):
 
 def get_tweet_text(tweet_id, api):
     try:
-        return api.get_status(tweet_id).text  # return the text from the tweet with ID if tweet available
+        # return the text from the tweet with ID if tweet available
+        return api.get_status(tweet_id).text
     except:
         return None
 
@@ -80,7 +81,8 @@ def get_tweet_text(tweet_id, api):
 def get_tweet_location(tweet_id, api):
     try:
         lat_long = api.get_status(tweet_id).geo['coordinates']
-        return str(lat_long[0]) + "|" + str(lat_long[1])  # return the location from the tweet with ID if tweet and tweet location available
+         # return the location from the tweet with ID if tweet and tweet location available
+        return str(lat_long[0]) + "|" + str(lat_long[1])
     except:
         return None
   
@@ -100,11 +102,11 @@ def get_datasets(first_file_path, second_file_path):
 
     Returns
     -------
-    df2:            Pandas dataframe
-                    The dataframe containing the data from the first csv file.
+    df2:                    Pandas dataframe
+                            The dataframe containing the data from the first csv file.
                     
-    df3:            Pandas dataframe
-                    The dataframe containing the data from the second csv file.
+    df3:                    Pandas dataframe
+                            The dataframe containing the data from the second csv file.
     """
     # class labels: 0 - hate speech 1 - offensive language 2 - neither
     df2 = pd.read_csv(first_file_path,

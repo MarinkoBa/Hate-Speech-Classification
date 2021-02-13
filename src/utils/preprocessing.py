@@ -13,24 +13,24 @@ stemmer = PorterStemmer()
 
 def preprocessing(text):
     """
-        Applies different steps of preprocessing to a text.
-        Preprocessing includes:
+    Applies different steps of preprocessing to a text.
+    Preprocessing includes:
 
-        - remove non-standard lexical tokens (which are not numeric or alphabetical)
-        - remove url and @name mentions
-        - remove standard stopwords (english stopwords from spacy)
-        - convert all letters to lower case
-        - perform stemming (PorterStemmer nltk)
-        
-        Parameters
-        ----------
-        text:      String
-                        Text which should be converted by preprocessing
+    - remove non-standard lexical tokens (which are not numeric or alphabetical)
+    - remove url and @name mentions
+    - remove standard stopwords (english stopwords from spacy)
+    - convert all letters to lower case
+    - perform stemming (PorterStemmer nltk)
+    
+    Parameters
+    ----------
+    text:                   String
+                            Text which should be converted by preprocessing
 
-        Returns
-        -------
-        preprocessed_text:  String
-                        Text which is converted by preprocessing.
+    Returns
+    -------
+    preprocessed_text:      String
+                            Text which is converted by preprocessing.
     """
 
     # remove (twitter) urls
@@ -65,25 +65,25 @@ def preprocessing(text):
 
 def preprocessing_restricted(text):
     """
-        Applies different steps of preprocessing to a text.
-        Preprocessing includes:
+    Applies different steps of preprocessing to a text.
+    Preprocessing includes:
 
-        - remove non-standard lexical tokens (which are not numeric or alphabetical)
-        - remove standard stopwords (english stopwords from spacy)
-        - convert all letters to lower case
-        - perform stemming (PorterStemmer nltk)
+    - remove non-standard lexical tokens (which are not numeric or alphabetical)
+    - remove standard stopwords (english stopwords from spacy)
+    - convert all letters to lower case
+    - perform stemming (PorterStemmer nltk)
 
-        In opposite to the preprocessing() method hashtags and @mentions will not be removed.
+    In opposite to the preprocessing() method hashtags and @mentions will not be removed.
 
-        Parameters
-        ----------
-        text:      String
-                        Text which should be converted by preprocessing
+    Parameters
+    ----------
+    text:                   String
+                            Text which should be converted by preprocessing
 
-        Returns
-        -------
-        preprocessed_text:  String
-                        Text which is converted by preprocessing.
+    Returns
+    -------
+    preprocessed_text:      String
+                            Text which is converted by preprocessing.
     """
 
     # remove (twitter) urls
