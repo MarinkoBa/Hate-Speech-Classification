@@ -37,8 +37,11 @@ if __name__ == "__main__":
 
     x_balanced, y_balanced = dataset_balancer.balance_data(df_concatenated[['preprocessed']], df_concatenated[['hate_speech']])
 
-    # cross validation
-    cross_validator.cross_validate(x_balanced, y_balanced)
+    # cross validation || all 4 tests include preprocessing_restricted & balanced dataset
+    cross_validator.cross_validate(x_balanced, y_balanced, method="count",ngrams=(1,1)) # option 1 -> CountVectorizer + unigrams
+    cross_validator.cross_validate(x_balanced, y_balanced, method="count",ngrams=(1,2)) # option 2 -> CountVectorizer + unigrams & bigrams
+    cross_validator.cross_validate(x_balanced, y_balanced, method="tfidf",ngrams=(1,1)) # option 3 -> TfidfVectorizer + unigrams
+    cross_validator.cross_validate(x_balanced, y_balanced, method="tfidf",ngrams=(1,2)) # option 4 -> TfidfVectorizer + unigrams & bigrams
 
     # split in test and training set
     #training_data, testing_data, training_y, testing_y = split_data(df_concatenated,
