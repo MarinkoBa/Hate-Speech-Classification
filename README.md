@@ -373,6 +373,8 @@ Avg recall Ensemble: 0.812296533100582
 -> Choose restricted preprocessing method
  
 
+ ### Retrieved data set for exemplary application of classifiers
+ ![Distribution of tweets over cities](/src/data/statistics.png)
  
 
  
