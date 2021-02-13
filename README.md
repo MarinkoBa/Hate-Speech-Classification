@@ -507,6 +507,8 @@ Option 4:  -> TFIDF + unigrams&bigrams
 - F1 Score Logistic Regression: 0.8347178899853515 <br>
 - F1 Score Ensemble: 0.8433810581019444 <br>
 
+-> best F1 Score Ensamble: Option 3:  -> TFIDF + unigrams
+
 
 
  ### Retrieved data set for exemplary application of classifiers
