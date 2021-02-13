@@ -319,59 +319,195 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  
  normale preprocessing methode:
 
-Avg error SVM: 0.19626335156816574
-Avg error Decision Tree: 0.22287256806725697
-Avg error Random Forrest: 0.18555347640663378
-Avg error Logistic Regression: 0.1757183061601502
-Avg error Ensemble: 0.17604641376655236
+- Avg error SVM: 0.19626335156816574 <br>
+- Avg error Decision Tree: 0.22287256806725697 <br>
+- Avg error Random Forrest: 0.18555347640663378 <br>
+- Avg error Logistic Regression: 0.1757183061601502 <br>
+- Avg error Ensemble: 0.17604641376655236 <br>
 ----------------------
-Avg accuracy SVM: 0.8037366484318342
-Avg accuracy Decision Tree: 0.777127431932743
-Avg accuracy Random Forrest: 0.8144465235933662
-Avg accuracy Logistic Regression: 0.8242816938398498
-Avg accuracy Ensemble: 0.8239535862334477
+- Avg accuracy SVM: 0.8037366484318342 <br>
+- Avg accuracy Decision Tree: 0.777127431932743 <br>
+- Avg accuracy Random Forrest: 0.8144465235933662 <br>
+- Avg accuracy Logistic Regression: 0.8242816938398498 <br>
+- Avg accuracy Ensemble: 0.8239535862334477 <br>
 ----------------------
-Avg precision SVM: 0.8093553103221389
-Avg precision Decision Tree: 0.7783486639626233
-Avg precision Random Forrest: 0.8194140680878471
-Avg precision Logistic Regression: 0.8534382082078651
-Avg precision Ensemble: 0.8459772787293709
+- Avg precision SVM: 0.8093553103221389 <br>
+- Avg precision Decision Tree: 0.7783486639626233 <br>
+- Avg precision Random Forrest: 0.8194140680878471 <br>
+- Avg precision Logistic Regression: 0.8534382082078651 <br>
+- Avg precision Ensemble: 0.8459772787293709 <br>
 ----------------------
-Avg recall SVM: 0.7948433600137679
-Avg recall Decision Tree: 0.7752060240897344
-Avg recall Random Forrest: 0.8065528025545291
-Avg recall Logistic Regression: 0.7828394538876038
-Avg recall Ensemble: 0.7920669863105279
+- Avg recall SVM: 0.7948433600137679 <br>
+- Avg recall Decision Tree: 0.7752060240897344 <br>
+- Avg recall Random Forrest: 0.8065528025545291 <br>
+- Avg recall Logistic Regression: 0.7828394538876038 <br>
+- Avg recall Ensemble: 0.7920669863105279 <br>
 
 
 restricted preprocessing:
 
-Avg error SVM: 0.16517281308849113
-Avg error Decision Tree: 0.17276790430741956
-Avg error Random Forrest: 0.15626720147549936
-Avg error Logistic Regression: 0.15047541878933846
-Avg error Ensemble: 0.14845359071008407
+- Avg error SVM: 0.16517281308849113 <br>
+- Avg error Decision Tree: 0.17276790430741956 <br>
+- Avg error Random Forrest: 0.15626720147549936 <br>
+- Avg error Logistic Regression: 0.15047541878933846 <br>
+- Avg error Ensemble: 0.14845359071008407 <br>
 ----------------------
-Avg accuracy SVM: 0.8348271869115088
-Avg accuracy Decision Tree: 0.8272320956925805
-Avg accuracy Random Forrest: 0.8437327985245006
-Avg accuracy Logistic Regression: 0.8495245812106615
-Avg accuracy Ensemble: 0.851546409289916
+- Avg accuracy SVM: 0.8348271869115088 <br>
+- Avg accuracy Decision Tree: 0.8272320956925805 <br>
+- Avg accuracy Random Forrest: 0.8437327985245006 <br>
+- Avg accuracy Logistic Regression: 0.8495245812106615 <br>
+- Avg accuracy Ensemble: 0.851546409289916 <br>
 ----------------------
-Avg precision SVM: 0.8453375116865516
-Avg precision Decision Tree: 0.8482504349312057
-Avg precision Random Forrest: 0.8676780161941668
-Avg precision Logistic Regression: 0.8812210994092959
-Avg precision Ensemble: 0.8811853070043323
+- Avg precision SVM: 0.8453375116865516 <br>
+- Avg precision Decision Tree: 0.8482504349312057 <br>
+- Avg precision Random Forrest: 0.8676780161941668 <br>
+- Avg precision Logistic Regression: 0.8812210994092959 <br>
+- Avg precision Ensemble: 0.8811853070043323 <br>
 ----------------------
-Avg recall SVM: 0.8191968729989216
-Avg recall Decision Tree: 0.7968548740212839
-Avg recall Random Forrest: 0.8110103111670066
-Avg recall Logistic Regression: 0.8076247964111127
-Avg recall Ensemble: 0.812296533100582
+- Avg recall SVM: 0.8191968729989216 <br>
+- Avg recall Decision Tree: 0.7968548740212839 <br>
+- Avg recall Random Forrest: 0.8110103111670066 <br>
+- Avg recall Logistic Regression: 0.8076247964111127 <br>
+- Avg recall Ensemble: 0.812296533100582 <br>
 
 -> Choose restricted preprocessing method
+
+
+ ### Results using restricted preprocessing & balanced dataset, all 4 combinations: CountVectorizer | TfIdf - unigrams | unigrams & bigrams:
  
+ Option 1:  -> CountVectorizer + unigrams
+
+- Avg error SVM: 0.16657579062159217 <br>
+- Avg error Decision Tree: 0.17780806979280264 <br>
+- Avg error Random Forrest: 0.15659760087241004 <br>
+- Avg error Logistic Regression: 0.15152671755725192 <br>
+- Avg error Ensemble: 0.14918211559432934 <br>
+----------------------
+- Avg accuracy SVM: 0.8334242093784079 <br>
+- Avg accuracy Decision Tree: 0.8221919302071974 <br>
+- Avg accuracy Random Forrest: 0.8434023991275899 <br>
+- Avg accuracy Logistic Regression: 0.8484732824427482 <br>
+- Avg accuracy Ensemble: 0.8508178844056706 <br>
+----------------------
+- Avg precision SVM: 0.8431290270480719 <br>
+- Avg precision Decision Tree: 0.8405728429437683 <br>
+- Avg precision Random Forrest: 0.8715008501422272 <br>
+- Avg precision Logistic Regression: 0.8811684281627038 <br>
+- Avg precision Ensemble: 0.8810063708250233 <br>
+----------------------
+- Avg recall SVM: 0.8190693533478186 <br>
+- Avg recall Decision Tree: 0.7951153334879827 <br>
+- Avg recall Random Forrest: 0.8055459766199009 <br>
+- Avg recall Logistic Regression: 0.805507181794173 <br>
+- Avg recall Ensemble: 0.8110359864449526 <br>
+----------------------
+----------------------
+- F1 Score SVM: 0.8309250629982712 <br>
+- F1 Score Decision Tree: 0.8172124320127871 <br>
+- F1 Score Random Forrest: 0.8372264772216413 <br>
+- F1 Score Logistic Regression: 0.8416407909917994 <br>
+- F1 Score Ensemble: 0.8445744492817719 <br>
+
+Option 2:  -> CountVectorizer + unigrams&bigrams
+
+- Avg error SVM: 0.14923664122137403 <br>
+- Avg error Decision Tree: 0.17093784078516902 <br>
+- Avg error Random Forrest: 0.15932388222464555 <br>
+- Avg error Logistic Regression: 0.1504907306434024 <br>
+- Avg error Ensemble: 0.1489094874591058 <br>
+----------------------
+- Avg accuracy SVM: 0.8507633587786259 <br>
+- Avg accuracy Decision Tree: 0.8290621592148311 <br>
+- Avg accuracy Random Forrest: 0.8406761177753544 <br>
+- Avg accuracy Logistic Regression: 0.8495092693565975 <br>
+- Avg accuracy Ensemble: 0.8510905125408943 <br>
+----------------------
+- Avg precision SVM: 0.8860824907667777 <br>
+- Avg precision Decision Tree: 0.8487757851759218 <br>
+- Avg precision Random Forrest: 0.8804947810019144 <br>
+- Avg precision Logistic Regression: 0.8939233518779457 <br>
+- Avg precision Ensemble: 0.8935484602185614 <br>
+----------------------
+- Avg recall SVM: 0.8049453092395706 <br>
+- Avg recall Decision Tree: 0.8008090880023777 <br>
+- Avg recall Random Forrest: 0.7883257745438029 <br>
+- Avg recall Logistic Regression: 0.7929642982009459 <br>
+- Avg recall Ensemble: 0.7969882544445406 <br>
+----------------------
+----------------------
+- F1 Score SVM: 0.8435673790098013 <br>
+- F1 Score Decision Tree: 0.8240950477869279 <br>
+- F1 Score Random Forrest: 0.8318650293567708 <br>
+- F1 Score Logistic Regression: 0.8404226604352475 <br>
+- F1 Score Ensemble: 0.8425106907105752 <br>
+
+Option 3:  -> TFIDF + unigrams
+
+- Avg error SVM: 0.14585605234460197 <br>
+- Avg error Decision Tree: 0.20408942202835334 <br>
+- Avg error Random Forrest: 0.17104689203925846 <br>
+- Avg error Logistic Regression: 0.15441657579062157 <br>
+- Avg error Ensemble: 0.14874591057797165 <br>
+----------------------
+- Avg accuracy SVM: 0.854143947655398 <br>
+- Avg accuracy Decision Tree: 0.7959105779716468 <br>
+- Avg accuracy Random Forrest: 0.8289531079607416 <br>
+- Avg accuracy Logistic Regression: 0.8455834242093783 <br>
+- Avg accuracy Ensemble: 0.8512540894220283 <br>
+----------------------
+- Avg precision SVM: 0.8795617927693531 <br>
+- Avg precision Decision Tree: 0.7870830760505199 <br>
+- Avg precision Random Forrest: 0.8204297260343305 <br>
+- Avg precision Logistic Regression: 0.8867509234461292 <br>
+- Avg precision Ensemble: 0.879470836496006 <br>
+----------------------
+- Avg recall SVM: 0.8204089657136766 <br>
+- Avg recall Decision Tree: 0.8114804204158437 <br>
+- Avg recall Random Forrest: 0.842133438434096 <br>
+- Avg recall Logistic Regression: 0.7921347242721999 <br>
+- Avg recall Ensemble: 0.8138447214014068 <br>
+----------------------
+----------------------
+- F1 Score SVM: 0.8489562271425102 <br>
+- F1 Score Decision Tree: 0.7990955715772666 <br>
+- F1 Score Random Forrest: 0.8311399181031899 <br>
+- F1 Score Logistic Regression: 0.8367767026857877 <br>
+- F1 Score Ensemble: 0.8453860765296495 <br>
+
+Option 4:  -> TFIDF + unigrams&bigrams
+
+- Avg error SVM: 0.1489640130861505 <br>
+- Avg error Decision Tree: 0.22791712104689205 <br>
+- Avg error Random Forrest: 0.18675027262813523 <br>
+- Avg error Logistic Regression: 0.16079607415485278 <br>
+- Avg error Ensemble: 0.1549618320610687 <br>
+----------------------
+- Avg accuracy SVM: 0.8510359869138495 <br>
+- Avg accuracy Decision Tree: 0.772082878953108 <br>
+- Avg accuracy Random Forrest: 0.8132497273718646 <br>
+- Avg accuracy Logistic Regression: 0.8392039258451472 <br>
+- Avg accuracy Ensemble: 0.8450381679389313 <br>
+----------------------
+- Avg precision SVM: 0.8559000422394357 <br>
+- Avg precision Decision Tree: 0.7547564870886946 <br>
+- Avg precision Random Forrest: 0.7888076360757029 <br>
+- Avg precision Logistic Regression: 0.8585147461136706 <br>
+- Avg precision Ensemble: 0.8520273300275368 <br>
+----------------------
+- Avg recall SVM: 0.8439628790303093 <br>
+- Avg recall Decision Tree: 0.8062086510203162 <br>
+- Avg recall Random Forrest: 0.8556716536878483 <br>
+- Avg recall Logistic Regression: 0.8122046854834031 <br>
+- Avg recall Ensemble: 0.8349085059652281 <br>
+----------------------
+----------------------
+- F1 Score SVM: 0.849889546706491 <br>
+- F1 Score Decision Tree: 0.7796345920213817 <br>
+- F1 Score Random Forrest: 0.8208803097782366 <br>
+- F1 Score Logistic Regression: 0.8347178899853515 <br>
+- F1 Score Ensemble: 0.8433810581019444 <br>
+
+
 
  ### Retrieved data set for exemplary application of classifiers
  ![Distribution of tweets over cities](/src/data/statistics.png)
