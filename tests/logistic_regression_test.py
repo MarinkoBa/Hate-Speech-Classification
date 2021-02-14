@@ -14,7 +14,7 @@ import sklearn
 import scipy
 
 
-class TestDataCollection(unittest.TestCase):
+class TestLogisticRegressionClassifier(unittest.TestCase):
     def setUp(self):
         self.df = load_data(os.path.join('src', 'data', 'tweets.csv'))
         self.df2, self.df3 = get_datasets(os.path.join('src', 'data', 'labeled_data.csv'),
@@ -82,7 +82,7 @@ class TestDataCollection(unittest.TestCase):
         self.assertTrue(([0,1] ==np.unique(predict(model2,x_testing2))).all())
 
         
-        """ Test correct data types and corrrect range of predicted values (1,0) for predict with countVectorizer"""                
+        """ Test correct data types and corrrect range of predicted values (1,0) for predict with tfidfVectorizer"""                
                                                               
         self.assertIsInstance(predict(model2,x_testing2),
                               np.ndarray)

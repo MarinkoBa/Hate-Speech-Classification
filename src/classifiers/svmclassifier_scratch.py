@@ -129,7 +129,7 @@ class SVMClassifier_scratch:
         return y_pred
 
 
-def setup_svm_classifier(training_data, testing_data, y_training, features, method="count", ngrams=(1,1)):
+def setup_svm_classifier(training_data, y_training, testing_data, features, method="count", ngrams=(1,1)):
     """
     Setup SVM classifier model using own implementation
 

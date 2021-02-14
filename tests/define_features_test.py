@@ -14,7 +14,7 @@ import sklearn
 import scipy
 
 
-class TestDataCollection(unittest.TestCase):
+class TestDefineFeatures(unittest.TestCase):
     def setUp(self):
         self.df = load_data(os.path.join('src', 'data', 'tweets.csv'))
         self.df2, self.df3 = get_datasets(os.path.join('src', 'data', 'labeled_data.csv'),

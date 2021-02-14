@@ -24,8 +24,7 @@ def save_classifier(model, vec):
     
 def load_classifier(model_path,vec_path):
     """
-    Saves classifier to subfolder models in current working directory,
-    folder models needs to exist already.
+    Loads classifier from subfolder .
     
     Parameters
     ----------
