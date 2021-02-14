@@ -171,10 +171,10 @@ def concatenate_datasets(file_path_tweets, df2, df3):
     df = pd.read_csv(file_path_tweets,
                  sep=',',
                  header=None,
-                 names=['label', 'text', 'FIXME'])
+                 names=['label', 'text', 'EMPTY'])
     
     # drop column
-    df = df.drop(['FIXME'], axis=1)
+    df = df.drop(['EMPTY'], axis=1)
     df = df.dropna()
     
     # concatenate alle dataframes
