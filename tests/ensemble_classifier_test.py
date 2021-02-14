@@ -11,7 +11,6 @@ import unittest
 import scipy
 import sklearn
 
-# TODO: Check if tests works correctly
 class TestEnsemble(unittest.TestCase):
     def setUp(self):
         self.df = load_data(os.path.join('src', 'data', 'tweets.csv'))
@@ -74,7 +73,7 @@ class TestEnsemble(unittest.TestCase):
 
         self.assertTrue(([0, 1] == np.unique(self.ensemble1.predict(x_testing))).all())
 
-        """ Test correct data types and corrrect range of predicted values (1,0) for predict with countVectorizer"""
+        """ Test correct data types and corrrect range of predicted values (1,0) for predict with tfidfVectorizer"""
 
         self.assertIsInstance(self.ensemble2.predict(x_testing2),
                               np.ndarray)

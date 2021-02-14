@@ -2,20 +2,19 @@ from src.utils.get_data import load_data
 from src.utils.get_data import get_datasets
 from src.utils.get_data import concatenate_datasets
 from src.utils.get_data import split_data
-from src.classifiers.logistic_regression_scratch import setup_log_reg_classifier
-from src.classifiers.logistic_regression_scratch import LogisticRegression_scratch
-from src.classifiers.logistic_regression_scratch import predict 
+from src.classifiers.svm_classifier import setup_svm_classifier
+from src.classifiers.svm_classifier import predict 
 
 
 import os
 import pandas as pd
 import numpy as np
 import unittest
-import scipy
 import sklearn
+import scipy
 
 
-class TestLogisticRegressionScratch(unittest.TestCase):
+class TestSvmClassifier(unittest.TestCase):
     def setUp(self):
         self.df = load_data(os.path.join('src', 'data', 'tweets.csv'))
         self.df2, self.df3 = get_datasets(os.path.join('src', 'data', 'labeled_data.csv'),
@@ -33,13 +32,13 @@ class TestLogisticRegressionScratch(unittest.TestCase):
                                   
 
         
-    def test_setup_log_reg_classifier_scratch(self):
-        """ Test Case for Setup of Logistic Regression"""
+    def test_setup_svm_classifier(self):
+        """ Test Case for setup of SVM Classifier"""
         
 
-        model ,vec, x_testing=setup_log_reg_classifier(self.training_data, self.training_y, self.testing_data,"text", method="count",iterations=200)
+        model ,vec, x_testing=setup_svm_classifier(self.training_data, self.training_y, self.testing_data,"text", method="count")
         
-        model2 ,vec_tfidf, x_testing2=setup_log_reg_classifier(self.training_data, self.training_y, self.testing_data,"text", method="tfidf",iterations=200)
+        model2 ,vec_tfidf, x_testing2=setup_svm_classifier(self.training_data, self.training_y, self.testing_data,"text", method="tfidf")
   
                                                                                       
         """ Test correct data types for countVectorizer"""                
@@ -49,7 +48,7 @@ class TestLogisticRegressionScratch(unittest.TestCase):
         
         self.assertIsInstance(x_testing, scipy.sparse.csr.csr_matrix)
         
-        self.assertIsInstance(model, LogisticRegression_scratch)
+        self.assertIsInstance(model, sklearn.svm.SVC)
         
         """ Test correct data types TfidfVectorizer"""                
                                                               
@@ -58,21 +57,21 @@ class TestLogisticRegressionScratch(unittest.TestCase):
         
         self.assertIsInstance(x_testing2, scipy.sparse.csr.csr_matrix)
         
-        self.assertIsInstance(model2, LogisticRegression_scratch)
+        self.assertIsInstance(model2, sklearn.svm.SVC)
         
         
         """ Test correct behaviour for wrong method"""  
         
-        self.assertTrue(setup_log_reg_classifier(self.training_data, self.training_y, self.testing_data,"text", method="ijfsiohf"),
+        self.assertTrue(setup_svm_classifier(self.training_data, self.training_y, self.testing_data,"text", method="ijfsiohf"),
                         1)  
                         
     def test_predict(self):
-        """ Test Case for Predict for Logistic Regression"""
+        """ Test Case for Predict for Svm Classifier"""
         
 
-        model ,vec, x_testing=setup_log_reg_classifier(self.training_data, self.training_y, self.testing_data,"text", method="count", iterations=2000)
+        model ,vec, x_testing=setup_svm_classifier(self.training_data, self.training_y, self.testing_data,"text", method="count")
         
-        model2 ,vec_tfidf, x_testing2=setup_log_reg_classifier(self.training_data, self.training_y, self.testing_data,"text", method="tfidf", iterations=2000)
+        model2 ,vec_tfidf, x_testing2=setup_svm_classifier(self.training_data, self.training_y, self.testing_data,"text", method="tfidf")
   
                                                                                       
         """ Test correct data types and corrrect range of predicted values (1,0) for predict with countVectorizer"""                

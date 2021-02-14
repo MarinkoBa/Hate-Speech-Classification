@@ -248,20 +248,19 @@ class LogisticRegression_scratch:
      
 
     
-def setup_log_reg_classifier(training_data,y_training, testing_data, features, method="count", ngrams=(1,1),iterations=100000):
+def setup_log_reg_classifier(training_data, y_training, testing_data, features, method="count", ngrams=(1,1),iterations=100000):
     """
     Setup logistic regression model using own implementation
 
     Parameters
     ----------
-    df:             	Pandas dataframe
-                    	The dataframe containing both training_data and testing_data
+
     training_data:  	Pandas dataframe  
                     	The dataframe containing the training data for the classifier
     testing_data:   	Pandas dataframe  
                     	The dataframe containing the testing data for the classifier
-    y_training:   	Pandas dataframe  
-                    	The dataframe containing the y training data for the classifier
+    y_training:   	Pandas Series 
+                    	The Series containing the y training data for the classifier
     features:         	String or list of strings if using multiple features
                     	Names of columns of df that are used for trainig the classifier
     method: 		String
