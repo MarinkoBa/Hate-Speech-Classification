@@ -39,7 +39,6 @@ def test_map(y_pred,y_test):
     plt.savefig("mygraph.png")
     
     # print acurracy, precision and recall
-    #TODO decide whether to use print or just return values 
     
     print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
     print("Precision:",metrics.precision_score(y_test, y_pred))

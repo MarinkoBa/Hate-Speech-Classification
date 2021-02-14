@@ -173,7 +173,7 @@ def concatenate_datasets(file_path_tweets, df2, df3):
                  header=None,
                  names=['label', 'text', 'FIXME'])
     
-    # drop column FIXME -> why is it even there?, then drop rows without text
+    # drop column
     df = df.drop(['FIXME'], axis=1)
     df = df.dropna()
     
