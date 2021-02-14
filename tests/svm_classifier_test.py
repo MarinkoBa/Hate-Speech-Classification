@@ -16,11 +16,11 @@ import scipy
 
 class TestSvmClassifier(unittest.TestCase):
     def setUp(self):
-        self.df = load_data(os.path.join('src', 'data', 'tweets.csv'))
-        self.df2, self.df3 = get_datasets(os.path.join('src', 'data', 'labeled_data.csv'),
-                                os.path.join('src', 'data',
+        self.df = load_data(os.path.join(os.path.pardir, 'src', 'data', 'tweets.csv'))
+        self.df2, self.df3 = get_datasets(os.path.join(os.path.pardir, 'src', 'data', 'labeled_data.csv'),
+                                os.path.join(os.path.pardir, 'src', 'data',
                                              'hatespeech_text_label_vote_RESTRICTED_100K.csv'))
-        self.df_concatenated = concatenate_datasets(os.path.join('data', 'tweets.csv'),
+        self.df_concatenated = concatenate_datasets(os.path.join(os.path.pardir, 'src', 'data', 'tweets.csv'),
                                            self.df2,
                                            self.df3)
                

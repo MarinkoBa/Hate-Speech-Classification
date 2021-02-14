@@ -129,8 +129,8 @@ def get_datasets(first_file_path, second_file_path):
     # altering the DataFrame 
     df3 = df3[['label', 'text']] 
     
-    export_data(df2, os.path.join('data', 'tweets_labeled_data.csv'))
-    export_data(df3, os.path.join('data', 'tweets_hatespeech_text.csv'))
+    export_data(df2, os.path.join(os.path.pardir,'src','data', 'tweets_labeled_data.csv'))
+    export_data(df3, os.path.join(os.path.pardir,'src','data', 'tweets_hatespeech_text.csv'))
     
     return df2, df3
 
