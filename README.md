@@ -101,7 +101,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - run m-fold cross-validation to determine the classifier with the smallest error
   - in addition to cross validation we want to use the F1-Score
   
-#### Selection of meaninful tweets (02/01/2021) 
+#### Selection of meaninful tweets (02/01/2021) (mainly responsible: Sarah Bopp)
 - select tweets from the twitter API which are:
   - english speech
   - located in United States (USA)
@@ -516,7 +516,7 @@ Option 4:  -> TFIDF + unigrams&bigrams
 
 
  ### Retrieved data set for exemplary application of classifiers
- ![Distribution of tweets over cities](/src/utils/statistics.png)
+ ![Distribution of tweets over cities](/src/data/statistics.png)
  In order to show an exemplary application of our hate speech classifiers, we queried tweets posted on the 12th February, 2021 in the 50 largest cities per US state. Above you can see the distribution of tweets per city.
  
  
