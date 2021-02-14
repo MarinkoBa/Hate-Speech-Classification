@@ -105,7 +105,7 @@ def cross_validate(x, y, method ,ngrams, n_splits=10):
 
         print('Ensemble Classifier: ')
         ensemble = EnsembleClassifier()
-        x_test = ensemble.train(x_train, y_train, x_test, method=method,ngrams=ngrams)
+        x_test, vec = ensemble.train(x_train, y_train, x_test, method=method,ngrams=ngrams)
         y_pred_ens = ensemble.predict(x_test)
         error_ens, acc_ens, prec_ens, rec_ens = calculate_metrics(y_test, y_pred_ens)
         print('Error: ' + str(error_ens))

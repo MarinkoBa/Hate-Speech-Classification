@@ -34,10 +34,10 @@ class TestEnsemble(unittest.TestCase):
         """ Test Case for Feature Defintion using CountVectorizer"""
 
         # count
-        x_testing = self.ensemble1.train(self.training_data, self.training_y, self.testing_data, features='text',
+        x_testing, vec = self.ensemble1.train(self.training_data, self.training_y, self.testing_data, features='text',
                                          method='count')
         # tfidf
-        x_testing2 = self.ensemble2.train(self.training_data, self.training_y, self.testing_data, features='text',
+        x_testing2, vec = self.ensemble2.train(self.training_data, self.training_y, self.testing_data, features='text',
                                           method='tfidf')
 
         """ Test correct data types for countVectorizer"""
@@ -60,10 +60,10 @@ class TestEnsemble(unittest.TestCase):
         """ Test Case for Feature Defintion using CountVectorizer"""
 
         # count
-        x_testing = self.ensemble1.train(self.training_data, self.training_y, self.testing_data, features='text',
+        x_testing, vec = self.ensemble1.train(self.training_data, self.training_y, self.testing_data, features='text',
                                          method='count')
         # tfidf
-        x_testing2 = self.ensemble2.train(self.training_data, self.training_y, self.testing_data, features='text',
+        x_testing2, vec = self.ensemble2.train(self.training_data, self.training_y, self.testing_data, features='text',
                                           method='tfidf')
 
         """ Test correct data types and corrrect range of predicted values (1,0) for predict with countVectorizer"""

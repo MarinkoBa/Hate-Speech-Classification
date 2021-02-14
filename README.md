@@ -19,11 +19,15 @@ So far, we do not use any existing code, but we are using the example project fr
 - N-Grams (Daniela) Done
 - Balance Tweets (Marinko) Done
 - Location Tweets (Sarah) Done
-- auf Karte markieren? (nur wenn Ergebnisse interessant sind bzw. gut darstellbar) (Marinko)
-- Tests (Typen etc.) (Daniela)
-- Dateipfade anpassen + Instructions ergänzen
-- Optionen testen: balanced als Grundlage: preprocessing 2x (für eine Methode entscheiden) (Fabio), unigram, bigram, method,f1-score (tfidf oder count)(Marinko)
-- Kommentare anpassen/ korregieren (Sarah)
+- auf Karte markieren? (nur wenn Ergebnisse interessant sind bzw. gut darstellbar) (Marinko) Done
+- Tests (Typen etc.) (Daniela) 
+- Dateipfade anpassen + Instructions ergänzen / Anleitung (Fabio)
+- Optionen testen: balanced als Grundlage: preprocessing 2x (für eine Methode entscheiden) (Fabio), unigram, bigram, method,f1-score (tfidf oder count)(Marinko) Done
+- Kommentare anpassen / korrigieren (Sarah)
+- Mehr USA Tweets herunterladen (Sarah)
+- Karte mit mehr USA Tweets erstellen (Marinko)
+- README überarbeiten (Daniela)
+- Main Methode Verlauf (Marinko)
 
                   
 
