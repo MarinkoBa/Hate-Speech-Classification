@@ -514,6 +514,12 @@ Option 4:  -> TFIDF + unigrams&bigrams
  ### Retrieved data set for exemplary application of classifiers
  ![Distribution of tweets over cities](/src/utils/statistics.png)
  In order to show an exemplary application of our hate speech classifiers, we queried tweets posted on the 12th February, 2021 in the 50 largest cities per US state. Above you can see the distribution of tweets per city.
+ 
+ 
+ 
+ ### USA Hate Speech Map
+ 
+ ![Tweets availability](/src/data/USA_Hate_Speech_Map.png)
 
  
 
