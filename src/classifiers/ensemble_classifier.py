@@ -90,7 +90,7 @@ class EnsembleClassifier:
         self.forest_model.fit(X_training, training_target.values.ravel())
         self.logistic_model.fit(X_training, training_target.values.ravel())
 
-        return X_testing
+        return X_testing, vec
 
     def predict(self, X_testing):
         """
