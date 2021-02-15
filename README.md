@@ -484,6 +484,9 @@ Option 3:  -> TFIDF + unigrams
 - F1 Score Logistic Regression: 0.8367767026857877 <br>
 - F1 Score Ensemble: 0.8453860765296495 <br>
 
+![Table Option3](/src/data/option3_table.png)
+![Option3 Bar](/src/data/option3.png)
+
 Option 4:  -> TFIDF + unigrams&bigrams
 
 - Avg error SVM: 0.1489640130861505 <br>
@@ -516,6 +519,9 @@ Option 4:  -> TFIDF + unigrams&bigrams
 - F1 Score Random Forrest: 0.8208803097782366 <br>
 - F1 Score Logistic Regression: 0.8347178899853515 <br>
 - F1 Score Ensemble: 0.8433810581019444 <br>
+
+![Table Option4](/src/data/option4_table.png)
+![Option4 Bar](/src/data/option4.png)
 
 -> best F1 Score Ensamble: Option 3:  -> TFIDF + unigrams
 
