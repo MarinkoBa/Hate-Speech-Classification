@@ -533,7 +533,11 @@ Option 4:  -> TFIDF + unigrams&bigrams
  
  ### Unit Test Code Coverage
  
+ The code coverage of the implemented classifiers:
+ 
  ![Tweets availability](/src/data/test_coverage_classifier.PNG)
+ 
+ The code coverage of the utils scripts:
  
  ![Tweets availability](/src/data/test_coverage_utils.PNG)
 
