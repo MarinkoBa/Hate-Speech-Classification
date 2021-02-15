@@ -530,6 +530,12 @@ Option 4:  -> TFIDF + unigrams&bigrams
  ### USA Hate Speech Map
  
  ![Tweets availability](/src/data/USA_Hate_Speech_Map.png)
+ 
+ ### Unit Test Code Coverage
+ 
+ ![Tweets availability](/src/data/test_coverage_classifier.png)
+ 
+ ![Tweets availability](/src/data/test_coverage_utils.png)
 
  
 
