@@ -529,8 +529,8 @@ Comparing the F1 scores for all options, you can identify the SVM Classifier of 
 ![F1 score Bar](/src/data/f1_score.png)
 
  ### Retrieved data set for exemplary application of classifiers
- ![Distribution of tweets over cities](/src/data/statistics.png)
- In order to show an exemplary application of our hate speech classifiers, we queried tweets posted on the 12th February, 2021 in the 50 largest cities per US state. Above you can see the distribution of tweets per city.
+ ![Distribution of tweets over cities](/src/data/statistics_all.png)
+ In order to show an exemplary application of our hate speech classifiers, we queried tweets posted on the 12th and 15th February, 2021 in the 50 largest cities per US state. Above you can see the distribution of tweets per city.
  
  
  
