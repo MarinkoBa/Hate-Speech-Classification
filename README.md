@@ -448,6 +448,9 @@ Option 2:  -> CountVectorizer + unigrams&bigrams
 - F1 Score Logistic Regression: 0.8404226604352475 <br>
 - F1 Score Ensemble: 0.8425106907105752 <br>
 
+![Table Option2](/src/data/option2_table.png)
+![Option2 Bar](/src/data/option2.png)
+
 Option 3:  -> TFIDF + unigrams
 
 - Avg error SVM: 0.14585605234460197 <br>
