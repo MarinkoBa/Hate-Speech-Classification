@@ -534,9 +534,13 @@ Comparing the F1 scores for all options, you can identify the SVM Classifier of 
  
  
  
- ### USA Hate Speech Map
+ ### USA Hate Speech Map (~1000 tweets per US state) 
  
  ![Tweets availability](/src/data/USA_Hate_Speech_Map_1000_tweets_per_state.png)
+ 
+  ### USA Hate Speech Map (3000-7000 tweets per US state) 
+ 
+ ![Tweets availability](/src/data/USA_Hate_Speech_Map_All_Tweets.png)
  
  ### Unit Test Code Coverage
  
