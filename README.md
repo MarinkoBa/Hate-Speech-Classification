@@ -412,6 +412,9 @@ restricted preprocessing:
 - F1 Score Logistic Regression: 0.8416407909917994 <br>
 - F1 Score Ensemble: 0.8445744492817719 <br>
 
+![Table Option1](/src/data/option1_table.png)
+![Option1 Bar](/src/data/option1.png)
+
 Option 2:  -> CountVectorizer + unigrams&bigrams
 
 - Avg error SVM: 0.14923664122137403 <br>
