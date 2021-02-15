@@ -523,9 +523,10 @@ Option 4:  -> TFIDF + unigrams&bigrams
 ![Table Option4](/src/data/option4_table.png)
 ![Option4 Bar](/src/data/option4.png)
 
--> best F1 Score Ensamble: Option 3:  -> TFIDF + unigrams
 
-
+Comparing the F1 scores for all options, you can identify the SVM Classifier of Option 4 as the best one, so using TF-IDF plus unigrams and bigrams:
+![Table F1 scores](/src/data/f1_score_table.png)
+![F1 score Bar](/src/data/f1_score.png)
 
  ### Retrieved data set for exemplary application of classifiers
  ![Distribution of tweets over cities](/src/data/statistics.png)
