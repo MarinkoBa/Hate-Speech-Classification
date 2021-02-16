@@ -11,7 +11,8 @@ fk269@stud.uni-heidelberg.de
 Tratz-Weinmann@stud.uni-heidelberg.de
 
 ### Existing code fragments:
-So far, we do not use any existing code, but we are using the example project from the tutorial as basis for our project structure.
+ We do not use any existing code, but we are using the example project from the tutorial as basis for our project structure and existing libraries thnat are listed in the requirements.txt.
+ 
 
 ## Project State
 
@@ -31,34 +32,23 @@ So far, we do not use any existing code, but we are using the example project fr
 
                   
 
-### Planning State:
-We have started with the downloading and processing of our data.
+Following you find the current state of the project ordered by the timeline in which the individual steps where implemented.
 
-#### Done: 
-
-##### Twitter API
-- find Python library to work with Twitter API &rightarrow; [Tweepy](https://www.tweepy.org/ "Tweepy home")
-- create credentials on Twitter developer portal to use the API
-- become familiar to retrieve tweets by using library
-- program python modul to receive data from the API
-
-##### Collect labeled data sets
-- find existing labeled data sets 
-- check if data is useful
-- how can different data sets combined
-- program modul to read data sets (csv -files)
-- split data into training / test set
 
 We have so far checked the data set from our proposal, however since we have noticed (see diagram in Data Analysis Section) 
 that a lot of tweets are missing we have decided to look for additional data sets and so far have found two more that could potentially be useful (see Data Analysis Section for further details on these).
 For now we will be using the labels hateful and not-hateful (binary classification) and we plan to divide it into sub-categories if we find enough data. Thus, we will decide which labels could be summarized together, for more details see Data Analysis.
 
-
-### Future Planning
-
-#### Timeline:
+#### Timeline 
 
 ![Timeline](/src/data/timeline.png)
+
+
+#### Twitter API
+- find Python library to work with Twitter API &rightarrow; [Tweepy](https://www.tweepy.org/ "Tweepy home")
+- create credentials on Twitter developer portal to use the API
+- become familiar to retrieve tweets by using library
+- program python modul to receive data from the API
 
 #### Collect labeled data sets (12/27/2020) (mainly responsible: Marinko Balikic, Sarah Bopp)
 - find existing labeled data sets
@@ -75,12 +65,12 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 - remove duplicate tweets and retweets
 - remove standard stopwords (english)
 - splitting into tokens
-- convert all tokens to lower case
-- convert data with TF-IDF to make it ready to use for ML-algorithms
+- convert all tokens to lower case   
+    
+(mainly responsible Fabio Gebhard)    
+    
+Originally converting the data with TF-IDF to make it ready to use for ML-algorithms was also part of the standard preprocessing that we wnated to use, but in order to be able to compare different weighting methods we decided to make this part of the classifer folder and use two methods for weighting: TFIDF and ConutVectorizer 
 
-(mainly responsible Fabio Gebhard)
-
-#### In Progress:
 
 #### Train Classifier (01/18/2021) 
 - train different classifier based on the train set (75% of the data set)
@@ -91,9 +81,7 @@ For now we will be using the labels hateful and not-hateful (binary classificati
        - Decision Tree Classifier / Random- Forest Classifier (mainly responsible: Sarah Bopp)
        - Logistic Regression (mainly responsible: Daniela Tratz-Weinmann)    
            - using sklearn   
-           - own implemenation without using sklearn for classifier   
-       
-       - (Optional: Long Short Term Memory)
+           - own implemenation without using sklearn for classifier  
        - Ensemble Classifier (mainly responsible: Fabio Gebhard)
                  
 #### Test Classifier (01/25/2021) 
@@ -106,9 +94,9 @@ For now we will be using the labels hateful and not-hateful (binary classificati
   - english speech
   - located in United States (USA)
   - which were released in a specific time periode (e.g. time of US election)
-  - tweets from a representable amount of people
-    - people from different states of the USA
-    - find threshold for which amount is representable
+  - tweets from a representable amount of people: Details in Data Section    
+   
+    
 
 #### Analyze Data (Tweets) (02/08/2021) 
 - execute preprocessing on selected twitter data
@@ -116,11 +104,6 @@ For now we will be using the labels hateful and not-hateful (binary classificati
 
 #### Representation of data (02/15/2021) 
 - plot data in an appropiate way
-
-#### Presentation (02/20/2021) 
-
-#### Project Report (03/10/2021) 
-
 
 ### High-level Architecture Description
 
@@ -135,20 +118,36 @@ Then we plan to have several sub packages divided by functionalities.
 The first package is the package src.utils, which is meant to be responsible for the following functionalities:
 + functions for downloading and structuring the data from Twitter (including type of Tweet, no hate speech, racism and/or sexism and location of Tweet if available) 
 + functions for processing the data (for details of the planned steps of our processing pipeline refer to the section preprocessing)
++ function for evaluating the classifiers
 
 The second package is the package src.data, which is meant to contain both IDs of the Tweets that build the basis of our training data and the processed data in form of a csv file. Furthermore, it should contain the data sets with directly the texts of the Tweets instead of the IDs as csv files. 
 
 The third package is the package src.classifiers (will be added later, when implementing the classifiers), which is meant to be responsible for the following functionalities:
 + Support-Vector-Machine (SVM)  
-+ Decision Tree Classifier / Random- Forest Classifier 
-+ Logistic Regression 
++ Decision Tree Classifier    
++ Random- Forest Classifier   
++ Logistic Regression   
++ Ensemble Classifer
 
-Tests for all functionalities will be provided in the separate package tests.
+
+#### Tests 
+Tests for all core functionalities are be provided in the separate package tests.
+
+##### Testing strategy
 
 
-### Experiments (so far)
 
-See Sub Section Tweet Availability in Section Data Analysis.
+ ##### Unit Test Code Coverage
+ 
+ The code coverage of the implemented classifiers:
+ 
+ ![Tweets availability](/src/data/test_coverage_classifier.PNG)
+ 
+ The code coverage of the utils scripts:
+ 
+ ![Tweets availability](/src/data/test_coverage_utils.PNG)
+
+
 
 ## Data Analysis
 
@@ -253,6 +252,14 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  Hateful example: "I'm over the fucking moon we've cleared up the definition of an act of war. Now, about that slap on the wrist we just gave Syria." <br> <br>
  
  
+ ## Experiments   
+ 
+ ### Decision between from scratch methods (for Logistic Regression and SVM) and methods from sklearn   
+We compared both from-scratch-methods (logistic_regression_scratch and svmclassifier_scratch) with the respective sklearn implementations, using a simple confusion matrix and the accuracy, recall and precision scores that we obtained by training and testing the classifiers on our data. As expected the performance of the from-scratch-methods was worse than the performance of sklearn methods, the biggest issue being the execution time (depending on iterations and data size 60-120 minutes longer) and in case of the SVM-Classifier the necessary storage capacity. The exact differences vary depending which parameters and which data set were used, but we did not find any setup in which the from-scratch-methods would perform better or even close to the sklearn implementations (these results can also be reproduced using the provided classifier methods in the clasifeir packkage and for evaluation the test_map function from the utils package).
+
+Given these reuslts we decided to exlcude the from-scratch-methods from the following experimnents.
+
+ 
  ### Final preprocessed data
  
  Combined dataset for binary classifier: Normal vs Hate Speech
@@ -265,8 +272,8 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  
  ![Tweets availability](/src/data/tweets_per_label_balanced_final.png)
  
- 
- ### Results (10-fold cross validation) imbalanced dataset
+ ### Comparison between imbalanced and balanced training dataset
+ #### Results (10-fold cross validation) imbalanced dataset
  
   - Avg error SVM: 0.07519686970175847 <br>
   - Avg error Decision Tree: 0.09850973689058529 <br>
@@ -293,7 +300,7 @@ Advantage of these two data sets is that they're including the tweets as raw tex
   - Avg recall Ensemble: 0.5468931216260461 <br>
  
 
- ### Results (10-fold cross validation) balanced dataset
+ #### Results (10-fold cross validation) balanced dataset
  
  - Avg error SVM: 0.1940567066521265 <br>
  - Avg error Decision Tree: 0.21859323882224646 <br>
@@ -319,9 +326,9 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  - Avg recall Logistic Regression: 0.7874117388925284 <br>
  - Avg recall Ensemble: 0.8130145051097839 <br>
  
- ### Results preprocessing-methods:
+ ### Comprison between preprocessing-methods:
  
- normale preprocessing methode:
+ #### normal preprocessing method:
 
 - Avg error SVM: 0.19626335156816574 <br>
 - Avg error Decision Tree: 0.22287256806725697 <br>
@@ -348,7 +355,7 @@ Advantage of these two data sets is that they're including the tweets as raw tex
 - Avg recall Ensemble: 0.7920669863105279 <br>
 
 
-restricted preprocessing:
+#### restricted preprocessing:
 
 - Avg error SVM: 0.16517281308849113 <br>
 - Avg error Decision Tree: 0.17276790430741956 <br>
@@ -377,9 +384,9 @@ restricted preprocessing:
 -> Choose restricted preprocessing method
 
 
- ### Results using restricted preprocessing & balanced dataset, all 4 combinations: CountVectorizer | TfIdf - unigrams | unigrams & bigrams:
+ ### Comparison using restricted preprocessing & balanced dataset for all 4 combinations: CountVectorizer | TfIdf - unigrams | unigrams & bigrams:
  
- Option 1:  -> CountVectorizer + unigrams
+ #### Option 1:  -> CountVectorizer + unigrams
 
 - Avg error SVM: 0.16657579062159217 <br>
 - Avg error Decision Tree: 0.17780806979280264 <br>
@@ -415,7 +422,7 @@ restricted preprocessing:
 ![Table Option1](/src/data/option1_table.png)
 ![Option1 Bar](/src/data/option1.png)
 
-Option 2:  -> CountVectorizer + unigrams&bigrams
+#### Option 2:  -> CountVectorizer + unigrams&bigrams
 
 - Avg error SVM: 0.14923664122137403 <br>
 - Avg error Decision Tree: 0.17093784078516902 <br>
@@ -451,7 +458,7 @@ Option 2:  -> CountVectorizer + unigrams&bigrams
 ![Table Option2](/src/data/option2_table.png)
 ![Option2 Bar](/src/data/option2.png)
 
-Option 3:  -> TFIDF + unigrams
+#### Option 3:  -> TFIDF + unigrams
 
 - Avg error SVM: 0.14585605234460197 <br>
 - Avg error Decision Tree: 0.20408942202835334 <br>
@@ -487,7 +494,7 @@ Option 3:  -> TFIDF + unigrams
 ![Table Option3](/src/data/option3_table.png)
 ![Option3 Bar](/src/data/option3.png)
 
-Option 4:  -> TFIDF + unigrams&bigrams
+#### Option 4:  -> TFIDF + unigrams&bigrams
 
 - Avg error SVM: 0.1489640130861505 <br>
 - Avg error Decision Tree: 0.22791712104689205 <br>
@@ -524,9 +531,14 @@ Option 4:  -> TFIDF + unigrams&bigrams
 ![Option4 Bar](/src/data/option4.png)
 
 
-Comparing the F1 scores for all options, you can identify the SVM Classifier of Option 4 as the best one, so using TF-IDF plus unigrams and bigrams:
+Comparing the F1 scores for all options, you can identify the SVM Classifier of Option 4 as the best one, so using TF-IDF plus unigrams and bigrams:    
 ![Table F1 scores](/src/data/f1_score_table.png)
 ![F1 score Bar](/src/data/f1_score.png)
+
+
+
+    
+      
 
  ### Retrieved data set for exemplary application of classifiers
  ![Distribution of tweets over cities](/src/data/statistics_all.png)
@@ -541,6 +553,9 @@ Comparing the F1 scores for all options, you can identify the SVM Classifier of 
   ### USA Hate Speech Map (3000-7000 tweets per US state) 
  
  ![Tweets availability](/src/data/USA_Hate_Speech_Map_All_Tweet.png)
+ 
+ 
+ 
  
  ### Unit Test Code Coverage
  
