@@ -563,15 +563,6 @@ Comparing the F1 scores for all options, you can identify the SVM Classifier of 
  
  
  
- ### Unit Test Code Coverage
- 
- The code coverage of the implemented classifiers:
- 
- ![Tweets availability](/src/data/test_coverage_classifier.PNG)
- 
- The code coverage of the utils scripts:
- 
- ![Tweets availability](/src/data/test_coverage_utils.PNG)
 
  
 
