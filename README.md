@@ -135,6 +135,12 @@ Tests for all core functionalities are be provided in the separate package tests
 
 ##### Testing strategy
 
+We decided to test all core functionalities of our project, which means we tested almost all or classes with only a few exceptions.   
+First of all, we test all classes from the classifier package and check whether impelmmented exceotions are triggered and if all return types are correct. The acutual performance of each classfier is tested with several experiments (see Experiments section)
+The only class from the classifier package that is not tested is svmclassifier_scratch, because we excluded it from our experiments (see Experiments section for Details) and thus the class is not part of the main functionalities of our package and testing it would only take up a lot of time without actually helping to possibly improve our project. logistic_regression_scratch, however is tested, eventhough it could be excluded from testing with the same reasoning, but since the duartion for testing this class can be easily reduced by using only a low number of iterations, we decided that we would include.
+
+Regarding the utils package we also test the classes necessary for the main functionality. First of all we test the classes responsible for creating our datasets and for balancing our dataset. Again we mainly check the structure, return types and, in case of the dataframes, sizes of the return values. We also test the class reponsible for the calculation of the hate-speech-ratio, that is used for the examplary application of our classifier.
+Some classes are excluded from testing: We did not test the corssvalidation function, since it is mainly a wrapper for the execution of our classifers,that are already tested seperatly,  for printing their results. With similar reasoning we did not test the test_map class, since it also only provides a visualization of our already tested classifier results. The other classes that we did not test were the classes for downloading data from the twitter api, because here we only use functions provide by twitter and the results can be directly checked by looking at the returned data, similary we did not test the class that provides functions for saving and loading the model because here we rely on pre-provided funtions from the pickle-library.
 
 
  ##### Unit Test Code Coverage
@@ -257,7 +263,7 @@ Advantage of these two data sets is that they're including the tweets as raw tex
  ### Decision between from scratch methods (for Logistic Regression and SVM) and methods from sklearn   
 We compared both from-scratch-methods (logistic_regression_scratch and svmclassifier_scratch) with the respective sklearn implementations, using a simple confusion matrix and the accuracy, recall and precision scores that we obtained by training and testing the classifiers on our data. As expected the performance of the from-scratch-methods was worse than the performance of sklearn methods, the biggest issue being the execution time (depending on iterations and data size 60-120 minutes longer) and in case of the SVM-Classifier the necessary storage capacity. The exact differences vary depending which parameters and which data set were used, but we did not find any setup in which the from-scratch-methods would perform better or even close to the sklearn implementations (these results can also be reproduced using the provided classifier methods in the clasifeir packkage and for evaluation the test_map function from the utils package).
 
-Given these reuslts we decided to exlcude the from-scratch-methods from the following experimnents.
+Given these reuslts we decided to exlcude the from-scratch-methods from the following experiments.
 
  
  ### Final preprocessed data
