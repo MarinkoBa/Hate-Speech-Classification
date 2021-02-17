@@ -11,7 +11,7 @@ fk269@stud.uni-heidelberg.de
 Tratz-Weinmann@stud.uni-heidelberg.de
 
 ### Existing code fragments:
- We do not use any existing code, but we are using the example project from the tutorial as basis for our project structure and existing libraries thnat are listed in the requirements.txt.
+ We do not use any existing code, but we are using the example project from the tutorial as basis for our project structure and existing libraries that are listed in the requirements.txt.
  
 
 ## Project State
