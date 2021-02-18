@@ -7,7 +7,6 @@ from src.utils.dataset_balancer import balance_data
 
 import os
 import pandas as pd
-import numpy as np
 import unittest
 
 
@@ -24,7 +23,8 @@ class TestDataBalancer(unittest.TestCase):
 
     def test_balance_data(self):
     
-        x_balanced, y_balanced = balance_data(self.df_concatenated[['text']], self.df_concatenated[['hate_speech']])
+        x_balanced, y_balanced = balance_data(self.df_concatenated[['text']],
+                                              self.df_concatenated[['hate_speech']])
     
         self.assertIsInstance(y_balanced,
                               pd.core.frame.DataFrame)

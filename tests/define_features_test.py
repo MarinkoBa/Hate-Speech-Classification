@@ -8,7 +8,6 @@ from src.classifiers.define_features import define_features_tfidf
 
 import os
 import pandas as pd
-import numpy as np
 import unittest
 import sklearn
 import scipy
