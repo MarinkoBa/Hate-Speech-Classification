@@ -80,7 +80,7 @@ class TestLogisticRegressionScratch(unittest.TestCase):
         self.assertIsInstance(predict(model,x_testing),
                               np.ndarray)
         
-        self.assertTrue(([0,1] ==np.unique(predict(model2,x_testing2))).all())
+        self.assertTrue(([0,1] ==np.unique(predict(model,x_testing))).all())
 
         
         """ Test correct data types and corrrect range of predicted values (1,0) for predict with tfidfVectorizer"""                

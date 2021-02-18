@@ -1,7 +1,5 @@
-
 from src.utils.usa_hate_speech_calculator import calculate_hate_speech_ratio
 
-import os
 import pandas as pd
 import numpy as np
 import unittest
