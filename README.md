@@ -64,7 +64,7 @@ Following you find the current state of the project ordered by the timeline in w
     
 (mainly responsible Fabio Gebhard)    
     
-Originally converting the data with TF-IDF to make it ready to use for ML-algorithms was also part of the standard preprocessing that we wnated to use, but in order to be able to compare different weighting methods we decided to make this part of the classifer folder and use two methods for weighting: TFIDF and ConutVectorizer 
+Originally converting the data with TF-IDF to make it ready to use for ML-algorithms was also part of the standard preprocessing that we wnated to use, but in order to be able to compare different weighting methods we decided to make this part of the classifer folder and use two methods for weighting: TFIDF and CountVectorizer (mainly responsible Daniela Tratz-Weinmann)
 
 
 #### Train Classifier (01/18/2021) 
