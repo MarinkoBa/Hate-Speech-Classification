@@ -83,6 +83,7 @@ Originally converting the data with TF-IDF to make it ready to use for ML-algori
 - evaluate the different classifiers with the test set
 - run m-fold cross-validation to determine the classifier with the smallest error
   - in addition to cross validation we want to use the F1-Score
+  - plot results (mainly responsible: Sarah Bopp)
   
 #### Selection of meaninful tweets (02/01/2021) (mainly responsible: Sarah Bopp)
 - select tweets from the twitter API which are:
