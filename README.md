@@ -171,7 +171,7 @@ The class labels are those chosen by the majority of users who annotated the Twe
 Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set.
 
 
-## Concatenated data set
+### Concatenated data set
 We used all three data sets by sorting the different labels to hatespeech and non-hatespeech. We decided for the labels 'racism', 'sexism', 'hateful' and 'hate speech' for training our classifier for 'hate speech'. For the non hatespeech tweets we chose the labels 'neither', 'normal' and again 'neither'.
 More precisely, following is a description of the labels chosen for each data set.
 
