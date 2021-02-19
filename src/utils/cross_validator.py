@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 
 
-def cross_validate(x, y, method ,ngrams, n_splits=10,
+def cross_validate(x, y, method, ngrams, n_splits=10,
                    plot_results = True, option):
     """
     Calculate cross validation average error.
@@ -22,14 +22,16 @@ def cross_validate(x, y, method ,ngrams, n_splits=10,
                     The dataframe containing all x values -> preprocessed, shape (n, 1).
     y:		        Pandas dataframe
                     The dataframe containing all y values -> hate_speech, shape (n, 1).
+    method: 		String
+                	Can be either "count" or "tfidf" for specifying method of feature weighting
+    ngrams:         tuple (min_n, max_n), with min_n, max_n integer values
+                    range for ngrams used for vectorization
     n_splits:       Integer
                     Number of folds
     plot_results:   Boolean
                     If True, plot the results, else only print.
     option:         string
                     Specifying details about the option to identify plots easily afterwards.
-              
-
     """
 
     tot_err_svm = []
@@ -265,9 +267,21 @@ def calculate_metrics(y_test, y_pred):
 
 
 def plot_scores(df, option):
-    
+    """
+    Plot the results of the cross-validation.
+
+    Parameters
+    ----------
+    df:             	    Pandas dataframe
+    			            The dataframe containing the average scores for all
+                            models, so the average error, precision, recall, accuracy
+                            and the F1 score.
+    option:                 String
+                            Specifying details about the option to identify plots
+                            easily afterwards.                   
+    """
     fig1, (ax1, ax2) = plt.subplots(2, 1)
-    fig1.subplots_adjust(hspace = 0.2) 
+    fig1.subplots_adjust(hspace = 0.25) 
     fig1.set_size_inches(20, 30)
 
     
