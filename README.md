@@ -179,6 +179,8 @@ More precisely, following is a description of the labels chosen for each data se
 - The second data set including the labels 'abusive', 'hateful', 'normal' and 'spam' was utilized with only 'hateful' being 'hatespeech' and 'normal' being 'no hatespeech'. The other tweets labeled 'abusive' and 'spam' weren't taken into account for our concatenated data set.
 - Finally, the third described data set with the labels 'offensive language', 'hate speech' and 'neither' was used by choosing all tweets labeled 'hate speech' for 'hatespeech', and 'neither' for 'no hatespeech'.
 
+In the end, we concatenated these processed data sets into one data set, which we used for the classifiers. Further [below](#distribution-dataset), the distribution of hatespeech tweets and non-hatespeech tweets is shown.
+
 
 ### Preprocessing:
 
@@ -260,7 +262,7 @@ We compared both from-scratch-methods (logistic_regression_scratch and svmclassi
 Given these reuslts we decided to exlcude the from-scratch-methods from the following experiments.
 
  
- ### Final preprocessed data
+ ### <a name="distribution-dataset"></a>Final preprocessed data
  
  Combined dataset for binary classifier: Normal vs Hate Speech
  
