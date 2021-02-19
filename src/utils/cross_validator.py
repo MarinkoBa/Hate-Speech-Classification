@@ -7,20 +7,28 @@ from src.classifiers.define_features import define_features_tfidf
 from src.classifiers.ensemble_classifier import EnsembleClassifier
 from sklearn import metrics
 import numpy as np
+import matplotlib.pyplot as plt
 
 
-def cross_validate(x, y, method ,ngrams, n_splits=10):
+
+def cross_validate(x, y, method ,ngrams, n_splits=10,
+                   plot_results = True, option):
     """
     Calculate cross validation average error.
 
     Parameters
     ----------
-    x:        Pandas dataframe
-              The dataframe containing all x values -> preprocessed, shape (n, 1).
-    y:		  Pandas dataframe
-              The dataframe containing all y values -> hate_speech, shape (n, 1).
-    n_splits: Integer
-              Number of folds
+    x:              Pandas dataframe
+                    The dataframe containing all x values -> preprocessed, shape (n, 1).
+    y:		        Pandas dataframe
+                    The dataframe containing all y values -> hate_speech, shape (n, 1).
+    n_splits:       Integer
+                    Number of folds
+    plot_results:   Boolean
+                    If True, plot the results, else only print.
+    option:         string
+                    Specifying details about the option to identify plots easily afterwards.
+              
 
     """
 
@@ -178,6 +186,49 @@ def cross_validate(x, y, method ,ngrams, n_splits=10):
     print('F1 Score Random Forrest: ' + str(f1_score_ran_for))
     print('F1 Score Logistic Regression: ' + str(f1_score_log_reg))
     print('F1 Score Ensemble: ' + str(f1_score_ens))
+    
+    if plot_results == True:
+        df = pd.DataFrame(np.array([[np.average(tot_err_svm),
+                                     np.average(tot_acc_svm),
+                                     np.average(tot_prec_svm),
+                                     np.average(tot_rec_svm),
+                                     f1_score_svm],
+
+                                    [np.average(tot_err_dec_tree),
+                                     np.average(tot_acc_dec_tree),
+                                     np.average(tot_prec_dec_tree),
+                                     np.average(tot_rec_dec_tree),
+                                     f1_score_dec_tree],
+                                 
+                                    [np.average(tot_err_ran_for),
+                                     np.average(tot_acc_ran_for),
+                                     np.average(tot_prec_ran_for),
+                                     np.average(tot_rec_ran_for),
+                                     f1_score_ran_for],
+                                  
+                                     [np.average(tot_err_log_reg),
+                                      np.average(tot_acc_log_reg),
+                                      np.average(tot_prec_log_reg),
+                                      np.average(tot_rec_log_reg),
+                                      f1_score_log_reg],
+                                   
+                                    [np.average(tot_err_ens),
+                                     np.average(tot_acc_ens),
+                                     np.average(tot_prec_ens),
+                                     np.average(tot_rec_ens),
+                                     f1_score_ens]]),
+    
+                        columns = ["avg error",
+                                   "avg accuracy",
+                                   "avg precision",
+                                   "avg recall",
+                                    "F1 score"],
+                            index = ["SVM",
+                                      "Decision Tree",
+                                      "Random Forest",
+                                      "Logistic Regression",
+                                      "Ensemble"])
+        plot_scores(df, option)
 
 
 
@@ -211,3 +262,34 @@ def calculate_metrics(y_test, y_pred):
     recall = metrics.recall_score(y_test, y_pred)
 
     return error, accuracy, precision, recall
+
+
+def plot_scores(df, option):
+    
+    fig1, (ax1, ax2) = plt.subplots(2, 1)
+    fig1.subplots_adjust(hspace = 0.2) 
+    fig1.set_size_inches(20, 30)
+
+    
+    plt.rc("axes", titlesize = 20)
+    plt.rc("font", size = 15)
+    
+    cols_without_error = ["avg accuracy", "avg precision", "avg recall", "F1 score"]
+    df[cols_without_error].plot(kind = 'bar', rot=70,
+            cmap = "viridis",
+            title = f"Average scores for all models for Option {option}",
+            ax = ax1)
+    
+    ax1.set_ylim([0.74, 0.9])
+    ax1.legend(loc = 'upper left')
+
+    
+    col_error = ["avg error"]
+    df[col_error].plot(kind = 'bar', color = 'lightskyblue',
+              title = f"Average error for all models for Option {option}", ax = ax2)
+    
+    ax2.set_ylim([0, 0.26])
+
+    plt.savefig(f"{option}.png",
+                bbox_inches = "tight")
+
