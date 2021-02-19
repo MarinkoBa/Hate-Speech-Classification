@@ -148,7 +148,8 @@ Some classes are excluded from testing: We did not test the corssvalidation func
 
 As already mentioned in our proposal we are using an existing document collection, that can be found here:  
 <https://github.com/zeerakw/hatespeech>   
-This data set contains the IDs for Tweets and annotation for each tweet, whether they contain hate speech or not.
+This data set contains the IDs for Tweets and annotation for each tweet, whether they contain hate speech or not,
+more precisely sexism, racism or none.
 
 The data set (training/test set) and the data we want to investigate are retrieved from the Twitter API using the Tweepy library.
 
@@ -164,13 +165,20 @@ The different labels used in detail are 'abusive', 'hateful', 'normal' and 'spam
 
 
 The other data set we found is https://github.com/jaeyk/intersectional-bias-in-ml
-which includes abusive language and hate speech.
+which includes offensive language, hate speech and neither of both.
 
 ![Preview of third data set](/src/data/labeled_data_head.png)
 
 The class labels are those chosen by the majority of users who annotated the Tweets. 0 means 'hate speech', 1 means 'offensive language' and 2 means 'neither'.
 
 Advantage of these two data sets is that they're including the tweets as raw text instead of ID's like in the first set. As already mentioned above, we have to decide which labels we are going to choose for our classifier, i.e. which labels can be summarized under 'hateful' or 'hate speech'.
+
+## Concatenated data set
+We chose to use all three data sets by sorting the different labels to hatespeech and non-hatespeech. Thus, the first data set including 'racism', 'sexism' and neither was labeled into 'hatespeech' for 'racism' and 'sexism' and neither naturally into 'no hatespeech'.
+
+The second data set including the labels 'abusive', 'hateful', 'normal' and 'spam' was utilized with only 'hateful' being 'hatespeech' and 'normal' being 'no hatespeech'. The other tweets labeled 'abusive' and 'spam' weren't taken into account for our concatenated data set.
+
+Finally, the third described data set with the labels 'abusive language', 'hate speech' and 'neither' was used by choosing all tweets labeled 'hate speech' for 'hatespeech', and 'neither' for 'no hatespeech'.
 
 
 ### Preprocessing:
