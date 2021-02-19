@@ -175,9 +175,9 @@ Advantage of these two data sets is that they're including the tweets as raw tex
 We used all three data sets by sorting the different labels to hatespeech and non-hatespeech. We decided for the labels 'racism', 'sexism', 'hateful' and 'hate speech' for training our classifier for 'hate speech'. For the non hatespeech tweets we chose the labels 'neither', 'normal' and again 'neither'.
 More precisely, following is a description of the labels chosen for each data set.
 
-*The first data set including 'racism', 'sexism' and neither was labeled into 'hatespeech' for 'racism' and 'sexism' and neither naturally into 'no hatespeech'.
-*The second data set including the labels 'abusive', 'hateful', 'normal' and 'spam' was utilized with only 'hateful' being 'hatespeech' and 'normal' being 'no hatespeech'. The other tweets labeled 'abusive' and 'spam' weren't taken into account for our concatenated data set.
-*Finally, the third described data set with the labels 'offensive language', 'hate speech' and 'neither' was used by choosing all tweets labeled 'hate speech' for 'hatespeech', and 'neither' for 'no hatespeech'.
+- The first data set including 'racism', 'sexism' and neither was labeled into 'hatespeech' for 'racism' and 'sexism' and neither naturally into 'no hatespeech'.
+- The second data set including the labels 'abusive', 'hateful', 'normal' and 'spam' was utilized with only 'hateful' being 'hatespeech' and 'normal' being 'no hatespeech'. The other tweets labeled 'abusive' and 'spam' weren't taken into account for our concatenated data set.
+- Finally, the third described data set with the labels 'offensive language', 'hate speech' and 'neither' was used by choosing all tweets labeled 'hate speech' for 'hatespeech', and 'neither' for 'no hatespeech'.
 
 
 ### Preprocessing:
