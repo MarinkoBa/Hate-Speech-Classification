@@ -194,6 +194,8 @@ In the end, we concatenated these processed data sets into one data set, which w
 (6) perform stemming    
 (7) convert data with TF-IDF (uni- and bigrams allowed) to make it ready to use for machine learning algorithm <br>
 
+For restricted preprocessing the same steps are used except that hashtags and mentions are not removed. 
+
 
 ### Basic Statistics:
 
