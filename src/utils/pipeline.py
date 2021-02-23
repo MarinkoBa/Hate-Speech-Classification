@@ -7,6 +7,7 @@ from src.utils.get_data import load_data
 from src.utils.get_data import get_datasets
 from src.utils.get_data import concatenate_datasets
 from src.utils.get_data import split_data
+from src.utils.get_data import get_datasets
 from src.utils.preprocessing import preprocessing
 from src.utils.preprocessing import preprocessing_restricted
 from src.classifiers import svm_classifier
@@ -17,9 +18,14 @@ from src.utils import dataset_balancer
 
 
 def run_pipeline():
+    # loads and concatenates the different datasets
+    df_dataset = load_data()
 
-    if not os.path.isfile(os.path.join('data', 'tweets.csv')):
-        # load dataset from https://github.com/zeerakw/hatespeech, loads tweets via tweet id
-        df = get_tweets_by_id(config, os.path.join('data', 'NAACL_SRW_2016.csv'))
+    # run preprocessing on text-column of the dataset -> evaluated preprocessing_restricted as more effective
+    df_dataset['preprocessed'] = df_dataset['text'].apply(preprocessing_restricted)
+
+    # balance data -> ~9k normal vs ~9k hate speech tweets
+    x_balanced, y_balanced = dataset_balancer.balance_data(df_dataset[['preprocessed']], df_dataset[['hate_speech']])
+
 
 
