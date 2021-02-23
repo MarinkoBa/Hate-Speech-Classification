@@ -65,8 +65,7 @@ def run_experiment(df_dataset, preprocessing='preprocessing_restricted'):
 def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y_train,
                     preprocessing='preprocessing_restricted'):
     """
-    TODO write Docu
-        Run pipeline.
+        Make predictions to the input csv-file with the given classifier and parameters.
 
         Parameters
         ----------
@@ -82,9 +81,21 @@ def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y
                 			count or tfidf
 
         ngrams:             Tuple
-                            Unigram: (1,1) ,Bigram: (1,2)
+                            Unigram: (1,1) ,Uni-/Bigrams: (1,2)
+
+        x_train             Features of the training data
+
+        y_train             Labels of the training data
+
+        preprocessing       String
+                            Preprocessing methode which should be used.
+                            preprocessing_restricted or otherwise preprocessing methode will be used.
 
         Returns
+
+        y_pred              Array of predicted labels for the input dataset (csv-file)
+
+        df                  Pandas Dataframe loaded from csv-file
         -------
 
         """
@@ -106,6 +117,23 @@ def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y
 
 
 def calculate_hatespeech_per_us_state(df_usa, y_pred, print_out=True):
+    """
+            Make predictions to the input csv-file with the given classifier and parameters.
+
+            Parameters
+            ----------
+            df_usa:  	Dataset of the collected tweets from different US-States
+
+            y_pred:     predicted labels for the dataset features
+
+            print_out:  Bool, True if each average should be print to console
+
+            Returns
+
+            y_pred              Array of predicted labels for the input dataset (csv-file)
+            -------
+
+            """
     # Calculate avg hate speech per US state
     avg_hate_speech_per_state = usa_hate_speech_calculator.calculate_hate_speech_ratio(df_usa, y_pred)
     unique_city_names = df_usa.city_name.unique()

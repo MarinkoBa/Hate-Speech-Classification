@@ -5,7 +5,7 @@ if __name__ == "__main__":
     # loads and concatenates the different datasets
     df_dataset = pipeline.load_labeled_dataset()
 
-    # evaluate classifier and parameters
+    # evaluate classifier and parameters during experiment-phase
     param, x_data, y_data = pipeline.run_experiment(df_dataset)
 
     # predict data for the usa_tweets with the evaluated parameters

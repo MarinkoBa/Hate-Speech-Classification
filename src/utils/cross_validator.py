@@ -342,13 +342,13 @@ def validate_parameters_via_cross_validation(x_data, y_data):
                                              ngrams=(1, 1), option='CountVectorizer + unigram')
     # option 2 -> CountVectorizer + unigrams & bigrams
     f1_scores_count_bigram = cross_validate(x_data, y_data, method="count",
-                                            ngrams=(1, 2), option='CountVectorizer + bigram')
+                                            ngrams=(1, 2), option='CountVectorizer + uni-/bigram')
     # option 3 -> TfidfVectorizer + unigrams
     f1_scores_tfidf_unigram = cross_validate(x_data, y_data, method="tfidf",
                                              ngrams=(1, 1), option='TfidfVectorizer + unigram')
     # option 4 -> TfidfVectorizer + unigrams & bigrams
     f1_scores_tfidf_bigram = cross_validate(x_data, y_data, method="tfidf",
-                                            ngrams=(1, 2), option='TfidfVectorizer + bigram')
+                                            ngrams=(1, 2), option='TfidfVectorizer + uni-/bigram')
 
     # find greatest f1 value over all experiments
     f1_scores = np.vstack(
@@ -356,13 +356,13 @@ def validate_parameters_via_cross_validation(x_data, y_data):
     index_max_value = np.unravel_index(f1_scores.argmax(), f1_scores.shape)
 
     if index_max_value[0] is 0:
-         vectorizer, ngrams= ('count',(1, 1))
+         vectorizer, ngrams= (constant.COUNT,(1, 1))
     elif index_max_value[0] is 1:
-        vectorizer, ngrams = ('count', (1, 2))
+        vectorizer, ngrams = (constant.COUNT, (1, 2))
     elif index_max_value[0] is 2:
-        vectorizer, ngrams = ('tfidf', (1, 1))
+        vectorizer, ngrams = (constant.TFIDF, (1, 1))
     else:
-        vectorizer, ngrams = ('tfidf', (1, 2))
+        vectorizer, ngrams = (constant.TFIDF, (1, 2))
 
 
     if index_max_value[1] is 0:
