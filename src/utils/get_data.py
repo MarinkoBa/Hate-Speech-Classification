@@ -81,13 +81,12 @@ def get_tweet_text(tweet_id, api):
 def get_tweet_location(tweet_id, api):
     try:
         lat_long = api.get_status(tweet_id).geo['coordinates']
-         # return the location from the tweet with ID if tweet and tweet location available
+        # return the location from the tweet with ID if tweet and tweet location available
         return str(lat_long[0]) + "|" + str(lat_long[1])
     except:
         return None
-  
-    
-    
+
+
 def get_datasets(first_file_path, second_file_path):
     """
     Load csv data sets in a pandas dataframe.
@@ -110,28 +109,28 @@ def get_datasets(first_file_path, second_file_path):
     """
     # class labels: 0 - hate speech 1 - offensive language 2 - neither
     df2 = pd.read_csv(first_file_path,
-                      sep = ',')
-    
+                      sep=',')
+
     # drop columns with counts of people who voted for different classes
     df2 = df2.drop(['Unnamed: 0', 'count', 'hate_speech', 'offensive_language', 'neither'], axis=1)
-    
+
     # rename class to label
-    df2 = df2.rename(columns = {'class':'label',
-                                'tweet' : 'text'})
-     
+    df2 = df2.rename(columns={'class': 'label',
+                              'tweet': 'text'})
+
     # class labels: 'abusive', 'hateful', 'normal', 'spam'
     df3 = pd.read_csv(second_file_path,
-                      header = None,
-                      names = ['text', 'label', 'votes'],
+                      header=None,
+                      names=['text', 'label', 'votes'],
                       sep='\t')
-    
+
     df3 = df3.drop(['votes'], axis=1)
     # altering the DataFrame 
-    df3 = df3[['label', 'text']] 
-    
-    export_data(df2, os.path.join(os.path.pardir,'src','data', 'tweets_labeled_data.csv'))
-    export_data(df3, os.path.join(os.path.pardir,'src','data', 'tweets_hatespeech_text.csv'))
-    
+    df3 = df3[['label', 'text']]
+
+    export_data(df2, os.path.join(os.path.pardir, 'src', 'data', 'tweets_labeled_data.csv'))
+    export_data(df3, os.path.join(os.path.pardir, 'src', 'data', 'tweets_hatespeech_text.csv'))
+
     return df2, df3
 
 
@@ -140,7 +139,6 @@ def sort_to_hatespeech(x):
         return 1
     else:
         return 0
-
 
 
 def concatenate_datasets(file_path_tweets, df2, df3):
@@ -169,34 +167,33 @@ def concatenate_datasets(file_path_tweets, df2, df3):
     """
     # load first data set from data/tweets.csv
     df = pd.read_csv(file_path_tweets,
-                 sep=',',
-                 header=None,
-                 names=['label', 'text', 'EMPTY'])
-    
+                     sep=',',
+                     header=None,
+                     names=['label', 'text', 'EMPTY'])
+
     # drop column
     df = df.drop(['EMPTY'], axis=1)
     df = df.dropna()
-    
+
     # concatenate alle dataframes
     df_concatenated = pd.concat([df, df2, df3],
-                                ignore_index = True)
-    
+                                ignore_index=True)
+
     # drop columns with labels 1 ('offensive language'), 'abusive' and 'spam'
     df_concatenated = df_concatenated[df_concatenated.label != 1]
     df_concatenated = df_concatenated[df_concatenated.label != 'abusive']
     df_concatenated = df_concatenated[df_concatenated.label != 'spam']
-    
+
     # add column 'hate_speech' with 1 for hate speech, 0 for no hate speech/ normal
     df_concatenated['hate_speech'] = df_concatenated['label'].apply(sort_to_hatespeech)
-    
-    return df_concatenated
 
+    return df_concatenated
 
 
 def split_data(df,
                features,
                target_y,
-               test_percentage = 0.25):
+               test_percentage=0.25):
     """
     Split data set into training and test set.
 
@@ -222,11 +219,11 @@ def split_data(df,
     y_test:             Pandas dataframe
                   	    The dataframe containing the test labels.
     """
-    
+
     X_train, X_test, y_train, y_test = train_test_split(df[features],
                                                         df[target_y],
-                                                        test_size = test_percentage,
-                                                        random_state = 0)
+                                                        test_size=test_percentage,
+                                                        random_state=0)
 
     # if features is single column results in pandas.Series without column names
     if not isinstance(features, list):
@@ -235,3 +232,28 @@ def split_data(df,
 
     return X_train, X_test, y_train, y_test
 
+
+def load_labeled_dataset():
+    """
+        Concatenate the data sets from csv-files (labeled_data.csv, hatespeech_text_label_vote_RESTRICTED_100K.csv,
+        tweets.csv) together and return it as a pandas dataframe.
+
+        Returns
+        -------
+        df_concatenated:        Pandas dataframe
+                                The dataframe containing all data from the mentioned csv-files.
+        """
+
+    if os.path.isfile(os.path.join('data', 'tweets.csv')):
+        # load datasets from
+        #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
+        #  and https://github.com/jaeyk/intersectional-bias-in-ml (df3)
+        df2, df3 = get_datasets(os.path.join('data', 'labeled_data.csv'),
+                                os.path.join('data', 'hatespeech_text_label_vote_RESTRICTED_100K.csv'))
+
+        df_concatenated = concatenate_datasets(os.path.join('data', 'tweets.csv'), df2, df3)
+
+        return df_concatenated
+
+    else:
+        return None
