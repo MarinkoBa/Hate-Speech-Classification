@@ -331,10 +331,10 @@ def validate_parameters_via_cross_validation(x_data, y_data):
 
         Returns
         ----------
-        param                   Array, including 0: classifer, 1: vectorizer, 2: uni- or bigram
-                                classifier could be svm, decison_tree,random_forest, log_reg or ensemble
-                                vectorizer could be count or tfidf
-                                uni- or bigram represented as Tuple e.g (1, 2) for bigram
+        param                   Array, including 0: classifer, 1: vectorizer, 2: grams
+                                classifier could be: svm, decison_tree,random_forest, log_reg or ensemble
+                                vectorizer could be: count or tfidf
+                                gram (uni- or bigram) represented as Tuple e.g (1, 2) for bigram
         """
     # option 1 -> CountVectorizer + unigrams
     f1_scores_count_unigram = cross_validate(x_data, y_data, method="count",
@@ -355,13 +355,13 @@ def validate_parameters_via_cross_validation(x_data, y_data):
     index_max_value = np.unravel_index(f1_scores.argmax(), f1_scores.shape)
 
     if index_max_value[0] is 0:
-        param = ['count',(1, 1)]
+         vectorizer, ngrams= ('count',(1, 1))
     elif index_max_value[0] is 1:
-        param = ['count', (1, 2)]
+        vectorizer, ngrams = ('count', (1, 2))
     elif index_max_value[0] is 2:
-        param = ['tfidf', (1, 1)]
+        vectorizer, ngrams = ('tfidf', (1, 1))
     else:
-        param = ['tfidf', (1, 2)]
+        vectorizer, ngrams = ('tfidf', (1, 2))
 
 
     if index_max_value[1] is 0:
@@ -375,5 +375,5 @@ def validate_parameters_via_cross_validation(x_data, y_data):
     else:
         classifer = 'ensemble'
 
-    param = np.asarray([classifer,param])
+    param = np.asarray([classifer,vectorizer,ngrams],dtype=object)
     return param
