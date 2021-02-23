@@ -33,7 +33,6 @@ def load_labeled_dataset():
         # load dataset from https://github.com/zeerakw/hatespeech, loads tweets via tweet id
         df = get_tweets_by_id(config, os.path.join('data', 'NAACL_SRW_2016.csv'))
 
-
     # load datasets from
     #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
     #  and https://github.com/jaeyk/intersectional-bias-in-ml (df3)
@@ -44,7 +43,8 @@ def load_labeled_dataset():
 
     return df_concatenated
 
-def run_experiment(df_dataset,preprocessing='preprocessing_restricted'):
+
+def run_experiment(df_dataset, preprocessing='preprocessing_restricted'):
     # TODO Documentation
 
     # runs chosen preprocess-method on the text-column of the dataframe
@@ -62,7 +62,8 @@ def run_experiment(df_dataset,preprocessing='preprocessing_restricted'):
     return parameters, x_balanced, y_balanced
 
 
-def run_pipeline(dataset_filepath, classifier, vectorizer, ngrams, x_train, y_train,preprocessing='preprocessing_restricted'):
+def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y_train,
+                    preprocessing='preprocessing_restricted'):
     """
     TODO write Docu
         Run pipeline.
@@ -96,8 +97,23 @@ def run_pipeline(dataset_filepath, classifier, vectorizer, ngrams, x_train, y_tr
     else:
         df['preprocessed'] = df['full_text'].apply(preprocessing)
 
-
-    model, vec, x_test = choose_and_create_classifier(classifier,x_train, y_train, df[['preprocessed']],vectorizer,ngrams)
+    model, vec, x_test = choose_and_create_classifier(classifier, x_train, y_train, df[['preprocessed']][:1000], vectorizer,
+                                                      ngrams)
     x_test = vec.transform(df['preprocessed'].values)
     y_pred = model.predict(x_test)
-    print(y_pred)
+
+    return y_pred, df
+
+
+def calculate_hatespeech_per_us_state(df_usa, y_pred, print_out=True):
+    # Calculate avg hate speech per US state
+    avg_hate_speech_per_state = usa_hate_speech_calculator.calculate_hate_speech_ratio(df_usa, y_pred)
+    unique_city_names = df_usa.city_name.unique()
+
+    # Print avg hate speech rate per US state
+    if print_out:
+        for state in range(len(unique_city_names)):
+            print('US state: ' + unique_city_names[state] + ' | hate speech rate: ' + str(
+                np.round(avg_hate_speech_per_state[state], 2)) + '%')
+
+    return avg_hate_speech_per_state
