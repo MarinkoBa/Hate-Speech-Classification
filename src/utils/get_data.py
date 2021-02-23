@@ -234,29 +234,5 @@ def split_data(df,
     return X_train, X_test, y_train, y_test
 
 
-def load_labeled_dataset():
-    """
-        Concatenate the data sets from csv-files (labeled_data.csv, hatespeech_text_label_vote_RESTRICTED_100K.csv,
-        tweets.csv) together and return it as a pandas dataframe.
 
-        Returns
-        -------
-        df_concatenated:        Pandas dataframe
-                                The dataframe containing all data from the mentioned csv-files.
-        """
-    # if tweets not already loaded from TwitterAPI
-    if not os.path.isfile(os.path.join('data', 'tweets.csv')):
-        # load dataset from https://github.com/zeerakw/hatespeech, loads tweets via tweet id
-        df = get_tweets_by_id(config, os.path.join('data', 'NAACL_SRW_2016.csv'))
-
-
-    # load datasets from
-    #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
-    #  and https://github.com/jaeyk/intersectional-bias-in-ml (df3)
-    df2, df3 = get_datasets(os.path.join('data', 'labeled_data.csv'),
-                            os.path.join('data', 'hatespeech_text_label_vote_RESTRICTED_100K.csv'))
-
-    df_concatenated = concatenate_datasets(os.path.join('data', 'tweets.csv'), df2, df3)
-
-    return df_concatenated
 
