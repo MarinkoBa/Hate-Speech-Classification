@@ -7,12 +7,12 @@ from src.classifiers.define_features import define_features_tfidf
 from src.classifiers.ensemble_classifier import EnsembleClassifier
 from sklearn import metrics
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 
 
-def cross_validate(x, y, method, ngrams, n_splits=10,
-                   plot_results = True, option):
+def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, option):
     """
     Calculate cross validation average error.
 
@@ -32,6 +32,11 @@ def cross_validate(x, y, method, ngrams, n_splits=10,
                     If True, plot the results, else only print.
     option:         string
                     Specifying details about the option to identify plots easily afterwards.
+
+    Returns
+    -------
+    f1_scores:      Array of evaluated f1-scores of the classifiers in following order:
+                    0: SVM  1: Decision Tree 2: Random Forest  3: Logistic Regression  4: Ensemble
     """
 
     tot_err_svm = []
@@ -231,6 +236,9 @@ def cross_validate(x, y, method, ngrams, n_splits=10,
                                       "Logistic Regression",
                                       "Ensemble"])
         plot_scores(df, option)
+
+    f1_scores = np.asarray(f1_score_svm, f1_score_dec_tree, f1_score_ran_for, f1_score_log_reg, f1_score_ens)
+    return f1_scores
 
 
 

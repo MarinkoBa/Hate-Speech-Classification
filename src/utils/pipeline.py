@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import constant
 from decouple import config
 from src.utils.get_data import get_tweets_by_id
 from src.utils.get_data import load_data
@@ -17,12 +18,16 @@ from src.utils import manage_classifiers
 from src.utils import dataset_balancer
 
 
-def run_pipeline():
+def run_pipeline(preprocessing = 'preprocessing_restricted'):
     # loads and concatenates the different datasets
     df_dataset = load_data()
 
-    # run preprocessing on text-column of the dataset -> evaluated preprocessing_restricted as more effective
-    df_dataset['preprocessed'] = df_dataset['text'].apply(preprocessing_restricted)
+    # runs chosen preprocess-method on the text-column of the dataframe
+    if preprocessing is constant.PREPROCESSING_RESTRICTED:
+        df_dataset['preprocessed'] = df_dataset['text'].apply(preprocessing_restricted)
+    else:
+        df_dataset['preprocessed'] = df_dataset['text'].apply(preprocessing)
+
 
     # balance data -> ~9k normal vs ~9k hate speech tweets
     x_balanced, y_balanced = dataset_balancer.balance_data(df_dataset[['preprocessed']], df_dataset[['hate_speech']])

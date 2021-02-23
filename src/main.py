@@ -19,7 +19,7 @@ from src.utils import dataset_balancer
 if __name__ == "__main__":
 
     # load dataset from https://github.com/zeerakw/hatespeech
-    #df = get_tweets_by_id(config,
+    df = get_tweets_by_id(config,
                           #os.path.join('data', 'NAACL_SRW_2016.csv'))
 
     # load datasets from

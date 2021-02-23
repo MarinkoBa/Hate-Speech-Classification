@@ -1,6 +1,7 @@
 import tweepy
 import os
 import pandas as pd
+from decouple import config
 from sklearn.model_selection import train_test_split
 
 
@@ -243,17 +244,19 @@ def load_labeled_dataset():
         df_concatenated:        Pandas dataframe
                                 The dataframe containing all data from the mentioned csv-files.
         """
+    # if tweets not already loaded from TwitterAPI
+    if not os.path.isfile(os.path.join('data', 'tweets.csv')):
+        # load dataset from https://github.com/zeerakw/hatespeech, loads tweets via tweet id
+        df = get_tweets_by_id(config, os.path.join('data', 'NAACL_SRW_2016.csv'))
 
-    if os.path.isfile(os.path.join('data', 'tweets.csv')):
-        # load datasets from
-        #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
-        #  and https://github.com/jaeyk/intersectional-bias-in-ml (df3)
-        df2, df3 = get_datasets(os.path.join('data', 'labeled_data.csv'),
-                                os.path.join('data', 'hatespeech_text_label_vote_RESTRICTED_100K.csv'))
 
-        df_concatenated = concatenate_datasets(os.path.join('data', 'tweets.csv'), df2, df3)
+    # load datasets from
+    #  https://github.com/t-davidson/hate-speech-and-offensive-language/tree/master/data (df2)
+    #  and https://github.com/jaeyk/intersectional-bias-in-ml (df3)
+    df2, df3 = get_datasets(os.path.join('data', 'labeled_data.csv'),
+                            os.path.join('data', 'hatespeech_text_label_vote_RESTRICTED_100K.csv'))
 
-        return df_concatenated
+    df_concatenated = concatenate_datasets(os.path.join('data', 'tweets.csv'), df2, df3)
 
-    else:
-        return None
+    return df_concatenated
+
