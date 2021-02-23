@@ -6,6 +6,7 @@ from src.classifiers import logistic_regression
 from src.classifiers.define_features import define_features_tfidf
 from src.classifiers.ensemble_classifier import EnsembleClassifier
 from sklearn import metrics
+from src.utils import constant
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -365,15 +366,15 @@ def validate_parameters_via_cross_validation(x_data, y_data):
 
 
     if index_max_value[1] is 0:
-        classifer = 'svm'
+        classifer = constant.SVM
     elif index_max_value[1] is 1:
-        classifer = 'decison_tree'
+        classifer = constant.DECISION_TREE
     elif index_max_value[1] is 2:
-        classifer = 'random_forest'
+        classifer = constant.RANDOM_FOREST
     elif index_max_value[1] is 3:
-        classifer = 'log_reg'
+        classifer = constant.LOGISTIC_REGRESSION
     else:
-        classifer = 'ensemble'
+        classifer = constant.ENSEMBLE
 
     param = np.asarray([classifer,vectorizer,ngrams],dtype=object)
     return param
