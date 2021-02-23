@@ -11,8 +11,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-
-def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, option):
+def cross_validate(x, y, method, ngrams, n_splits=10, plot_results=True, option="cross_validation"):
     """
     Calculate cross validation average error.
 
@@ -73,7 +72,8 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
         print('Iteration: ' + str(i))
         print('')
         print('SVM: ')
-        model_svm, vec_svm, X_testing_svm = svm_classifier.setup_svm_classifier(x_train, y_train, x_test, method=method,ngrams=ngrams)
+        model_svm, vec_svm, X_testing_svm = svm_classifier.setup_svm_classifier(x_train, y_train, x_test, method=method,
+                                                                                ngrams=ngrams)
         y_pred_svm = svm_classifier.predict(model_svm, X_testing_svm)
         error_svm, acc_svm, prec_svm, rec_svm = calculate_metrics(y_test, y_pred_svm)
         print('Error: ' + str(error_svm))
@@ -84,7 +84,7 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
 
         print('Decision Tree: ')
         model_dec_tree, vec_dec_tree, X_testing_dec_tree = decision_tree_classifier.setup_decision_tree_classifier(
-            x_train, y_train, x_test, method=method,ngrams=ngrams)
+            x_train, y_train, x_test, method=method, ngrams=ngrams)
         y_pred_dec_tree = decision_tree_classifier.predict(model_dec_tree, X_testing_dec_tree)
         error_dec_tree, acc_dec_tree, prec_dec_tree, rec_dec_tree = calculate_metrics(y_test, y_pred_dec_tree)
         print('Error: ' + str(error_dec_tree))
@@ -109,7 +109,9 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
 
         print('Logistic Regression: ')
         model_log_reg, vec_log_reg, X_testing_log_reg = logistic_regression.setup_log_reg_classifier(x_train, y_train,
-                                                                                                     x_test, method=method,ngrams=ngrams)
+                                                                                                     x_test,
+                                                                                                     method=method,
+                                                                                                     ngrams=ngrams)
         y_pred_log_reg = logistic_regression.predict(model_log_reg, X_testing_log_reg)
         error_log_reg, acc_log_reg, prec_log_reg, rec_log_reg = calculate_metrics(y_test, y_pred_log_reg)
         print('Error: ' + str(error_log_reg))
@@ -120,7 +122,7 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
 
         print('Ensemble Classifier: ')
         ensemble = EnsembleClassifier()
-        x_test, vec = ensemble.train(x_train, y_train, x_test, method=method,ngrams=ngrams)
+        x_test, vec = ensemble.train(x_train, y_train, x_test, method=method, ngrams=ngrams)
         y_pred_ens = ensemble.predict(x_test)
         error_ens, acc_ens, prec_ens, rec_ens = calculate_metrics(y_test, y_pred_ens)
         print('Error: ' + str(error_ens))
@@ -183,17 +185,22 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
     print('Avg recall Ensemble: ' + str(np.average(tot_rec_ens)))
     print('----------------------')
     print('----------------------')
-    f1_score_svm = 2*( (np.average(tot_prec_svm) * np.average(tot_rec_svm)) / (np.average(tot_prec_svm) + np.average(tot_rec_svm)) )
-    f1_score_dec_tree = 2*( (np.average(tot_prec_dec_tree) * np.average(tot_rec_dec_tree)) / (np.average(tot_prec_dec_tree) + np.average(tot_rec_dec_tree)) )
-    f1_score_ran_for = 2*( (np.average(tot_prec_ran_for) * np.average(tot_rec_ran_for)) / (np.average(tot_prec_ran_for) + np.average(tot_rec_ran_for)) )
-    f1_score_log_reg = 2*( (np.average(tot_prec_log_reg) * np.average(tot_rec_log_reg)) / (np.average(tot_prec_log_reg) + np.average(tot_rec_log_reg)) )
-    f1_score_ens = 2*( (np.average(tot_prec_ens) * np.average(tot_rec_ens)) / (np.average(tot_prec_ens) + np.average(tot_rec_ens)) )
+    f1_score_svm = 2 * ((np.average(tot_prec_svm) * np.average(tot_rec_svm)) / (
+            np.average(tot_prec_svm) + np.average(tot_rec_svm)))
+    f1_score_dec_tree = 2 * ((np.average(tot_prec_dec_tree) * np.average(tot_rec_dec_tree)) / (
+            np.average(tot_prec_dec_tree) + np.average(tot_rec_dec_tree)))
+    f1_score_ran_for = 2 * ((np.average(tot_prec_ran_for) * np.average(tot_rec_ran_for)) / (
+            np.average(tot_prec_ran_for) + np.average(tot_rec_ran_for)))
+    f1_score_log_reg = 2 * ((np.average(tot_prec_log_reg) * np.average(tot_rec_log_reg)) / (
+            np.average(tot_prec_log_reg) + np.average(tot_rec_log_reg)))
+    f1_score_ens = 2 * ((np.average(tot_prec_ens) * np.average(tot_rec_ens)) / (
+            np.average(tot_prec_ens) + np.average(tot_rec_ens)))
     print('F1 Score SVM: ' + str(f1_score_svm))
     print('F1 Score Decision Tree: ' + str(f1_score_dec_tree))
     print('F1 Score Random Forrest: ' + str(f1_score_ran_for))
     print('F1 Score Logistic Regression: ' + str(f1_score_log_reg))
     print('F1 Score Ensemble: ' + str(f1_score_ens))
-    
+
     if plot_results == True:
         df = pd.DataFrame(np.array([[np.average(tot_err_svm),
                                      np.average(tot_acc_svm),
@@ -206,41 +213,39 @@ def cross_validate(x, y, method, ngrams, n_splits=10, plot_results = True, optio
                                      np.average(tot_prec_dec_tree),
                                      np.average(tot_rec_dec_tree),
                                      f1_score_dec_tree],
-                                 
+
                                     [np.average(tot_err_ran_for),
                                      np.average(tot_acc_ran_for),
                                      np.average(tot_prec_ran_for),
                                      np.average(tot_rec_ran_for),
                                      f1_score_ran_for],
-                                  
-                                     [np.average(tot_err_log_reg),
-                                      np.average(tot_acc_log_reg),
-                                      np.average(tot_prec_log_reg),
-                                      np.average(tot_rec_log_reg),
-                                      f1_score_log_reg],
-                                   
+
+                                    [np.average(tot_err_log_reg),
+                                     np.average(tot_acc_log_reg),
+                                     np.average(tot_prec_log_reg),
+                                     np.average(tot_rec_log_reg),
+                                     f1_score_log_reg],
+
                                     [np.average(tot_err_ens),
                                      np.average(tot_acc_ens),
                                      np.average(tot_prec_ens),
                                      np.average(tot_rec_ens),
                                      f1_score_ens]]),
-    
-                        columns = ["avg error",
+
+                          columns=["avg error",
                                    "avg accuracy",
                                    "avg precision",
                                    "avg recall",
-                                    "F1 score"],
-                            index = ["SVM",
-                                      "Decision Tree",
-                                      "Random Forest",
-                                      "Logistic Regression",
-                                      "Ensemble"])
+                                   "F1 score"],
+                          index=["SVM",
+                                 "Decision Tree",
+                                 "Random Forest",
+                                 "Logistic Regression",
+                                 "Ensemble"])
         plot_scores(df, option)
 
-    f1_scores = np.asarray(f1_score_svm, f1_score_dec_tree, f1_score_ran_for, f1_score_log_reg, f1_score_ens)
+    f1_scores = np.asarray([f1_score_svm, f1_score_dec_tree, f1_score_ran_for, f1_score_log_reg, f1_score_ens])
     return f1_scores
-
-
 
 
 def calculate_metrics(y_test, y_pred):
@@ -289,29 +294,86 @@ def plot_scores(df, option):
                             easily afterwards.                   
     """
     fig1, (ax1, ax2) = plt.subplots(2, 1)
-    fig1.subplots_adjust(hspace = 0.25) 
+    fig1.subplots_adjust(hspace=0.25)
     fig1.set_size_inches(20, 30)
 
-    
-    plt.rc("axes", titlesize = 20)
-    plt.rc("font", size = 15)
-    
-    cols_without_error = ["avg accuracy", "avg precision", "avg recall", "F1 score"]
-    df[cols_without_error].plot(kind = 'bar', rot=70,
-            cmap = "viridis",
-            title = f"Average scores for all models for Option {option}",
-            ax = ax1)
-    
-    ax1.set_ylim([0.74, 0.9])
-    ax1.legend(loc = 'upper left')
+    plt.rc("axes", titlesize=20)
+    plt.rc("font", size=15)
 
-    
+    cols_without_error = ["avg accuracy", "avg precision", "avg recall", "F1 score"]
+    df[cols_without_error].plot(kind='bar', rot=70,
+                                cmap="viridis",
+                                title=f"Average scores for all models for Option {option}",
+                                ax=ax1)
+
+    ax1.set_ylim([0.74, 0.9])
+    ax1.legend(loc='upper left')
+
     col_error = ["avg error"]
-    df[col_error].plot(kind = 'bar', color = 'lightskyblue',
-              title = f"Average error for all models for Option {option}", ax = ax2)
-    
+    df[col_error].plot(kind='bar', color='lightskyblue',
+                       title=f"Average error for all models for Option {option}", ax=ax2)
+
     ax2.set_ylim([0, 0.26])
 
     plt.savefig(f"{option}.png",
-                bbox_inches = "tight")
+                bbox_inches="tight")
 
+
+def validate_parameters_via_cross_validation(x_data, y_data):
+    """
+        Validates the best classifier and associated parameters (CountVectorizer/TFIDF and unigram/bigram)
+
+        Parameters
+        ----------
+        x_data:             	Features (text) of the dataset
+
+        y_data:                 Labels of the dataset
+
+        Returns
+        ----------
+        param                   Array, including 0: classifer, 1: vectorizer, 2: uni- or bigram
+                                classifier could be svm, decison_tree,random_forest, log_reg or ensemble
+                                vectorizer could be count or tfidf
+                                uni- or bigram represented as Tuple e.g (1, 2) for bigram
+        """
+    # option 1 -> CountVectorizer + unigrams
+    f1_scores_count_unigram = cross_validate(x_data, y_data, method="count",
+                                             ngrams=(1, 1), option='CountVectorizer + unigram')
+    # option 2 -> CountVectorizer + unigrams & bigrams
+    f1_scores_count_bigram = cross_validate(x_data, y_data, method="count",
+                                            ngrams=(1, 2), option='CountVectorizer + bigram')
+    # option 3 -> TfidfVectorizer + unigrams
+    f1_scores_tfidf_unigram = cross_validate(x_data, y_data, method="tfidf",
+                                             ngrams=(1, 1), option='TfidfVectorizer + unigram')
+    # option 4 -> TfidfVectorizer + unigrams & bigrams
+    f1_scores_tfidf_bigram = cross_validate(x_data, y_data, method="tfidf",
+                                            ngrams=(1, 2), option='TfidfVectorizer + bigram')
+
+    # find greatest f1 value over all experiments
+    f1_scores = np.vstack(
+        [f1_scores_count_unigram, f1_scores_count_bigram, f1_scores_tfidf_unigram, f1_scores_tfidf_bigram])
+    index_max_value = np.unravel_index(f1_scores.argmax(), f1_scores.shape)
+
+    if index_max_value[0] is 0:
+        param = ['count',(1, 1)]
+    elif index_max_value[0] is 1:
+        param = ['count', (1, 2)]
+    elif index_max_value[0] is 2:
+        param = ['tfidf', (1, 1)]
+    else:
+        param = ['tfidf', (1, 2)]
+
+
+    if index_max_value[1] is 0:
+        classifer = 'svm'
+    elif index_max_value[1] is 1:
+        classifer = 'decison_tree'
+    elif index_max_value[1] is 2:
+        classifer = 'random_forest'
+    elif index_max_value[1] is 3:
+        classifer = 'log_reg'
+    else:
+        classifer = 'ensemble'
+
+    param = np.asarray([classifer,param])
+    return param
