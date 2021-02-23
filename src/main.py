@@ -13,4 +13,4 @@ if __name__ == "__main__":
                                           vectorizer=param[1], ngrams=param[2],
                                           x_train=x_data, y_train=y_data, preprocessing='preprocessing_restricted')
     # calculate the average hatespeech per state (in percent)
-    avg_per_state = pipeline.calculate_hatespeech_per_us_state(y_pred, df)
+    avg_per_state = pipeline.calculate_hatespeech_per_us_state(df, y_pred)
