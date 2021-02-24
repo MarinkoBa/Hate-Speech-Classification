@@ -342,13 +342,13 @@ def validate_parameters_via_cross_validation(x_data, y_data):
                                              ngrams=(1, 1), option='CountVectorizer + unigram')
     # option 2 -> CountVectorizer + unigrams & bigrams
     f1_scores_count_bigram = cross_validate(x_data, y_data, method="count",
-                                            ngrams=(1, 2), option='CountVectorizer + uni-/bigram')
+                                            ngrams=(1, 2), option='CountVectorizer + bigram')
     # option 3 -> TfidfVectorizer + unigrams
     f1_scores_tfidf_unigram = cross_validate(x_data, y_data, method="tfidf",
                                              ngrams=(1, 1), option='TfidfVectorizer + unigram')
     # option 4 -> TfidfVectorizer + unigrams & bigrams
     f1_scores_tfidf_bigram = cross_validate(x_data, y_data, method="tfidf",
-                                            ngrams=(1, 2), option='TfidfVectorizer + uni-/bigram')
+                                            ngrams=(1, 2), option='TfidfVectorizer + bigram')
 
     # find greatest f1 value over all experiments
     f1_scores = np.vstack(
