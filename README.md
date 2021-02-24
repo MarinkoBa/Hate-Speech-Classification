@@ -18,7 +18,7 @@ Tratz-Weinmann@stud.uni-heidelberg.de
 - Python Version: 3.7
 - Used OS: Windows 10
 - Other configurations could leed to file path errors.
-- To install all requirements: pip install -r requirements.txt
+
 - To use spacy it's crucial to install n_core_web_sm: pipenv install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.5/en_core_web_sm-2.3.5.tar.gz
  
 
