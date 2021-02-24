@@ -17,7 +17,7 @@ Tratz-Weinmann@stud.uni-heidelberg.de
 - Code was created and is running under PyCharm 2020.3.
 - Python Version: 3.7
 - Used OS: Windows 10
-- Other configurations could leed to file path errors.
+- Other configurations could lead to file path errors.
 
 - To use spacy it's crucial to install n_core_web_sm: pipenv install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.5/en_core_web_sm-2.3.5.tar.gz
  
