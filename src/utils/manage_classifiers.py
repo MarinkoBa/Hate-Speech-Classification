@@ -51,6 +51,36 @@ def load_classifier(model_path, vec_path):
 
 
 def choose_and_create_classifier(classifier, x_data, y_data, df, method, ngrams):
+    """
+        Creates classifier on the given training data and parameters.
+
+        Parameters
+        ----------
+        classifier:	        String
+                            svm, decison_tree,random_forest, log_reg or ensemble
+
+        x_data:	            Array
+                            Features to train classifier
+
+        y_data              Array
+                            Labels to train classifier
+
+        df                  Pandas dataframe
+                            The dataframe containing the testing data for the classifier
+
+        method: 		    String
+                            Can be either "count" or "tfidf" for specifying method of feature weighting
+
+        ngrams:             tuple (min_n, max_n), with min_n, max_n integer values
+                            range for ngrams used for vectorization
+
+        Returns
+        ----------
+        model:		        Model of implemented Classifiers
+                			Trained Model
+        vec:        	    sklearn CountVectorizer or TfidfVectorizer
+                        	CountVectorizer or TfidfVectorizer fit and transformed for training data
+        """
     # Choose classifier and create
     if classifier is constant.SVM:
         model, vec, x_test = svm_classifier.setup_svm_classifier(x_data, y_data, df[['preprocessed']],
