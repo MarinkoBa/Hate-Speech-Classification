@@ -3,7 +3,6 @@ from src.classifiers import svm_classifier
 from src.classifiers import decision_tree_classifier
 from src.classifiers import random_forest_classifier
 from src.classifiers import logistic_regression
-from src.classifiers.define_features import define_features_tfidf
 from src.classifiers.ensemble_classifier import EnsembleClassifier
 from sklearn import metrics
 from src.utils import constant
@@ -338,16 +337,16 @@ def validate_parameters_via_cross_validation(x_data, y_data):
                                 gram (uni- or bigram) represented as Tuple e.g (1, 2) for bigram
         """
     # option 1 -> CountVectorizer + unigrams
-    f1_scores_count_unigram = cross_validate(x_data, y_data, method="count",
+    f1_scores_count_unigram = cross_validate(x_data, y_data, method=constant.COUNT,
                                              ngrams=(1, 1), option='CountVectorizer + unigram')
     # option 2 -> CountVectorizer + unigrams & bigrams
-    f1_scores_count_bigram = cross_validate(x_data, y_data, method="count",
+    f1_scores_count_bigram = cross_validate(x_data, y_data, method=constant.COUNT,
                                             ngrams=(1, 2), option='CountVectorizer + bigram')
     # option 3 -> TfidfVectorizer + unigrams
-    f1_scores_tfidf_unigram = cross_validate(x_data, y_data, method="tfidf",
+    f1_scores_tfidf_unigram = cross_validate(x_data, y_data, method=constant.TFIDF,
                                              ngrams=(1, 1), option='TfidfVectorizer + unigram')
     # option 4 -> TfidfVectorizer + unigrams & bigrams
-    f1_scores_tfidf_bigram = cross_validate(x_data, y_data, method="tfidf",
+    f1_scores_tfidf_bigram = cross_validate(x_data, y_data, method=constant.TFIDF,
                                             ngrams=(1, 2), option='TfidfVectorizer + bigram')
 
     # find greatest f1 value over all experiments
@@ -355,8 +354,9 @@ def validate_parameters_via_cross_validation(x_data, y_data):
         [f1_scores_count_unigram, f1_scores_count_bigram, f1_scores_tfidf_unigram, f1_scores_tfidf_bigram])
     index_max_value = np.unravel_index(f1_scores.argmax(), f1_scores.shape)
 
+    # choose which parameters are the best
     if index_max_value[0] is 0:
-         vectorizer, ngrams= (constant.COUNT,(1, 1))
+        vectorizer, ngrams = (constant.COUNT, (1, 1))
     elif index_max_value[0] is 1:
         vectorizer, ngrams = (constant.COUNT, (1, 2))
     elif index_max_value[0] is 2:
@@ -364,17 +364,17 @@ def validate_parameters_via_cross_validation(x_data, y_data):
     else:
         vectorizer, ngrams = (constant.TFIDF, (1, 2))
 
-
+    # choose best classifier
     if index_max_value[1] is 0:
-        classifer = constant.SVM
+        classifier = constant.SVM
     elif index_max_value[1] is 1:
-        classifer = constant.DECISION_TREE
+        classifier = constant.DECISION_TREE
     elif index_max_value[1] is 2:
-        classifer = constant.RANDOM_FOREST
+        classifier = constant.RANDOM_FOREST
     elif index_max_value[1] is 3:
-        classifer = constant.LOGISTIC_REGRESSION
+        classifier = constant.LOGISTIC_REGRESSION
     else:
-        classifer = constant.ENSEMBLE
+        classifier = constant.ENSEMBLE
 
-    param = np.asarray([classifer,vectorizer,ngrams],dtype=object)
+    param = np.asarray([classifier, vectorizer, ngrams], dtype=object)
     return param

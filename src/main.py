@@ -6,7 +6,7 @@ if __name__ == "__main__":
     df_dataset = pipeline.load_labeled_dataset()
 
     # evaluate classifier and parameters during experiment-phase
-    param, x_data, y_data = pipeline.run_experiment(df_dataset)
+    param, x_data, y_data = pipeline.run_experiment(df_dataset, preprocessing='preprocessing_restricted')
 
     # predict data for the usa_tweets with the evaluated parameters
     y_pred, df = pipeline.make_prediction(os.path.join('data', 'usa_tweets.csv'), classifier=param[0],
