@@ -549,11 +549,6 @@ Comparing the F1 scores for all options, you can identify the SVM Classifier of 
  In order to show an exemplary application of our hate speech classifiers, we queried tweets posted on the 12th and 15th February, 2021 in the 50 largest cities per US state. Above you can see the distribution of tweets per city.
  
  
- 
- ### USA Hate Speech Map (~1000 tweets per US state) 
- 
- ![Tweets availability](/src/data/USA_Hate_Speech_Map_1000_tweets_per_state.png)
- 
   ### USA Hate Speech Map (3000-7000 tweets per US state) 
  
  ![Tweets availability](/src/data/USA_Hate_Speech_Map_All_Tweet.png)
