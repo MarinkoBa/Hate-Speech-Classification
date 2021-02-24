@@ -12,6 +12,12 @@ Tratz-Weinmann@stud.uni-heidelberg.de
 
 ### Existing code fragments:
  We do not use any existing code, but we are using the example project from the tutorial as basis for our project structure and existing libraries that are listed in the requirements.txt.
+
+### Instructions
+Code was created and is running under PyCharm 2020.3.
+Python Version: 3.7
+Used OS: Windows 10
+Other configurations could leed to file path errors.
  
 
 ## Project State
