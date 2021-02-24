@@ -45,7 +45,20 @@ def load_labeled_dataset():
 
 
 def run_experiment(df_dataset, preprocessing='preprocessing_restricted'):
-    # TODO Documentation
+    """
+            Execute preprocessing on given dataset and validates best classifier and parameters by f1-score.
+
+            Returns
+            -------
+            Parameters:         Array, including 0: classifer, 1: vectorizer, 2: grams
+                                classifier: svm, decison_tree,random_forest, log_reg or ensemble
+                                vectorizer: count or tfidf
+                                ngram represented as Tuple e.g (1, 2) for uni- and bigrams
+
+            x_balanced          balanced and preprocessed training features
+
+            y_balanced          balanced training labels
+            """
 
     # runs chosen preprocess-method on the text-column of the dataframe
     if preprocessing is constant.PREPROCESSING_RESTRICTED:
