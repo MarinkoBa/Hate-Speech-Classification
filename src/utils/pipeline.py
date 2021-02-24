@@ -4,16 +4,11 @@ import numpy as np
 from src.utils import constant
 from decouple import config
 from src.utils.get_data import get_tweets_by_id
-from src.utils.get_data import load_data
-from src.utils.get_data import get_datasets
 from src.utils.get_data import concatenate_datasets
-from src.utils.get_data import split_data
 from src.utils.get_data import get_datasets
-from src.utils.preprocessing import preprocessing
 from src.utils.preprocessing import preprocessing_restricted
 from src.utils.cross_validator import validate_parameters_via_cross_validation
 from src.utils import usa_hate_speech_calculator
-from src.utils import manage_classifiers
 from src.utils import dataset_balancer
 from src.utils.manage_classifiers import choose_and_create_classifier
 
@@ -47,17 +42,31 @@ def load_labeled_dataset():
 def run_experiment(df_dataset, preprocessing='preprocessing_restricted'):
     """
             Execute preprocessing on given dataset and validates best classifier and parameters by f1-score.
+            Parameters
+            ----------
+
+            df_dataset          Pandas dataframe
+                                Dataframe including features and labels.
+                                On Dataframe Experiments will be executed.
+
+            preprocessing       String
+                                Preprocessing methode which should be used.
+                                preprocessing_restricted or otherwise preprocessing methode will be used.
+
 
             Returns
             -------
-            Parameters:         Array, including 0: classifer, 1: vectorizer, 2: grams
+            Parameters:         Array
+                                including 0: classifer, 1: vectorizer, 2: grams
                                 classifier: svm, decison_tree,random_forest, log_reg or ensemble
                                 vectorizer: count or tfidf
                                 ngram represented as Tuple e.g (1, 2) for uni- and bigrams
 
-            x_balanced          balanced and preprocessed training features
+            x_balanced          Array
+                                Balanced and preprocessed training features
 
-            y_balanced          balanced training labels
+            y_balanced          Array
+                                balanced training labels
             """
 
     # runs chosen preprocess-method on the text-column of the dataframe
@@ -82,7 +91,8 @@ def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y
 
         Parameters
         ----------
-        dataset_filepath:  	Filepath to the csv-file which includes the data which should be investigate.
+        dataset_filepath:  	String.
+                            Filepath to the csv-file which includes the data which should be investigate.
                             The feature column has to be named 'full_text'.
 
         classifier:         String
@@ -90,25 +100,30 @@ def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y
                             svm, decison_tree,random_forest, log_reg or ensemble
 
         vectorizer: 		String
-                			Name of Vectorizer which should be used.
-                			count or tfidf
+                            Name of Vectorizer which should be used.
+                            count or tfidf
 
         ngrams:             Tuple
                             Unigram: (1,1) ,Uni-/Bigrams: (1,2)
 
-        x_train             Features of the training data
+        x_train             Array.
+                            Features of the training data
 
-        y_train             Labels of the training data
+        y_train             Array.
+                            Labels of the training data
 
         preprocessing       String
                             Preprocessing methode which should be used.
                             preprocessing_restricted or otherwise preprocessing methode will be used.
 
         Returns
+        -------
 
-        y_pred              Array of predicted labels for the input dataset (csv-file)
+        y_pred              Array
+                            Predicted labels for the input dataset (csv-file)
 
-        df                  Pandas Dataframe loaded from csv-file
+        df                  Pandas Dataframe
+                            Dataframe loaded from csv-file
         -------
 
         """
@@ -135,15 +150,20 @@ def calculate_hatespeech_per_us_state(df_usa, y_pred, print_out=True):
 
             Parameters
             ----------
-            df_usa:  	Dataset of the collected tweets from different US-States
+            df_usa:  	Pandas dataframe
+                        Dataset of the collected tweets from different US-States
 
-            y_pred:     predicted labels for the dataset features
+            y_pred:     Array.
+                        Predicted labels for the dataset features
 
-            print_out:  Bool, True if each average should be print to console
+            print_out:  Bool.
+                        True if each average should be print to console
 
             Returns
+            -------
 
-            y_pred              Array of predicted labels for the input dataset (csv-file)
+            y_pred      Array
+                        Predicted labels for the input dataset (csv-file)
             -------
 
             """

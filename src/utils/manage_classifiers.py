@@ -1,5 +1,4 @@
 import pickle
-import os
 from src.utils import constant
 from src.classifiers import svm_classifier, logistic_regression, random_forest_classifier, decision_tree_classifier
 from src.classifiers.ensemble_classifier import EnsembleClassifier
