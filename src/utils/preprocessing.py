@@ -4,8 +4,8 @@ import re
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 
-# use pipenv to download en_core_web_sm
-# pipenv install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.5/en_core_web_sm-2.3.5.tar.gz
+# use python to download en_core_web_sm
+# python -m spacy download en_core_web_sm
 nlp = spacy.load("en_core_web_sm", disable=['tagger', 'parser', 'ner'])
 stopwords = nlp.Defaults.stop_words
 stemmer = PorterStemmer()
