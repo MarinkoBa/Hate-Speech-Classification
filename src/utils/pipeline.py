@@ -56,8 +56,8 @@ def run_experiment(df_dataset, preprocessing='preprocessing_restricted'):
     # balance data -> ~9k normal vs ~9k hate speech tweets
     x_balanced, y_balanced = dataset_balancer.balance_data(df_dataset[['preprocessed']], df_dataset[['hate_speech']])
 
-    # cross validation TODO change back [:1000]
-    parameters = validate_parameters_via_cross_validation(x_data=x_balanced[:1000], y_data=y_balanced[:1000])
+    # cross validation
+    parameters = validate_parameters_via_cross_validation(x_data=x_balanced, y_data=y_balanced)
 
     return parameters, x_balanced, y_balanced
 
@@ -108,7 +108,7 @@ def make_prediction(dataset_filepath, classifier, vectorizer, ngrams, x_train, y
     else:
         df['preprocessed'] = df['full_text'].apply(preprocessing)
 
-    model, vec, x_test = choose_and_create_classifier(classifier, x_train, y_train, df[['preprocessed']][:1000], vectorizer,
+    model, vec, x_test = choose_and_create_classifier(classifier, x_train, y_train, df[['preprocessed']], vectorizer,
                                                       ngrams)
     x_test = vec.transform(df['preprocessed'].values)
     y_pred = model.predict(x_test)
