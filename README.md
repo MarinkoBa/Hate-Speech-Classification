@@ -21,6 +21,7 @@ Tratz-Weinmann@stud.uni-heidelberg.de
 - For tweepy credentials; Twitter Developer Account is needed: https://developer.twitter.com/en/apply-for-access
 - The ".env" File with tweepy credentials has to be created like exemplary File ".example.env"
 - Following has to be executed for the nlp preprocessing: "python -m spacy download en_core_web_sm"
+- List of items to be installed can be found in "requirements.txt"
 
 
 ## Project State
