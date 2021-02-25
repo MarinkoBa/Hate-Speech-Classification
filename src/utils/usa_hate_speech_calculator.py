@@ -5,15 +5,15 @@ def calculate_hate_speech_ratio(df_usa, y_pred):
 
     Parameters
     ----------
-    df_usa:	        Pandas dataframe
-                        US test dataframe
-    y_pred:	        Numpy array
-                        Predicted values over df_usa test set
+    df_usa:	                    Pandas dataframe
+                                US test dataframe
+    y_pred:	                    Numpy array
+                                Predicted values over df_usa test set
 
     Returns
     ----------
-    avg_hate_speech_per_state:		        Numpy array
-            			Includes 50 avg hate speech values
+    avg_hate_speech_per_state:	Numpy array
+                            	Includes 50 avg hate speech values
     """
 
     unique_city_names = df_usa.city_name.unique()

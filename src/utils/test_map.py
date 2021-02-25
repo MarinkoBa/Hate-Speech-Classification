@@ -11,7 +11,7 @@ def test_map(y_pred,y_test):
 
     Parameters
     ----------
-    prediction:         Binary array
+    y_pred:             Binary array
                         array containing preddiction for test data for a model
     y_test:		        Pandas dataframe
                       	The dataframe containing the test labels.             

@@ -321,21 +321,21 @@ def plot_scores(df, option):
 
 def validate_parameters_via_cross_validation(x_data, y_data):
     """
-        Validates the best classifier and associated parameters (CountVectorizer/TFIDF and unigram/bigram)
+    Validates the best classifier and associated parameters (CountVectorizer/TFIDF and unigram/bigram)
 
-        Parameters
-        ----------
-        x_data:             	Features (text) of the dataset
+    Parameters
+    ----------
+    x_data:             	Features (text) of the dataset
 
-        y_data:                 Labels of the dataset
+    y_data:                 Labels of the dataset
 
-        Returns
-        ----------
-        param                   Array, including 0: classifer, 1: vectorizer, 2: grams
-                                classifier could be: svm, decison_tree,random_forest, log_reg or ensemble
-                                vectorizer could be: count or tfidf
-                                gram (uni- or bigram) represented as Tuple e.g (1, 2) for bigram
-        """
+    Returns
+    ----------
+    param                   Array, including 0: classifer, 1: vectorizer, 2: grams
+                            classifier could be: svm, decison_tree,random_forest, log_reg or ensemble
+                            vectorizer could be: count or tfidf
+                            gram (uni- or bigram) represented as Tuple e.g (1, 2) for bigram
+    """
     # option 1 -> CountVectorizer + unigrams
     f1_scores_count_unigram = cross_validate(x_data, y_data, method=constant.COUNT,
                                              ngrams=(1, 1), option='CountVectorizer + unigram')
