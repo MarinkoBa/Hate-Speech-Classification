@@ -22,12 +22,6 @@ Tratz-Weinmann@stud.uni-heidelberg.de
 
 
 ## Project State
-
-### TODO
-- Dateipfade anpassen + Instructions ergänzen / Anleitung (Fabio)
-- Plotfunktion
-- Main Methode Verlauf (Marinko)
-
                   
 
 Following you find the current state of the project ordered by the timeline in which the individual steps where implemented.
